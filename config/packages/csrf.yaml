@@ -2,7 +2,6 @@
 framework:
     form:
         csrf_protection:
-            check_header: true
             token_id: submit
 
     csrf_protection:
