@@ -10,10 +10,10 @@
         <h1>{{ starShipCount }}</h1>
         <p>{{ 'Bu, Symfony uygulamanızın başlangıç sayfasıdır.' }}</p>
 
-        {% if starShipCount > 0 %}
+        {% if starShipCount > 2 %}
             <p>{{ 'Şu anda ' ~ starShipCount ~ ' adet yıldız gemisi mevcut.' }}</p>
         {% else %}
-            <p>{{ 'Şu anda hiç yıldız gemisi mevcut değil.' }}</p>
+            <p>{{ 'Şu anda ikiden az yıldız gemisi mevcut değil.' }}</p>
         {% endif %}
         <p>{{ 'Symfony ile geliştirmeye devam edin!' }}</p>
 
