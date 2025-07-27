@@ -1,13 +1,11 @@
-# csrf.yaml – Enable stateless CSRF protection for forms and logins/logouts
+# Enable stateless CSRF protection for forms and logins/logouts
 framework:
     form:
-        csrf_protection: true
+        csrf_protection:
+            token_id: submit
 
     csrf_protection:
-        enabled: true
-        check_header: true
-        token_id: 'submit'
         stateless_token_ids:
-            - 'submit'
-            - 'authenticate'
-            - 'logout'
+            - submit
+            - authenticate
+            - logout

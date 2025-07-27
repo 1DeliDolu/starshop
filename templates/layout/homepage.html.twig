@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Symfony Uygulaması{% endblock %}
+
+{% block body %}
+    <h1>{{ 'Hoşgeldin' }}</h1>
+
+
+    <div>
+        <h1>{{ starShipCount }}</h1>
+        <p>{{ 'Bu, Symfony uygulamanızın başlangıç sayfasıdır.' }}</p>
+
+        {% if starShipCount > 0 %}
+            <p>{{ 'Şu anda ' ~ starShipCount ~ ' adet yıldız gemisi mevcut.' }}</p>
+        {% else %}
+            <p>{{ 'Şu anda hiç yıldız gemisi mevcut değil.' }}</p>
+        {% endif %}
+        <p>{{ 'Symfony ile geliştirmeye devam edin!' }}</p>
+
+        <table>
+            <tr>
+                <th>İsim</th>
+                <th>Sınıf</th>
+                <th>Kaptan</th>
+                <th>Durum</th>
+            </tr>
+            <tr>
+                <td>{{ myShip.name }}</td>
+                <td>{{ myShip.class }}</td>
+                <td>{{ myShip.captain|upper }}</td>
+                <td>{{ myShip.status }}</td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}
+
+

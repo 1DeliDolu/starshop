@@ -10,7 +10,18 @@ class MainController extends AbstractController
     #[Route(path: "/")]
     public function homepage()
     {
+        //myShip is a Starship array name, class, captain, status
+        $myShip = [
+            'name' => 'Millennium Falcon',
+            'class' => 'Light Freighter',
+            'captain' => 'Han Solo',
+            'status' => 'Active'
+        ];
+        $starShipCount = 245;
         // This is the homepage action
-        return new Response("<strong>Starshop: </strong> Welcome to the Starshop homepage!");
+        return $this->render('layout/homepage.html.twig', [
+            'starShipCount' => $starShipCount,
+            'myShip' => $myShip
+        ]);
     }
 }
