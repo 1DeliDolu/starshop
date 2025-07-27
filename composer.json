@@ -7,11 +7,14 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "php-cs-fixer/shim": "*",
         "symfony/console": "7.3.*",
         "symfony/dotenv": "7.3.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "7.3.*",
+        "symfony/http-client": "7.3.*",
         "symfony/runtime": "7.3.*",
+        "symfony/twig-pack": "*",
         "symfony/webapp-pack": "*",
         "symfony/yaml": "7.3.*"
     },
@@ -63,7 +66,11 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "7.3.*"
+            "require": "7.3.*",
+            "docker": true
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
     }
 }
