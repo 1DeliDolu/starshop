@@ -15,6 +15,13 @@
     <body>
         <img class="starship-img" src="{{ asset('images/starship.jpg') }}" alt="Starship" />
 
+        <p class="text-2xl font-serif text-black bg-sky-400 mb-4 shadow-lg rounded p-4">
+            Bu paragraf Tailwind CSS ile mavi başlık ve gölgeli kutu olarak biçimlendirildi.
+        </p>
+        <p class="text-2xl font-serif text-black bg-yellow-300 border border-black rounded p-4">
+            İkinci paragraf Tailwind CSS ile sarı arka plan ve kenarlık ile biçimlendirildi.
+        </p>
+
         {% block body %}
         {% endblock %}
     </body>
