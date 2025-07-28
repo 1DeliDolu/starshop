@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class StarshipController extends AbstractController
 {
-    #[Route(path: "/starships/{id<\d+>}", name: "starship_show")]
+    #[Route(path: "/starships/{id<\d+>}", name: "starship_show", methods: ['GET'])]
     public function show(int $id, StarshipRepository $starshipRepository): Response
     {
         // Your logic to retrieve starships goes here

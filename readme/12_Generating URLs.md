@@ -1,12 +1,9 @@
-🌍 Yönlendirme
+# 🌍Generating URLs / URL'ler Oluşturmak
 
-### Generating URLs / URL'ler Oluşturmak
 
----
 
-🌍 Yönlendirme
 
-### Creating the Show Page / Detay Sayfası Oluşturmak
+## Creating the Show Page / Detay Sayfası Oluşturmak
 
 Starship'ler için bir "detay sayfası" oluşturalım: yalnızca bir geminin bilgilerini gösteren bir sayfa. Ana sayfa `MainController` içinde yer alıyor. Buraya yeni bir route ve metod ekleyebilirdik. Ama sitemiz büyüdükçe, muhtemelen starship'lerle ilgili başka sayfalarımız da olacak: düzenleme, silme gibi. Bu yüzden bunun yerine `Controller/` dizininde yeni bir sınıf oluşturalım. Adı `StarshipController` olsun ve her zamanki gibi `AbstractController` sınıfını genişletsin.
 
@@ -46,9 +43,7 @@ public function show(int $id, StarshipRepository $repository): Response
 
 ---
 
-🌍 Yönlendirme
-
-### Creating the Template / Şablon Oluşturmak
+## Creating the Template / Şablon Oluşturmak
 
 Kontrolcü hazır! Şimdi `templates/` dizininde bir `starship/` dizini ve içine `show.html.twig` dosyası oluşturun.
 
@@ -82,9 +77,7 @@ Sadece gemi verilerini yazdırıyoruz. Sayfayı deneyin... çalışıyor!
 
 ---
 
-🌍 Yönlendirme
-
-### Linking Between Pages / Sayfalar Arasında Bağlantı Kurmak
+## Linking Between Pages / Sayfalar Arasında Bağlantı Kurmak
 
 Sıradaki soru: Ana sayfadan bu yeni detay sayfasına nasıl bağlantı ekleriz? En bariz yöntem URL’yi elle yazmak olur: `/starships/` ve ardından id. Ama daha iyi bir yol var.
 
