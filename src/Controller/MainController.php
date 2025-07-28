@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Repository\StarshipRepository;
@@ -8,14 +9,15 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class MainController extends AbstractController
 {
-    #[Route(path: "/")]
+    #[Route('/', name: 'app_homepage')]
     public function homepage(StarshipRepository $starshipRepository): Response
     {
-       $ships=$starshipRepository->findAll();
-       $starshipCount = count($ships);
-       // This is the homepage action
-       return $this->render('layout/homepage.html.twig', [
-           'ships' => $ships,
-       ]);
+        $ships = $starshipRepository->findAll();
+        $myShip = $ships[array_rand($ships)];
+
+        return $this->render('main/homepage.html.twig', [
+            'myShip' => $myShip,
+            'ships' => $ships,
+        ]);
     }
 }

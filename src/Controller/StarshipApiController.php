@@ -2,30 +2,26 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
-use App\Model\Starship;
-use Psr\Log\LoggerInterface;
-use Symfony\Component\HttpFoundation\Response;
 use App\Repository\StarshipRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 
+#[Route('/api/starships')]
 class StarshipApiController extends AbstractController
 {
-    #[Route('/api/starships', name: 'starship_list', methods: ['GET'])]
-    public function getCollection(StarshipRepository $starshipRepository): Response
+    #[Route('', methods: ['GET'])]
+    public function getCollection(StarshipRepository $repository): Response
     {
-        // Fetch starships from the repository
-        $starships = $starshipRepository->findAll();
-
-
+        $starships = $repository->findAll();
 
         return $this->json($starships);
     }
 
-    #[Route('/api/starships/{id<\d+>}', name:'starship_showw')]
-    public function getItem(StarshipRepository $starshipRepository, int $id): Response
+    #[Route('/{id<\d+>}', methods: ['GET'])]
+    public function get(int $id, StarshipRepository $repository): Response
     {
-        $starship = $starshipRepository->findOneById($id);
+        $starship = $repository->find($id);
 
         if (!$starship) {
             throw $this->createNotFoundException('Starship not found');
@@ -33,5 +29,4 @@ class StarshipApiController extends AbstractController
 
         return $this->json($starship);
     }
-
 }

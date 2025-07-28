@@ -1,55 +1,54 @@
 <?php
+
 namespace App\Repository;
 
 use App\Model\Starship;
-use Monolog\Logger;
+use App\Model\StarshipStatusEnum;
 use Psr\Log\LoggerInterface;
 
 class StarshipRepository
 {
-    // This class is responsible for managing starship data.
-    // It interacts with the database to fetch, save, and manipulate starship records.
     public function __construct(private LoggerInterface $logger)
     {
-        // Constructor can be used to inject dependencies if needed.
     }
 
-    public function findAll()
+    public function findAll(): array
     {
-        $this->logger->info('Fetching all starships from the repository');
+        $this->logger->info('Starship collection retrieved');
+
         return [
-            new Starship(1,
-            'Millennium Falcon',
-            'YT-1300',
-            'Corellian Engineering Corporation', 'Freighter',
-             'Han Solo',
-              'Active'),
-            new Starship(2,
-             'X-wing',
-              'T-65 X-wing',
-              'Incom Corporation',
-               'Starfighter',
-               'Luke Skywalker',
-               'Active'),
-            new Starship(3,
-               'Star Destroyer',
-               'Imperial I-class',
-               'Kuat Drive Yards',
-               'Capital Ship',
-               'Darth Vader',
-               'Destroyed'),
+            new Starship(
+                1,
+                'USS LeafyCruiser (NCC-0001)',
+                'Garden',
+                'Jean-Luc Pickles',
+                StarshipStatusEnum::IN_PROGRESS
+            ),
+            new Starship(
+                2,
+                'USS Espresso (NCC-1234-C)',
+                'Latte',
+                'James T. Quick!',
+                StarshipStatusEnum::COMPLETED
+            ),
+            new Starship(
+                3,
+                'USS Wanderlust (NCC-2024-W)',
+                'Delta Tourist',
+                'Kathryn Journeyway',
+                StarshipStatusEnum::WAITING
+            ),
         ];
-        // Logic to fetch all starships from the database.
     }
 
-    public function findOneById($id): ?Starship
+    public function find(int $id): ?Starship
     {
         foreach ($this->findAll() as $starship) {
-            if (method_exists($starship, 'getId') && $starship->getId() == $id) {
+            if ($starship->getId() === $id) {
                 return $starship;
             }
         }
+
         return null;
     }
-
 }
