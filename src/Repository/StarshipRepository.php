@@ -26,10 +26,14 @@ class StarshipRepository
         // Logic to fetch all starships from the database.
     }
 
-    public function findById($id)
+    public function findOneById($id): ?Starship
     {
-        // Logic to find a starship by its ID.
-        // This could involve querying the database and returning a single record.
+        foreach ($this->findAll() as $starship) {
+            if (method_exists($starship, 'getId') && $starship->getId() == $id) {
+                return $starship;
+            }
+        }
+        return null;
     }
 
 }
