@@ -15,9 +15,7 @@ class MainController extends AbstractController
        $starshipCount = count($ships);
        // This is the homepage action
        return $this->render('layout/homepage.html.twig', [
-           'starShipCount' => $starshipCount,
            'ships' => $ships,
-           'myShip' => $ships[0] ?? null
        ]);
     }
 }

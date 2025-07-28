@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Yıldız Gemileri{% endblock %}
+
+{% block body %}
+    <h1>{{ 'Yıldız Gemileri' }}</h1>
+
+    <div>
+        <table style="width:100%; border-collapse:collapse; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <thead style="background:#f5f5f5;">
+            <tr>
+                <th style="padding:12px; border-bottom:2px solid #e0e0e0; text-align:left;">İsim</th>
+                <th style="padding:12px; border-bottom:2px solid #e0e0e0; text-align:left;">Sınıf</th>
+                <th style="padding:12px; border-bottom:2px solid #e0e0e0; text-align:left;">Kaptan</th>
+                <th style="padding:12px; border-bottom:2px solid #e0e0e0; text-align:left;">Durum</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td style="padding:10px; border-bottom:1px solid #e0e0e0;">{{ ship.name }}</td>
+                <td style="padding:10px; border-bottom:1px solid #e0e0e0;">{{ ship.class }}</td>
+                <td style="padding:10px; border-bottom:1px solid #e0e0e0;">{{ ship.captain|upper }}</td>
+                <td style="padding:10px; border-bottom:1px solid #e0e0e0;">{{ ship.status }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

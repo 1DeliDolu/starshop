@@ -22,7 +22,7 @@ class StarshipApiController extends AbstractController
         return $this->json($starships);
     }
 
-    #[Route('/api/starships/{id<\d+>}', name:'starship_show')]
+    #[Route('/api/starships/{id<\d+>}', name:'starship_showw')]
     public function getItem(StarshipRepository $starshipRepository, int $id): Response
     {
         $starship = $starshipRepository->findOneById($id);
