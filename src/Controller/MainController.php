@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\StarshipRepository;
+use Symfony\Bridge\Twig\Command\DebugCommand;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -20,9 +21,9 @@ class MainController extends AbstractController
         CacheInterface $issLocationPool,
         #[Autowire(param: 'iss_location_cache_ttl')]
         int $issLocationCacheTtl,
+        #[Autowire(service: 'twig.command.debug')]
+        DebugCommand $twigDebugCommand,
     ): Response {
-        // dd($cache); // Debugging line to check the cache service
-        //dd($this->getParameter('iss_location_cache_ttl'));//Non-Autowireable Arguments
         $ships = $starshipRepository->findAll();
         $myShip = $ships[array_rand($ships)];
         $response = $client->request('GET', 'https://api.wheretheiss.at/v1/satellites/25544');
