@@ -9,6 +9,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Cache\ItemInterface;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 class MainController extends AbstractController
 {
@@ -16,12 +17,16 @@ class MainController extends AbstractController
     public function homepage(
         StarshipRepository $starshipRepository,
         HttpClientInterface $client,
-        CacheInterface $issLocationPool): Response {
-           // dd($cache); // Debugging line to check the cache service
+        CacheInterface $issLocationPool,
+        #[Autowire(param: 'iss_location_cache_ttl')]
+        int $issLocationCacheTtl,
+    ): Response {
+        // dd($cache); // Debugging line to check the cache service
+        //dd($this->getParameter('iss_location_cache_ttl'));//Non-Autowireable Arguments
         $ships = $starshipRepository->findAll();
         $myShip = $ships[array_rand($ships)];
         $response = $client->request('GET', 'https://api.wheretheiss.at/v1/satellites/25544');
-        $issData = $issLocationPool->get('iss_location_data', function (ItemInterface $item) use ($client): array{
+        $issData = $issLocationPool->get('iss_location_data', function (ItemInterface $item) use ($client): array {
             //$item->expiresAfter(5); // Cache for 5 seconds
             $response = $client->request('GET', 'https://api.wheretheiss.at/v1/satellites/25544');
             return $response->toArray();
