@@ -27,6 +27,12 @@
                                         href="{{ path('app_starship_show', { id: ship.id }) }}"
                                     >{{ ship.name }}</a>
                                 </h4>
+                                <div class="text-slate-400 text-sm">
+                                    {{ ship.class }}
+                                    {% if ship.arrivedAt %}
+                                        <span class="ml-2 text-xs text-slate-400">— {{ ship.arrivedAt|ago }}</span>
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
                         <div class="flex justify-center min-[1174px]:justify-start mt-2 min-[1174px]:mt-0 shrink-0">

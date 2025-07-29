@@ -4,13 +4,31 @@ namespace App\Model;
 
 class Starship
 {
+    private int $id;
+    private string $name;
+    private string $class;
+    private string $captain;
+    private StarshipStatusEnum $status;
+    private ?\DateTimeInterface $arrivedAt = null;
+
     public function __construct(
-        private int $id,
-        private string $name,
-        private string $class,
-        private string $captain,
-        private StarshipStatusEnum $status,
+        int $id,
+        string $name,
+        string $class,
+        string $captain,
+        StarshipStatusEnum $status,
+        ?\DateTimeInterface $arrivedAt = null
     ) {
+        $this->id = $id;
+        $this->name = $name;
+        $this->class = $class;
+        $this->captain = $captain;
+        $this->status = $status;
+        $this->arrivedAt = $arrivedAt;
+    }
+    public function getArrivedAt(): ?\DateTimeInterface
+    {
+        return $this->arrivedAt;
     }
 
     public function getId(): int
