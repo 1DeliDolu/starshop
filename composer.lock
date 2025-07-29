@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d6c5cf69912b581208ebe0992d829f06",
+    "content-hash": "22082911597ed0576ab20bf99b47a3a3",
     "packages": [
         {
             "name": "composer/semver",
@@ -3467,16 +3467,16 @@
         },
         {
             "name": "symfony/stimulus-bundle",
-            "version": "v2.27.0",
+            "version": "v2.28.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stimulus-bundle.git",
-                "reference": "defaeb91bd366f9f43dbe54dbdfd9bc3c4138814"
+                "reference": "960868a682271e133a631ffb70c7e2ceb5031be6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/stimulus-bundle/zipball/defaeb91bd366f9f43dbe54dbdfd9bc3c4138814",
-                "reference": "defaeb91bd366f9f43dbe54dbdfd9bc3c4138814",
+                "url": "https://api.github.com/repos/symfony/stimulus-bundle/zipball/960868a682271e133a631ffb70c7e2ceb5031be6",
+                "reference": "960868a682271e133a631ffb70c7e2ceb5031be6",
                 "shasum": ""
             },
             "require": {
@@ -3516,7 +3516,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/stimulus-bundle/tree/v2.27.0"
+                "source": "https://github.com/symfony/stimulus-bundle/tree/v2.28.1"
             },
             "funding": [
                 {
@@ -3532,7 +3532,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-06-22T19:07:55+00:00"
+            "time": "2025-07-28T19:36:26+00:00"
         },
         {
             "name": "symfony/string",
@@ -3986,16 +3986,16 @@
         },
         {
             "name": "symfony/ux-turbo",
-            "version": "v2.27.0",
+            "version": "v2.28.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-turbo.git",
-                "reference": "b9ce9b30a9cf9bbd090c7ad290bdaf84a0e100b2"
+                "reference": "10fc3806f8d82b2529cfc3c4688f918027c912d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-turbo/zipball/b9ce9b30a9cf9bbd090c7ad290bdaf84a0e100b2",
-                "reference": "b9ce9b30a9cf9bbd090c7ad290bdaf84a0e100b2",
+                "url": "https://api.github.com/repos/symfony/ux-turbo/zipball/10fc3806f8d82b2529cfc3c4688f918027c912d6",
+                "reference": "10fc3806f8d82b2529cfc3c4688f918027c912d6",
                 "shasum": ""
             },
             "require": {
@@ -4065,7 +4065,7 @@
                 "turbo-stream"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-turbo/tree/v2.27.0"
+                "source": "https://github.com/symfony/ux-turbo/tree/v2.28.1"
             },
             "funding": [
                 {
@@ -4081,7 +4081,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-06-06T20:27:21+00:00"
+            "time": "2025-07-28T19:36:26+00:00"
         },
         {
             "name": "symfony/var-dumper",
