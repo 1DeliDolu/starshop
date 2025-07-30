@@ -6,7 +6,7 @@ Ben Kevin, bu yolculukta yıldız gemisi kaptanınızım. Başlat!
 
 Benimle veritabanı dünyasında maceraya atılmak için kurs kodunu indirin ve README.md’deki kurulum rehberini takip edin. Son adım olarak — ben bunu zaten yaptım — şunu çalıştırın:
 
-```
+```bash
 symfony serve -d
 ```
 
