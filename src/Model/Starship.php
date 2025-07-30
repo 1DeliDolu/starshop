@@ -9,7 +9,7 @@ class Starship
     private string $class;
     private string $captain;
     private StarshipStatusEnum $status;
-    private ?\DateTimeInterface $arrivedAt = null;
+    private \DateTimeInterface $arrivedAt;
 
     public function __construct(
         int $id,

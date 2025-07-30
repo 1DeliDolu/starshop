@@ -1,8 +1,8 @@
-## 🐘 Database Setup & Docker / Veritabanı Kurulumu ve Docker
+# 🐘 Database Setup & Docker / Veritabanı Kurulumu ve Docker
 
 Doctrine yüklü! Ama artık bir veritabanı sunucusu çalıştırmamız gerekiyor.
 
-### `DATABASE_URL` Ortam Değişkeni
+## `DATABASE_URL` Ortam Değişkeni
 
 `.env` dosyamıza bir göz atın. Doctrine'i yüklediğimizde, Flex tarifi bu `doctrine-bundle` bölümünü ekledi. `DATABASE_URL` ortam değişkeni, Doctrine'e veritabanına nasıl bağlanacağını söylediğimiz yerdir. Bu, özel bir URL biçiminde bir dizgedir ve teknik terimle buna DSN denir.
 
@@ -30,7 +30,7 @@ docker compose up -d
 
 Ama veritabanı sunucusu nerede çalışıyor? Hangi portta? `DATABASE_URL`'i buna göre güncellememiz gerekmiyor mu?
 
-## 🧙‍♂️ The Symfony CLI is Awesome! / Symfony CLI Harika!
+## 🧙‍♂️ The Symfony CLI is Awesome / Symfony CLI Harika
 
 Hayır! Web sunucusunu çalıştıran `symfony` CLI binary’si bazı Docker sihirlerine sahiptir! Uygulamayı yenileyin. Aşağıda "Server" üzerine gelin. Bu kısım, Symfony CLI sunucusu hakkında ayrıntılar içerir. Bu, Docker konteynerlerini otomatik olarak algıladığı ve ortam değişkenlerini bizim için ayarladığı anlamına gelir!
 
