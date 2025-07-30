@@ -12,17 +12,6 @@
         {% endblock %}
     </head>
     <body class="text-white" style="background: radial-gradient(102.21% 102.21% at 50% 28.75%, #00121C 42.62%, #013954 100%);">
-        <div>
-            {% set issData = get_iss_location_data() %}
-            <div title="Updated at: {{ issData.timestamp|date }}">
-                ISS Location ({{ issData.visibility }})
-            </div>
-            <div>
-                <p>Altitude: {{ issData.altitude }}</p>
-                <p>Latitude: {{ issData.latitude }}</p>
-                <p>Longitude: {{ issData.longitude }}</p>
-            </div>
-        </div>
         <div class="flex flex-col justify-between min-h-screen relative">
             <div>
                 <header class="h-[114px] shrink-0 flex flex-col sm:flex-row items-center sm:justify-between py-4 sm:py-0 px-6 border-b border-white/20 shadow-md">

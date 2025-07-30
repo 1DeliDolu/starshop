@@ -70,9 +70,16 @@ class Starship
         return $this;
     }
 
+
     public function getStatus(): ?StarshipStatusEnum
     {
         return $this->status;
+    }
+
+    public function setStatus(?StarshipStatusEnum $status): static
+    {
+        $this->status = $status;
+        return $this;
     }
 
     public function getStatusImageFilename(): string
@@ -94,5 +101,9 @@ class Starship
         $this->arrived_at = $arrivedAt;
 
         return $this;
+    }
+    public function getStatusString(): string
+    {
+        return $this->status?->value ?? '';
     }
 }

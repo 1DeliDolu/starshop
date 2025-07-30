@@ -56,21 +56,23 @@
 					{{ ships|length * 10 }}
 					starships for sale!</a>
 			</p>
-			<p>Updated At:
-				{{ issData.timestamp|date }}</p>
-			<div>
-				<h2 class="text-4xl font-semibold my-8">ISS Location</h2>
-				<p>Time:
+			{% if issData %}
+				<p>Updated At:
 					{{ issData.timestamp|date }}</p>
-				<p>Altitude:
-					{{ issData.altitude }}</p>
-				<p>Latitude:
-					{{ issData.latitude }}</p>
-				<p>Longitude:
-					{{ issData.longitude }}</p>
-				<p>Visibility:
-					{{ issData.visibility }}</p>
-			</div>
+				<div>
+					<h2 class="text-4xl font-semibold my-8">ISS Location</h2>
+					<p>Time:
+						{{ issData.timestamp|date }}</p>
+					<p>Altitude:
+						{{ issData.altitude }}</p>
+					<p>Latitude:
+						{{ issData.latitude }}</p>
+					<p>Longitude:
+						{{ issData.longitude }}</p>
+					<p>Visibility:
+						{{ issData.visibility }}</p>
+				</div>
+			{% endif %}
 
 		</div>
 	</main>

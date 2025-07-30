@@ -6,13 +6,15 @@ use App\Repository\StarshipRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\Starship;
 
 class StarshipController extends AbstractController
 {
     #[Route('/starships/{id<\d+>}', name: 'app_starship_show')]
-    public function show(int $id, StarshipRepository $repository): Response
+    public function show(int $id, EntityManagerInterface $em): Response
     {
-        $ship = $repository->find($id);
+        $ship = $em->find(Starship::class, $id);
         if (!$ship) {
             throw $this->createNotFoundException('Starship not found');
         }
