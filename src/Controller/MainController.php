@@ -14,16 +14,13 @@ class MainController extends AbstractController
 {
     #[Route('/', name: 'app_homepage')]
     public function homepage(
-        StarshipRepository $starshipRepository,
+        StarshipRepository $repository,
         AppExtensionRuntime $appExtensionRuntime,
         EntityManagerInterface $em,
     ): Response {
-        $ships = $em->createQueryBuilder()
-            ->select('s')
-            ->from(Starship::class, 's')
-            ->getQuery()
-            ->getResult();
-        $myShip = $ships[array_rand($ships)];
+
+          $ships = $repository->findIncomplete(); // Call without undefined $value
+        $myShip = $repository->findMyShip();
 
         // ISS verisini al
         $issData = $appExtensionRuntime->getIssLocationData();

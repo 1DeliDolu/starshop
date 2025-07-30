@@ -26,8 +26,8 @@ class Starship
     #[ORM\Column(enumType: StarshipStatusEnum::class)]
     private ?StarshipStatusEnum $status = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $arrived_at = null;
+    #[ORM\Column(name: "arrived_at")]
+    private ?\DateTimeImmutable $arrivedAt = null;
 
     public function getId(): ?int
     {
@@ -93,12 +93,12 @@ class Starship
 
     public function getArrivedAt(): ?\DateTimeImmutable
     {
-        return $this->arrived_at;
+        return $this->arrivedAt;
     }
 
     public function setArrivedAt(\DateTimeImmutable $arrivedAt): static
     {
-        $this->arrived_at = $arrivedAt;
+        $this->arrivedAt = $arrivedAt;
 
         return $this;
     }
