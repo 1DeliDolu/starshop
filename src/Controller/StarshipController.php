@@ -2,13 +2,11 @@
 
 namespace App\Controller;
 
-use App\Repository\StarshipRepository;
+use App\Entity\Starship;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use App\Entity\Starship;
-use Symfony\Bridge\Doctrine\Attribute\MapEntity;
-
 
 class StarshipController extends AbstractController
 {

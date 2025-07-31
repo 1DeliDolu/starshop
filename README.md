@@ -22,12 +22,23 @@ composer install
 You may alternatively need to run `php composer.phar install`, depending
 on how you installed Composer.
 
-**Build TailwindCSS**
-
-This project uses TailwindCSS, to build the CSS file run:
+**(Optional) Start the Docker database container**
 
 ```
-php bin/console tailwind:build
+docker compose up -d
+```
+
+If not using Docker, you can skip this step, but you'll need
+to configure `DATABASE_URL` in `.env`.
+
+**Create the database, Schema (Tables) & Load Fixtures**
+
+If using Docker, the database should already be created.
+
+```
+symfony console doctrine:database:create --if-not-exists
+symfony console doctrine:schema:create
+symfony console doctrine:fixtures:load
 ```
 
 **Start the Symfony web server**
@@ -49,6 +60,18 @@ symfony serve
 
 (If this is your first time using this command, you may see an
 error that you need to run `symfony server:ca:install` first).
+
+**Build TailwindCSS**
+
+This project uses TailwindCSS, to build the CSS file run:
+
+If you're using the `symfony serve` command to run the site, you're done!
+The `tailwind:build` command is already running thanks to the `workers` config
+in `symfony.yaml`.
+
+```
+php bin/console tailwind:build
+```
 
 Now check out the site at `https://localhost:8000`
 

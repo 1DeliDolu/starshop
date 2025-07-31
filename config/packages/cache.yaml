@@ -1,6 +1,5 @@
 framework:
     cache:
-        app: cache.adapter.array # Array Cache Adapter
         # Unique name of your app: used to compute stable namespaces for cache keys.
         #prefix_seed: your_vendor_name/app_name
 
@@ -15,7 +14,14 @@ framework:
         # APCu (not recommended with heavy random-write workloads as memory fragmentation can cause perf issues)
         #app: cache.adapter.apcu
 
+        app: cache.adapter.array
+
         # Namespaced pools use the above "app" backend by default
         pools:
             iss_location_pool:
                 default_lifetime: '%iss_location_cache_ttl%'
+
+when@prod:
+    framework:
+        cache:
+            app: cache.adapter.filesystem
