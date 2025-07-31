@@ -30,7 +30,7 @@ git status
 
 ```yaml
 stof_doctrine_extensions:
-    default_locale: en_US
+    default_locale: de_DE
     orm:
         default:
             timestampable: true
@@ -45,9 +45,11 @@ Ama bu uzantıları `Starship` varlığı için hayata geçirmek üzere biraz da
 
 `$slug` özelliğinin üzerine şu niteliği ekleyin: `#[Slug]` ve sınıfı `Gedmo\Mapping\Annotation` altından içe aktarın. İçine `fields:` ekleyip `name` içeren bir dizi olarak ayarlayın:
 
-````php
-src/Entity/Starship.php
 ```php
+// src/Entity/Starship.php
+
+use Gedmo\Mapping\Annotation\Slug;
+
 // ... lines 1 - 10
 class Starship
 {
@@ -57,15 +59,16 @@ class Starship
 // ... lines 36 - 158
 }
 ```
-````
+
 
 👉 Bu uzantıya, `slug` değerinin `name` alanından türetilmesi gerektiğini söyler.
 
 `$updatedAt` özelliğinin üzerine şu niteliği ekleyin: `#[Timestampable(on: 'update')]`, böylece bu alan, varlık her güncellendiğinde mevcut zamanla doldurulur:
 
-````php
-src/Entity/Starship.php
 ```php
+// src/Entity/Starship.php
+use Gedmo\Mapping\Annotation\Timestampable;
+
 // ... lines 1 - 10
 class Starship
 {
@@ -75,7 +78,7 @@ class Starship
 // ... lines 44 - 158
 }
 ```
-````
+
 
 👉 Bu, varlık güncellendiğinde `updatedAt` alanının ayarlanmasını sağlar.
 
@@ -109,7 +112,7 @@ symfony console doctrine:fixtures:load
 Ve... çalıştı! Değerleri görmek için SQL sorgumuzu çalıştırın:
 
 ```bash
-symfony console doctrine:query:sql 'SELECT name, slug, updated_at, created_at FROM starship'
+symfony console doctrine:query:sql "SELECT name, slug, updated_at, created_at FROM starship"
 ```
 
 👉 Bu komut, `starship` tablosundaki ilgili alanları listeler.
