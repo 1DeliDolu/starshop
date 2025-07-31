@@ -26,7 +26,7 @@
 									<p class="uppercase text-xs text-nowrap">{{ ship.statusString }}</p>
 								</div>
 								<h4 class="text-[22px] pt-1 font-semibold">
-									<a class="hover:text-slate-200" href="{{ path('app_starship_show', { id: ship.id }) }}">{{ ship.name }}</a>
+									<a class="hover:text-slate-200" href="{{ path('app_starship_show', { slug: ship.slug }) }}">{{ ship.name }}</a>
 								</h4>
 								<div class="text-slate-400 text-sm">
 									{{ ship.class }}
@@ -60,35 +60,35 @@
 					{{ ships|length * 10 }}
 					starships for sale!</a>
 			</p>
-            {% if ships.haveToPaginate %}
-                <nav class="flex justify-center mt-6 items-center gap-4">
-                    {% if ships.hasPreviousPage %}
-                        <a href="{{ path('app_homepage', {page: ships.getPreviousPage}) }}"
-                           class="px-4 py-2 rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700 transition font-semibold shadow"
-                           aria-label="Previous Page">
-                            &larr; Prev
-                        </a>
-                    {% else %}
-                        <span class="px-4 py-2 rounded-lg bg-slate-700 text-slate-500 font-semibold cursor-not-allowed">&larr; Prev</span>
-                    {% endif %}
+			{% if ships.haveToPaginate %}
+				<nav class="flex justify-center mt-6 items-center gap-4">
+					{% if ships.hasPreviousPage %}
+						<a href="{{ path('app_homepage', {page: ships.getPreviousPage}) }}"
+						   class="px-4 py-2 rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700 transition font-semibold shadow"
+						   aria-label="Previous Page">
+							&larr; Prev
+						</a>
+					{% else %}
+						<span class="px-4 py-2 rounded-lg bg-slate-700 text-slate-500 font-semibold cursor-not-allowed">&larr; Prev</span>
+					{% endif %}
 
-                    <span class="text-lg font-semibold text-slate-300 select-none">
-                        Page <span class="text-amber-400">{{ ships.currentPage }}</span>
-                        <span class="mx-1 text-slate-500">/</span>
-                        <span>{{ ships.nbPages }}</span>
-                    </span>
+					<span class="text-lg font-semibold text-slate-300 select-none">
+						Page <span class="text-amber-400">{{ ships.currentPage }}</span>
+						<span class="mx-1 text-slate-500">/</span>
+						<span>{{ ships.nbPages }}</span>
+					</span>
 
-                    {% if ships.hasNextPage %}
-                        <a href="{{ path('app_homepage', {page: ships.getNextPage}) }}"
-                           class="px-4 py-2 rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700 transition font-semibold shadow"
-                           aria-label="Next Page">
-                            Next &rarr;
-                        </a>
-                    {% else %}
-                        <span class="px-4 py-2 rounded-lg bg-slate-700 text-slate-500 font-semibold cursor-not-allowed">Next &rarr;</span>
-                    {% endif %}
-                </nav>
-            {% endif %}
+					{% if ships.hasNextPage %}
+						<a href="{{ path('app_homepage', {page: ships.getNextPage}) }}"
+						   class="px-4 py-2 rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700 transition font-semibold shadow"
+						   aria-label="Next Page">
+							Next &rarr;
+						</a>
+					{% else %}
+						<span class="px-4 py-2 rounded-lg bg-slate-700 text-slate-500 font-semibold cursor-not-allowed">Next &rarr;</span>
+					{% endif %}
+				</nav>
+			{% endif %}
 
 			{% if issData %}
 				<p>Updated At:
