@@ -55,7 +55,8 @@ Yeni sınıfı açın: `src/Command/ShipCheckInCommand.php`. Açıklamayı şu �
 
 ```php
 // src/Command/ShipCheckInCommand.php
-
+use App\Repository\StarshipRepository;
+use Doctrine\ORM\EntityManagerInterface;
 // ... lines 1 - 14
 #[AsCommand(
     name: 'app:ship:check-in',
