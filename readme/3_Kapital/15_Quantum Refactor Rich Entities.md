@@ -55,12 +55,12 @@ Yukarıya check-in mantığını ekleyin: `$this->arrivedAt = $arrivedAt`, ve e�
 // ... lines 1 - 10
 class Starship
 {
-// ... lines 13 - 159
+    // ... lines 13 - 159
     public function checkIn(?\DateTimeImmutable $arrivedAt = null): static
     {
         $this->arrivedAt = $arrivedAt ?? new \DateTimeImmutable('now');
         $this->status = StarshipStatusEnum::WAITING;
-// ... lines 164 - 165
+    // ... lines 164 - 165
     }
 }
 ```
@@ -77,12 +77,12 @@ class Starship
 // ... lines 1 - 17
 class ShipCheckInCommand extends Command
 {
-// ... lines 20 - 33
+    // ... lines 20 - 33
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-// ... lines 36 - 47
+    // ... lines 36 - 47
         $ship->checkIn();
-// ... lines 49 - 54
+    // ... lines 49 - 54
     }
 }
 ```

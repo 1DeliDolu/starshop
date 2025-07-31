@@ -21,8 +21,7 @@ class ShipCheckInCommand extends Command
     public function __construct(
         private StarshipRepository $shipRepo,
         private EntityManagerInterface $em,
-    )
-    {
+    ) {
         parent::__construct();
     }
 
@@ -45,11 +44,11 @@ class ShipCheckInCommand extends Command
             return Command::FAILURE;
         }
 
-        $this->em->remove($ship);
+        $ship->checkIn();
+        $this->em->persist($ship);
         $this->em->flush();
 
         $io->success('Starship checked-in.');
-
         return Command::SUCCESS;
     }
 }
