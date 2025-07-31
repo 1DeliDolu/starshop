@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Starship;
+use Symfony\Component\HttpFoundation\Request;
 
 class MainController extends AbstractController
 {
@@ -17,9 +18,12 @@ class MainController extends AbstractController
         StarshipRepository $repository,
         AppExtensionRuntime $appExtensionRuntime,
         EntityManagerInterface $em,
+        Request $request,
     ): Response {
 
-          $ships = $repository->findIncomplete(); // Call without undefined $value
+        $ships = $repository->findIncomplete();
+        $ships->setMaxPerPage(5);
+        $ships->setCurrentPage($request->query->get('page', 1));
         $myShip = $repository->findMyShip();
 
         // ISS verisini al

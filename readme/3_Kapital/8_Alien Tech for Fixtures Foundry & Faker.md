@@ -6,7 +6,7 @@ Bu işi sıkıcı olmaktan çıkarıp harika hale getirmek için terminalinizi a
 
 ## Foundry ve Faker Kurulumu
 
-```
+```bash
 composer require --dev foundry
 ```
 
