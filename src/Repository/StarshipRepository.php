@@ -3,11 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Starship;
-use App\Entity\StarshipStatusEnum;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Pagerfanta\Doctrine\ORM\QueryAdapter;
+use App\Model\StarshipStatusEnum;
 use Pagerfanta\Pagerfanta;
+use Pagerfanta\Doctrine\ORM\QueryAdapter;
 
 /**
  * @extends ServiceEntityRepository<Starship>
@@ -19,18 +19,16 @@ class StarshipRepository extends ServiceEntityRepository
         parent::__construct($registry, Starship::class);
     }
 
-    /**
-     * @return Starship[]
-     */
+    //    /**
+    //     * @return Starship[] Returns an array of Starship objects
+    //     */
     public function findIncomplete(): Pagerfanta
     {
         $query = $this->createQueryBuilder('s')
-            ->andWhere('s.status != :status')
+            ->where('s.status != :status')
             ->orderBy('s.arrivedAt', 'DESC')
             ->setParameter('status', StarshipStatusEnum::COMPLETED)
-            ->getQuery()
-        ;
-
+            ->getQuery();
         return new Pagerfanta(new QueryAdapter($query));
     }
 
@@ -38,29 +36,4 @@ class StarshipRepository extends ServiceEntityRepository
     {
         return $this->findAll()[0];
     }
-
-    //    /**
-    //     * @return Starship[] Returns an array of Starship objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('s')
-    //            ->andWhere('s.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('s.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
-
-    //    public function findOneBySomeField($value): ?Starship
-    //    {
-    //        return $this->createQueryBuilder('s')
-    //            ->andWhere('s.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
 }

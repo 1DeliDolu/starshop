@@ -2,40 +2,47 @@
 
 namespace App\Entity;
 
+use App\Model\StarshipStatusEnum;
 use App\Repository\StarshipRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation\Slug;
 use Gedmo\Mapping\Annotation\Timestampable;
-use Gedmo\Timestampable\Traits\TimestampableEntity;
+
 
 #[ORM\Entity(repositoryClass: StarshipRepository::class)]
 class Starship
 {
-    use TimestampableEntity;
-
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
+    #[ORM\Column()]
     private ?string $name = null;
 
-    #[ORM\Column]
+    #[ORM\Column()]
     private ?string $class = null;
 
-    #[ORM\Column]
+    #[ORM\Column()]
     private ?string $captain = null;
 
-    #[ORM\Column]
+    #[ORM\Column(enumType: StarshipStatusEnum::class)]
     private ?StarshipStatusEnum $status = null;
 
-    #[ORM\Column]
+    #[ORM\Column(name: "arrived_at")]
     private ?\DateTimeImmutable $arrivedAt = null;
 
-    #[ORM\Column(unique: true)]
+    #[ORM\Column(nullable: true)]
     #[Slug(fields: ['name'])]
     private ?string $slug = null;
+
+    #[ORM\Column(nullable: true)]
+    #[Timestampable(on: 'update')]
+    private ?\DateTimeImmutable $updatedAt = null;
+
+    #[ORM\Column(nullable: true)]
+    #[Timestampable(on: 'create')]
+    private ?\DateTimeImmutable $createdAt = null;
 
     public function getId(): ?int
     {
@@ -78,16 +85,25 @@ class Starship
         return $this;
     }
 
+
     public function getStatus(): ?StarshipStatusEnum
     {
         return $this->status;
     }
 
-    public function setStatus(StarshipStatusEnum $status): static
+    public function setStatus(?StarshipStatusEnum $status): static
     {
         $this->status = $status;
-
         return $this;
+    }
+
+    public function getStatusImageFilename(): string
+    {
+        return match ($this->status) {
+            StarshipStatusEnum::WAITING => 'images/status-waiting.png',
+            StarshipStatusEnum::IN_PROGRESS => 'images/status-in-progress.png',
+            StarshipStatusEnum::COMPLETED => 'images/status-complete.png',
+        };
     }
 
     public function getArrivedAt(): ?\DateTimeImmutable
@@ -101,19 +117,9 @@ class Starship
 
         return $this;
     }
-
     public function getStatusString(): string
     {
-        return $this->status->value;
-    }
-
-    public function getStatusImageFilename(): string
-    {
-        return match ($this->status) {
-            StarshipStatusEnum::WAITING => 'images/status-waiting.png',
-            StarshipStatusEnum::IN_PROGRESS => 'images/status-in-progress.png',
-            StarshipStatusEnum::COMPLETED => 'images/status-complete.png',
-        };
+        return $this->status?->value ?? '';
     }
 
     public function getSlug(): ?string
@@ -121,18 +127,40 @@ class Starship
         return $this->slug;
     }
 
-    public function setSlug(?string $slug): static
+    public function setSlug(string $slug): static
     {
         $this->slug = $slug;
 
         return $this;
     }
 
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): static
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(?\DateTimeImmutable $createdAt): static
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
     public function checkIn(?\DateTimeImmutable $arrivedAt = null): static
     {
         $this->arrivedAt = $arrivedAt ?? new \DateTimeImmutable('now');
         $this->status = StarshipStatusEnum::WAITING;
-
         return $this;
     }
 }
