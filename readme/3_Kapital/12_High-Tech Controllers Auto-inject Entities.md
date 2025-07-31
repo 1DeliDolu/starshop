@@ -68,34 +68,34 @@ Sonra, bu rotaya ait URL'yi üreten tüm yerleri güncellememiz gerekiyor. Endi�
 // ... lines 1 - 4
 {% block body %}
     <main class="flex flex-col lg:flex-row">
-// ... lines 7 - 8
+    // ... lines 7 - 8
         <div class="px-12 pt-10 w-full">
-// ... lines 10 - 17
+        // ... lines 10 - 17
             <div class="space-y-5">
                 {% for ship in ships %}
                     <div class="bg-[#16202A] rounded-2xl pl-5 py-5 pr-11 flex flex-col min-[1174px]:flex-row min-[1174px]:justify-between">
                         <div class="flex justify-center min-[1174px]:justify-start">
-// ... line 22
+                        // ... line 22
                             <div class="ml-5">
-// ... lines 24 - 27
+                            // ... lines 24 - 27
                                 <h4 class="text-[22px] pt-1 font-semibold">
                                     <a
                                         class="hover:text-slate-200"
                                         href="{{ path('app_starship_show', { slug: ship.slug }) }}"
                                     >{{ ship.name }}</a>
                                 </h4>
-// ... lines 34 - 36
+                            // ... lines 34 - 36
                             </div>
                         </div>
-// ... lines 39 - 49
+                    // ... lines 39 - 49
                     </div>
                 {% endfor %}
             </div>
-// ... lines 53 - 68
+        // ... lines 53 - 68
         </div>
     </main>
 {% endblock %}
-````
+```
 
 👉 Bu şablon, `slug` parametresiyle gemi bağlantılarını oluşturur.
 
@@ -107,17 +107,17 @@ Sonra `templates/main/_shipStatusAside.html.twig` dosyasını açın, "show" kel
 <aside
 // ... lines 2 - 3
 >
-// ... lines 5 - 11
+    // ... lines 5 - 11
     <div>
         <div class="flex flex-col space-y-1.5">
-// ... lines 14 - 17
+        // ... lines 14 - 17
             <h3 class="tracking-tight text-[22px] font-semibold">
                 <a class="hover:underline" href="{{ path('app_starship_show', {
                     slug: myShip.slug
                 }) }}">{{ myShip.name }}</a>
             </h3>
         </div>
-// ... lines 24 - 34
+    // ... lines 24 - 34
     </div>
 </aside>
 ```
@@ -142,12 +142,12 @@ Sorun şu: eğer rota joker karakterinin adı `id` değilse, Symfony `Starship` 
 // ... lines 1 - 10
 class StarshipController extends AbstractController
 {
-// ... line 13
+    // ... line 13
     public function show(
         #[MapEntity(mapping: ['slug' => 'slug'])]
         Starship $ship,
     ): Response {
-// ... lines 18 - 20
+    // ... lines 18 - 20
     }
 }
 ```

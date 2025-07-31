@@ -2,7 +2,7 @@
 
 Aman! USS Leafy Cruiser adlı geminin bir kara deliğe düştüğünü öğrendik. Neyse ki uzun vadeli, sevilen karakterler gemide değildi, ama bu gemi artık spagettiye dönüştü. Bu gerçeklikte artık var olmadığı için, veritabanımızdan silmemiz gerekiyor.
 
-## `app:ship:remove` Komutu
+## `app:ship:remove` Command / `app:ship:remove` Komutu
 
 Bu işlemi gerçekleştirecek bir komut oluşturalım. Terminalde şunu çalıştırın:
 
@@ -34,6 +34,8 @@ Yapıcı metoduna iki şey enjekte etmemiz gerekiyor: `private ShipRepository $s
 
 ```php
 // src/Command/ShipRemoveCommand.php
+use App\Repository\StarshipRepository;
+use Doctrine\ORM\EntityManagerInterface;
 
 // ... lines 1 - 17
 class ShipRemoveCommand extends Command
@@ -83,12 +85,12 @@ class ShipRemoveCommand extends Command
 // ... lines 1 - 17
 class ShipRemoveCommand extends Command
 {
-// ... lines 20 - 33
+    // ... lines 20 - 33
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-// ... line 36
+    // ... line 36
         $slug = $input->getArgument('slug');
-// ... lines 38 - 53
+    // ... lines 38 - 53
     }
 }
 ```
@@ -103,12 +105,12 @@ Sonra bu `slug` ile gemiyi bulmamız gerekiyor. Her `EntityRepository` zaten `fi
 // ... lines 1 - 17
 class ShipRemoveCommand extends Command
 {
-// ... lines 20 - 33
+    // ... lines 20 - 33
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-// ... lines 36 - 37
+    // ... lines 36 - 37
         $ship = $this->shipRepo->findOneBy(['slug' => $slug]);
-// ... lines 39 - 53
+    // ... lines 39 - 53
     }
 }
 ```
@@ -126,12 +128,12 @@ class ShipRemoveCommand extends Command
 // ... lines 20 - 33
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-// ... lines 36 - 39
+    // ... lines 36 - 39
         if (!$ship) {
             $io->error('Starship not found.');
             return Command::FAILURE;
         }
-// ... lines 45 - 53
+    // ... lines 45 - 53
     }
 }
 ``` 
@@ -146,12 +148,12 @@ Kullanıcıya hangi geminin silineceğini göstermek için bir yorum satırı ya
 // ... lines 1 - 17
 class ShipRemoveCommand extends Command
 {
-// ... lines 20 - 33
+    // ... lines 20 - 33
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-// ... lines 36 - 45
+    // ... lines 36 - 45
         $io->comment(sprintf('Removing starship: %s', $ship->getName()));
-// ... lines 47 - 53
+    // ... lines 47 - 53
     }
 }
 ```
@@ -166,13 +168,13 @@ class ShipRemoveCommand extends Command
 // ... lines 1 - 17
 class ShipRemoveCommand extends Command
 {
-// ... lines 20 - 33
+    // ... lines 20 - 33
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-// ... lines 36 - 47
+    // ... lines 36 - 47
         $this->em->remove($ship);
         $this->em->flush();
-// ... lines 50 - 53
+    // ... lines 50 - 53
     }
 }
 ```
