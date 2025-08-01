@@ -37,5 +37,6 @@ class AppFixtures extends Fixture
             'arrivedAt' => new \DateTimeImmutable('-1 month'),
         ]);
         StarshipFactory::createMany(20);
+        \App\Factory\StarshipPartFactory::createMany(50);
     }
 }
