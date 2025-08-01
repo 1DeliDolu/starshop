@@ -18,9 +18,9 @@ composer require babdev/pagerfanta-bundle pagerfanta/doctrine-orm-adapter
 
 Ana sayfamızda `StarshipRepository` içindeki `findIncomplete()` metodunu kullanıyoruz. Bu metodu açın ve dönüş türünü `Pagerfanta` olarak değiştirin: bu, sayfalama ile ilgili süper güçlere sahip bir nesnedir. Ancak bu nesne üzerinde bir dizi gibi döngü kurabilirsiniz, bu yüzden docblock'u olduğu gibi bırakın:
 
-````
-src/Repository/StarshipRepository.php
 ```php
+//src/Repository/StarshipRepository.php
+
 // ... lines 1 - 14
 class StarshipRepository extends ServiceEntityRepository
 {
@@ -39,11 +39,9 @@ class StarshipRepository extends ServiceEntityRepository
 
 Sorguyu sayfalarken dikkat edilmesi gereken çok önemli bir şey var: öngörülebilir bir sıralama yapmanız gerekir. `->orderBy('s.arrivedAt', 'DESC')` satırını ekleyin:
 
-````
-
-src/Repository/StarshipRepository.php
-
 ```php
+// src/Repository/StarshipRepository.php
+
 // ... lines 1 - 14
 class StarshipRepository extends ServiceEntityRepository
 {
@@ -61,9 +59,9 @@ class StarshipRepository extends ServiceEntityRepository
 
 Ancak doğrudan döndürmek yerine bunu `$query` adlı bir değişkene atayın, ardından `getResult()` çağrısını kaldırın: artık amacımız sorguyu çalıştırmak değil, sadece oluşturmak. Gerçek çalıştırmayı `Pagerfanta` yapacak. `return new Pagerfanta(new QueryAdapter($query))` şeklinde döndürün ve bu iki sınıfı içe aktardığınızdan emin olun:
 
-````
-src/Repository/StarshipRepository.php
 ```php
+// src/Repository/StarshipRepository.php
+
 // ... lines 1 - 14
 class StarshipRepository extends ServiceEntityRepository
 {
@@ -86,11 +84,9 @@ class StarshipRepository extends ServiceEntityRepository
 
 `MainController` içinde, `$ships` artık bir `Pagerfanta` nesnesidir. Bunu kullanmak için iki şeyi belirtmemiz gerekir: her sayfada kaç gemi gösterileceği - `$ships->setMaxPerPage(5)` - ve kullanıcının şu an hangi sayfada olduğu: şimdilik `$ships->setCurrentPage(1)` kullanın. Ve `setCurrentPage()` metodunu **her zaman** `setMaxPerPage()`'den sonra çağırın, yoksa zaman yolculuğu gibi tuhaf şeyler olur:
 
-````
-
-src/Controller/MainController.php
-
 ```php
+// src/Controller/MainController.php
+
 // ... lines 1 - 12
     public function homepage(
 // ... line 14
@@ -107,9 +103,9 @@ src/Controller/MainController.php
 
 Şimdi `setCurrentPage(2)` olarak değiştirin:
 
-````
-src/Controller/MainController.php
 ```php
+// src/Controller/MainController.php
+
 // ... lines 1 - 12
     public function homepage(
 // ... line 14
@@ -130,11 +126,9 @@ Sayfa numarasını 1 veya 2 olarak sabitlemek yerine, bunu URL’den dinamik ola
 
 Bunu yapmak için, `HttpFoundation` sınıfından `Request $request` parametresini metodumuza ekleyin ve `setCurrentPage()` metodundaki değeri `$request->query->get('page', 1)` olarak değiştirin: bu değer URL'den okunur ve yoksa varsayılan olarak 1 olur:
 
-````
-
-src/Controller/MainController.php
-
 ```php
+// src/Controller/MainController.php
+
 // ... lines 1 - 10
 class MainController extends AbstractController
 {
@@ -158,9 +152,9 @@ class MainController extends AbstractController
 
 Bu bilgileri `<h1>` etiketinin altına yerleştirin. Alt kenar boşluğunu değiştirin ve yeni bir `<div>` (biraz stil ile) ekleyin. İçerisine şu şekilde yazın: `{{ ships.nbResults }}`. Ardından: `Page {{ ships.currentPage }} of {{ ships.nbPages }}`:
 
-````
-templates/main/homepage.html.twig
 ```twig
+//templates/main/homepage.html.twig
+
 // ... lines 1 - 4
 {% block body %}
     <main class="flex flex-col lg:flex-row">
@@ -184,11 +178,9 @@ templates/main/homepage.html.twig
 
 Şimdi sayfalar arasında gezinmek için bağlantılar ekleyelim. Liste altına aşağıdaki kodu yapıştırın. İlk olarak `if ships.haveToPaginate` kontrolü: eğer sadece bir sayfa varsa bağlantı gerekmez. Sonra `if ships.hasPreviousPage`, eğer önceki sayfa varsa bir bağlantı oluşturur. İçeride, bu sayfaya bir URL üretin: `app_homepage`, ancak `page` parametresi olarak `ships.getPreviousPage` geçin. Bu rota tanımında `page` belirtilmediği için bir `query parameter` olarak eklenecek. Aynı şekilde `Next` bağlantısını da tekrar edin:
 
-````
-
-templates/main/homepage.html.twig
-
 ```twig
+// templates/main/homepage.html.twig
+
 // ... lines 1 - 4
 {% block body %}
     <main class="flex flex-col lg:flex-row">
