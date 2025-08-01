@@ -109,3 +109,11 @@ Ancak Turbo hakkında bir not. Artık tam sayfa yenilemeler olmadığı için Ja
 ## Final Chapter / Son Bölüm
 
 Tam gaz sona yaklaşıyoruz! Bitirmeden önce, Symfony’nin harika kod üretim aracı olan MakerBundle ile eğlenceli bir bonus bölümü daha yapacağız.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./18. Stimulus Writing Pro JavaScript.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./20_Maker Bundle Let's Generate Some Code.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

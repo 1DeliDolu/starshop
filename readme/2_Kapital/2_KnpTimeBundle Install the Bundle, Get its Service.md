@@ -148,3 +148,11 @@ Sayfayı yenileyin ve işte bu kadar! Artık tarih "2 hours ago" gibi okunabilir
 Bundle’lar bize servis sağlar, servisler araçlardır ve araçlarla oynamak eğlencelidir.
 
 Sırada: Yeni Symfony bileşenlerini kurarak daha fazla servis eklemek!
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./1_Setup, Services & the Service Container.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./3_The HTTP Client Service.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

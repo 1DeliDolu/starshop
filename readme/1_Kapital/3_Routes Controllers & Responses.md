@@ -173,11 +173,18 @@ Ve bu isteğe bağlı, ama controller’ımız her zaman Response döndürüyors
   </div>
 </div>
 
-Sırada: Geliştirmeyi hızlandırmak için ilk üçüncü parti paketi kurup Symfony’nin harika recipe sistemini öğrenelim.
+---
 
+Sırada: Geliştirmeyi hızlandırmak için ilk üçüncü parti paketi kurup Symfony’nin harika recipe sistemini öğrenelim.
 
 If you already have PHP and Composer installed, you may install the Laravel installer via Composer:
 
 composer global require laravel/installer
 
 For a fully-featured, graphical PHP installation and management experience, check out Laravel Herd.
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./2_ Getting to Know our Tiny Project.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./4_Magical Flex Recipes.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

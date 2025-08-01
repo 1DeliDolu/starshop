@@ -2,7 +2,7 @@
 
 Bazen, farklı senaryolarda geliştirme yapmamıza yardımcı olacak bir dizi yapılandırmaya gerçekten ihtiyaç duyarız. Neyse ki Symfony'nin tam da bu işe yarayan bir özelliği var: ortamlar (environments).
 
-## The APP\_ENV Değişkeni
+## The APP_ENV Değişkeni
 
 Proje dizinimizin kökünde bulunan `.env` dosyasında bazı ortam değişkenlerimiz var.
 
@@ -11,7 +11,7 @@ APP_ENV=dev
 APP_SECRET=930f26d714e6fa9188943d7e037a63fa
 ```
 
-👉 Bunlar, uygulamamız için senaryoya (veya *environment*) göre değiştirebileceğimiz yapılandırma kümeleridir. Symfony, hangi değişkenleri kullandığımızı görmek için bu dosyayı okur ve ilgili ortamı oluşturur.
+👉 Bunlar, uygulamamız için senaryoya (veya _environment_) göre değiştirebileceğimiz yapılandırma kümeleridir. Symfony, hangi değişkenleri kullandığımızı görmek için bu dosyayı okur ve ilgili ortamı oluşturur.
 
 Şu anda burada yalnızca birkaç ortam değişkenimiz var, örneğin `dev` olarak ayarlanmış `APP\_ENV` değişkeni gibi. Bu, Symfony'ye uygulamanın geliştirme modunda yüklenmesi gerektiğini bildirir. Uygulamamızı yayına (`production`) aldığımızda ise bunu `prod` olarak değiştirmek isteriz; prod modu performans için optimize edilmiştir ve hassas verilerin sızmasını engeller. Peki bu tam olarak nerede kullanılıyor?
 
@@ -36,7 +36,7 @@ class Kernel extends BaseKernel
 }
 ```
 
-👉 Bunu açarsak... işte burada! Burada örneğin `configureContainer()` gibi bir dizi metod bulunuyor, bu metodlar yapılandırma dosyalarımızı içe aktarıyor. İçerisinde, aşağıda, \`$this->environment`değişkeni var; biraz incelerseniz bunun **APP\_ENV** değişkenimizin değeri olduğunu görebilirsiniz. Yani, ortam özelinde bir yapılandırma eklemek istersek, bunu **config/packages/** dizininde, ortam adını (örneğin **dev** veya **prod**) ve ardından yapılandırma dosya adını (örneğin **framework.yaml**) kullanarak yapabiliriz.
+👉 Bunu açarsak... işte burada! Burada örneğin `configureContainer()` gibi bir dizi metod bulunuyor, bu metodlar yapılandırma dosyalarımızı içe aktarıyor. İçerisinde, aşağıda, \`$this->environment`değişkeni var; biraz incelerseniz bunun **APP_ENV** değişkenimizin değeri olduğunu görebilirsiniz. Yani, ortam özelinde bir yapılandırma eklemek istersek, bunu **config/packages/** dizininde, ortam adını (örneğin **dev** veya **prod**) ve ardından yapılandırma dosya adını (örneğin **framework.yaml**) kullanarak yapabiliriz.
 
 ## 🏷️ The when@ {ENV} Config / when@ {ORTAM} Yapılandırması
 
@@ -67,7 +67,7 @@ when@dev:
 
 👉 Bu bölüm, yalnızca dev ortamı için monolog yapılandırmasını ayarlar.
 
-**MicroKernelTrait**'e geri dönersek, burada **configureRoutes()** metodunda da aynı şey geçerli. Ayrıca c**onfig/routes/framework.yaml** dosyasında **when\@dev** olduğunu görebiliriz; yani bu rotalar yalnızca dev ortamında içe aktarılır. **web\_profiler.yaml** dosyasında da aynısı mevcut. Symfony, varsayılan olarak, uygulamamızda kullanabileceğimiz üç ortam (veya "**modes**") ile gelir: **dev**, **prod** ve **test**. İsterseniz kendi özel ortamınızı da oluşturabilirsiniz, ancak genellikle bu üçü işinizi fazlasıyla görecektir.
+**MicroKernelTrait**'e geri dönersek, burada **configureRoutes()** metodunda da aynı şey geçerli. Ayrıca c**onfig/routes/framework.yaml** dosyasında **when\@dev** olduğunu görebiliriz; yani bu rotalar yalnızca dev ortamında içe aktarılır. **web_profiler.yaml** dosyasında da aynısı mevcut. Symfony, varsayılan olarak, uygulamamızda kullanabileceğimiz üç ortam (veya "**modes**") ile gelir: **dev**, **prod** ve **test**. İsterseniz kendi özel ortamınızı da oluşturabilirsiniz, ancak genellikle bu üçü işinizi fazlasıyla görecektir.
 
 Şimdi zaten aşina olduğumuz bir dosyayı açalım – config/bundles.php.
 
@@ -82,4 +82,10 @@ return [
 
 👉 Burada, uygulamamızda etkinleştirilen paketlerin bir dizisi bulunuyor. Anahtar paket sınıfı, değer ise bu paketin kullanılabileceği ortamların bir dizisidir. Örneğin **WebProfilerBundle** sadece **dev** ve **test** ortamlarında kullanılabilir. **DebugBundle** ve **MakerBundle** ise yalnızca **dev** (envirement) ortamında etkinleştirilmiştir. Geliştirme sırasında çok kullanışlıdırlar ama kesinlikle **prod** ortamında kullanılmamalıdırlar, çünkü hassas bilgiler sızabilir.
 
-Sonraki: Şimdi uygulamamızı prod ortamında yüklemeyi deneyelim.
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./6_ How autowiring works.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./8_The Prod Environment.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

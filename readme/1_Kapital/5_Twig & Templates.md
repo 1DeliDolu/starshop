@@ -54,7 +54,7 @@ Tarifin ikinci yaptığı şey `config/packages/twig.yaml` dosyasını oluşturm
 
 ```yaml
 twig:
-    default_path: '%kernel.project_dir%/templates'
+    default_path: "%kernel.project_dir%/templates"
 when@test:
     twig:
         strict_variables: true
@@ -207,3 +207,11 @@ Filtreler zincirleme de kullanılabilir:
 ```
 
 Bu şekilde, Twig’in güçlü ve esnek bir şablon sistemi olduğunu görmüş olduk. Bir sonraki adım, **template inheritance** yani şablon mirası!
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./4_Magical Flex Recipes.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./6_ Twig Template Inheritance.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

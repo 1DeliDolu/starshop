@@ -137,3 +137,11 @@ Ve navigasyon linki olarak tekrar:
 Tasarım artık tamamlandı! Artık sayfamız gerçek bir uygulama gibi görünüyor ve hissediliyor. Harikasınız!
 
 Sırada: Tıklanınca sidebar’ı kapatma gibi daha ince detaylar. Bunun için Stimulus kullanacağız.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./16_ PHP Enums.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./18. Stimulus Writing Pro JavaScript.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

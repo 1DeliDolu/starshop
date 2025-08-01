@@ -41,7 +41,7 @@ framework:
 
 Şimdi terminalinize geçin ve şu komutu çalıştırın:
 
-## Debugging Configuration 
+## Debugging Configuration
 
 ```
 php bin/console debug:config framework
@@ -81,5 +81,13 @@ framework:
 👉 Bu yapılandırma, uygulama önbelleğini bellekte (array adapter) tutacak şekilde ayarlar.
 
 Şimdi tekrar tarayıcıya dönün ve sayfayı yenileyin. Harika! Bu, ArrayAdapter olarak değişti. Şimdi dd(\$cache) satırını kaldırın, böylece cache.adapter.array’i gerçekten görebilelim. Sayfayı tekrar yenileyin ve… ah! Her sayfa yenilemesinde HTTP isteğini yeniden çalıştırıyoruz, yani önbellek yalnızca istek süresince canlı kalıyor. Yeni bir istek başlattığımızda önbellek geçersiz oluyor ve HTTP isteğini tekrar görüyoruz.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./4_Cache Service and Cache Pools.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./6_ How autowiring works.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>
 
 Sonraki: Autowiring konusuna daha yakından bakacağız.

@@ -49,4 +49,10 @@ twig:
 
 👉 Bu, `twig.default_path` parametresine, `kernel.project_dir` parametresinin değerini ekler.
 
-Sonraki: Özel bir parametre oluşturalım ve bunu servis konteynerinden farklı şekillerde nasıl alabileceğimizi öğrenelim.
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./9_More about Services.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./11_Non-Autowireable Arguments.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

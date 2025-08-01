@@ -1,4 +1,4 @@
-## 🚀  Setup, Services & the Service Container / Kurulum, Servisler ve Servis Konteyneri
+## 🚀 Setup, Services & the Service Container / Kurulum, Servisler ve Servis Konteyneri
 
 Symfony ile ne yaparsanız yapın, kullanacağınız en önemli şey servislerdir — uygulamanızda işi yapan küçük sarı minyonlar gibi. Bu bölümde, bu servislerin yapılandırmasından ve ortamlarından bahsedeceğiz.
 
@@ -43,3 +43,10 @@ Bazı servisler doğrudan bizim kodumuzdan gelir — bunların nasıl kaydedildi
 Yani servisler birer araçtır ve bundle’lar bize bu araçları sağlar. Kendi kodumuzda `config/bundles.php` dosyasını açalım. Bu dosya, uygulamamızda hangi bundle’ların kayıtlı olduğunu belirler. Bakın! Zaten on tane bundle’ımız var! Bazıları — örneğin `WebProfilerBundle` — sadece belirli bir ortamda (environment) kullanılabilir. `MonologBundle`, `StartshipRepository` içinde log mesajı yazarken kullandığımız Logger servisini sağlar. Veya `TwigBundle` satırını tamamen silersek, denetleyicilerimizde kullandığımız `render()` metodu artık çalışmaz. Çünkü arka planda bu metod, şablonları işlemek için `twig` servisini kullanır. Buna daha sonra değineceğiz.
 
 Sıradaki konu: Uygulamanıza yeni servisler kazandırmak için yeni bundle’lar nasıl yüklenir?
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./2_KnpTimeBundle Install the Bundle, Get its Service.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

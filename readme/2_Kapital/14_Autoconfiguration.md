@@ -244,3 +244,10 @@ Ayrı bir `AppExtensionRuntime` olması dikkat çekici! Twig'de extension runtim
 Ve bu kadar! Symfony servisleri, yapılandırması ve ortamlarının temellerini kapsadık. Artık çok güçlüsünüz!
 
 Bir sonraki eğitimde, PHP'de veritabanı ile çalışmanın endüstri standardı olan Doctrine'i tanıtacağız. O zamana kadar pratik yapın, bir şeyler inşa edin ve bizimle paylaşın. Sorunuz varsa, yorumlarda buradayız. Görüşmek üzere!
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./13_Environment Variables.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+</div>

@@ -90,4 +90,12 @@ php bin/console cache:clear
 
 Tarayıcıda dikkatlice bakarsanız, verinin yaklaşık beş saniye boyunca önbelleklendiğini ve sonra... yeni verinin geldiğini göreceksiniz! Çalışıyor. `.env` dosyamızda `APP_ENV=prod`'u tekrar `dev` olarak değiştirin. Sayfayı tekrar yenilediğinizde... her yenilemede bir HTTP isteği görürsünüz.
 
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./7_Symfony Environments.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./9_More about Services.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>
+
 Sıradaki konu: Servisler hakkında daha fazla bilgi edinelim.

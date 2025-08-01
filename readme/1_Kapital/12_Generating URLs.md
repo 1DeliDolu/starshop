@@ -1,8 +1,5 @@
 # 🌍Generating URLs / URL'ler Oluşturmak
 
-
-
-
 ## Creating the Show Page / Detay Sayfası Oluşturmak
 
 Starship'ler için bir "detay sayfası" oluşturalım: yalnızca bir geminin bilgilerini gösteren bir sayfa. Ana sayfa `MainController` içinde yer alıyor. Buraya yeni bir route ve metod ekleyebilirdik. Ama sitemiz büyüdükçe, muhtemelen starship'lerle ilgili başka sayfalarımız da olacak: düzenleme, silme gibi. Bu yüzden bunun yerine `Controller/` dizininde yeni bir sınıf oluşturalım. Adı `StarshipController` olsun ve her zamanki gibi `AbstractController` sınıfını genişletsin.
@@ -127,3 +124,11 @@ Yani `path()` fonksiyonuna ikinci bir argüman daha eklemeliyiz. Bu Twig'de bir 
 Ve şimdi... oldu! URL şöyle görünüyor: `/starships/3`.
 
 Sırada: sitemiz hâlâ çirkin görünüyor. Bunu düzeltmeye başlayalım: Tailwind CSS’i entegre edelim ve Symfony'nin AssetMapper bileşenini öğrenelim.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./11_Fancier Routes Requirements, Wildcards, and More.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./13.CSS & JavaScript with Asset Mapper.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

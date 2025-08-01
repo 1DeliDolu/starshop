@@ -101,3 +101,11 @@ return $this->render('main/homepage.html.twig', [
 Tarayıcıda sayfayı yenileyin ve... işte karşınızda! Uluslararası Uzay İstasyonu’nun gerçek zamanlı konumunu, az önce eklediğimiz tüm verilerle birlikte görüntüledik! Görüntü harika!
 
 Bu ne kadar harika olsa da, biri ana sayfayı her ziyaret ettiğinde API’ye bir HTTP isteği gönderiyoruz, ve HTTP istekleri yavaş olabilir. Bunu düzeltmek için Symfony'nin bir başka servisi olan **önbellek** servisini kullanacağız.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./2_KnpTimeBundle Install the Bundle, Get its Service.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./4_Cache Service and Cache Pools.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

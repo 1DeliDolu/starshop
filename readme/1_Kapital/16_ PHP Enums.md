@@ -81,3 +81,11 @@ En basit çözüm: `.value` kullanmak.
 ### ⏭️ What’s Next / Sırada Ne Var?
 
 Bir sonraki adımda, bu son değişikliği daha zarif hâle getirmek için `Starship` sınıfında daha akıllı metotlar tanımlamayı öğreneceğiz. Ardından tasarımın son rötuşlarını yapacağız.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./15_Twig Partials & for Loops.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./17_Smart Model Methods & Making the Design Dynamic.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

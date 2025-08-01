@@ -241,3 +241,11 @@ Tüm komutları gösterir. İstediğimiz komut fix. Deneyelim:
 Ve... evet! MainController.php’deki ihlali buldu! Dosyaya gidince... evet! Süslü parantezi satır sonundan bir sonraki satıra taşıdı. Harika.
 
 Sırada, PHP’deki en sevdiğim kütüphanelerden biriyle tanışıp kuracağız: Twig şablon motoru.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./3_Routes Controllers & Responses.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./5_Twig & Templates.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

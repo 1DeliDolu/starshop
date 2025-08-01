@@ -1,4 +1,4 @@
-# 2_Küçük Projemizi Tanımak
+# Getting to Know our Tiny Project / Küçük Projemizi Tanımak
 
 Komuta merkezine (yani terminale) geri dön! Bu ilk sekmede web sunucusu çalışıyor. Durdurmak istersen Ctrl-C'ye bas... sonra tekrar başlatmak için:
 
@@ -169,3 +169,11 @@ Sırada `var/` var. Bu da git tarafından yok sayılır: Symfony'nin log ve cach
 Kodlamaya başlamadan önce, PhpStorm kullandığımı söylemiştim. İstediğin editörü kullanabilirsin. Ancak PhpStorm harika. En büyük nedeni eşsiz Symfony eklentisi. PhpStorm -> Ayarlar'a gidip "Symfony" aratırsan, Eklentiler ve Marketplace altında bulabilirsin. Eklentiyi indirip kur. Kurulumdan sonra PhpStorm'u yeniden başlat. Son bir adım daha var. Ayarlara tekrar girip "Symfony" arat. Bu sefer bir Symfony bölümü olacak. Her Symfony projesi için eklentiyi etkinleştirdiğinden emin ol... yoksa benim sahip olduğum sihri göremezsin.
 
 Tamam! Şimdi kodlamaya başlayalım ve Symfony'de ilk sayfamızı oluşturalım.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./1_ Setting up our Symfony App.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./3_Routes Controllers & Responses.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

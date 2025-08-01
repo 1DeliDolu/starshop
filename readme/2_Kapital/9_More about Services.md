@@ -56,3 +56,11 @@ Bu, takma adı olmayan servisler de dahil olmak üzere tüm servislerimizi göst
 Bu arada, tüm bu `.yaml` dosyaları aslında aynıdır. `services` veya `framework` gibi kök anahtar (`root key`), onları farklı kılar. Yani, tüm dosyalardaki yapılandırmayı tek bir `.yaml` dosyasına kopyalayabilir ve yine de aynı şekilde çalışmasını sağlayabilirsiniz. Biz bunları sürdürülebilirlik ve sağduyu (`maintainability and sanity`) için ayrı tutuyoruz.
 
 Sıradaki konu: Size defalarca söylediğim gibi, container servisleri tutar, bu doğru. Ama ayrıca bir başka şeyi de tutar: Basit bir yapılandırma olan `parameters`.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./8_The Prod Environment.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./10_Parameters.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

@@ -212,3 +212,10 @@ Log bölümünde mesajımızı göreceksiniz:
 
 Şimdi bir servisin nasıl kullanılacağını gördük.
 Sıradaki adım: **kendi servislerimizi yazmak!**
+
+---
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./8_Creating JSON API Endpoints.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./10_Creating your own Service.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

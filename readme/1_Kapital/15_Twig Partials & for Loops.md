@@ -88,6 +88,13 @@ Burada `ships`, elimizdeki dizi; `ship` ise döngü içinde her bir Starship nes
 
 Sayfayı yeniden denediğimizde... artık üç adet sabit gemi yerine gerçekten veriden gelen gemileri listeliyoruz! Bu harika bir gelişme!
 
+🎯 Sıradaki adım: Bizi bir PHP `enum` oluşturmaya götürecek sürpriz bir dönemeç!
 ---
 
-🎯 Sıradaki adım: Bizi bir PHP `enum` oluşturmaya götürecek sürpriz bir dönemeç!
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./14.Tailwind CSS.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./16_ PHP Enums.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>
+
+

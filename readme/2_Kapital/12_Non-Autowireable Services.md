@@ -73,4 +73,12 @@ Tamam, tekrar ana sayfaya dönüp yenilersek... otomatik olarak başarıyla bağ
 
 Şimdi, bu komutu çalıştırabilir miyiz bakalım. `Response`’un altında, `$twigDebugCommand->run()` yazın. İlk argüman bir girdi olmalı, yani `new ArrayInput` diyebiliriz. İkinci argüman ise aşağıda kullanacağımız çıktı olacak, ancak bunu yapmadan önce bir çıktı değişkeni oluşturmamız gerekiyor. Yukarıya `$output = new BufferedOutput()` yazın. Şimdi, `$output`'u burada ikinci argüman olarak ekleyebiliriz. Tamam, editörümüz memnun, şimdi aşağıda `dd($output)` ekleyelim. Tarayıcıya dönüp yenilersek... tüh... hata. Görünüşe göre `ArrayInput()` sınıfına boş bir dizi iletmemiz gerekiyor. Bunu yapıp tekrar yenilersek... işte bu! Fonksiyonların ve filtrelerin bir listesini aldık. Çalıştı. Bu sadece bir örnekti, bu yüzden bu kodu kaldırabiliriz, ancak burada asıl önemli olan şey, bir şey varsayılan olarak otomatik bağlanamasa bile, `#[Autowire]` özniteliğiyle bunu otomatik bağlanabilir hâle getirebilirsiniz; ister bir servis ister bir parametre olsun.
 
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./11_Non-Autowireable Arguments.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./13_Environment Variables.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>
+
 Sonraki: Şimdi, ortam değişkenleri ve daha önce gördüğümüz `.env` dosyasının amacından bahsedeceğiz. Ayrıca, bunları uygulamamızda nasıl kullanabileceğimizi ve farklı ortamlarda nasıl farklı davranışlar elde edebileceğimizi göreceğiz.

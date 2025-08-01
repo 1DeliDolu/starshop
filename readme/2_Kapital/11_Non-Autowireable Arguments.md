@@ -4,7 +4,9 @@ Daha önce, denetleyicimizde `getParameter()` ile kapsayıcıdan parametreleri n
 
 Kendi Parametrelerini Oluştur ve Kullan
 `config/services.yaml` dosyasını aç. Burada boş bir `parameters` bölümü görüyoruz. İçine yeni bir parametre oluşturalım – mesela `iss_location_cache_ttl` – ve bunu 5 olarak ayarlayalım.
+
 > config/services.yaml
+
 ```
 parameters:
     iss_location_cache_ttl: 5
@@ -106,3 +108,11 @@ public function homepage(
 Bunu denediğimizde… bu da çalışıyor! Ve global olarak otomatik bağlama yaptığımız için PHP özelliklerini birden çok yerde tekrarlamaktan kurtuluyoruz. Çok pratik! Şu anda bu parametreyi yalnızca konfigürasyonda kullandığımız için şimdilik bunu kaldırabiliriz.
 
 Sonraki: Otomatik bağlanamayan servisleri nasıl otomatik bağlatabileceğimizi görelim. Şaşırtıcı derecede kolay.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./10_Parameters.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./12_Non-Autowireable Services.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

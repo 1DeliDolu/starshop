@@ -101,3 +101,10 @@ Ve... önbellek temizlendi! Tarayıcıya dönüp sayfayı yenilersek... işte HT
 
 Sırada: Önbellek servisimizi nasıl yapılandıracağımızı öğrenelim.
 
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./3_The HTTP Client Service.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./5_Bundle Config Configuring the Cache Service.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

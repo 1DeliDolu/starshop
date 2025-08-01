@@ -1,5 +1,3 @@
-
-
 # Fancier Routes: Requirements, Wildcards, and More / Gelişmiş Rotalar: Gereksinimler, Joker Karakterler ve Daha Fazlası
 
 Tüm bu yeni kod organizasyonuyla birlikte, hadi bir yıldız gemisini getirecek yeni bir API uç noktası oluşturarak bunu kutlayalım. Her zamanki gibi başlayın: `get()` adında bir public fonksiyon oluşturun. Yanına isteğe bağlı olarak `Response` dönüş türünü ekleyelim. Bunun üstüne `#[Route]` anotasyonunu ekleyin ve URL'yi `/api/starships/...` olarak ayarlayın. Bu sefer URL’nin son kısmı dinamik olmalı: `/api/starships/5` veya `/api/starships/25` gibi adreslerle eşleşmeli. Bunu nasıl yapabiliriz? Rota joker karakterle nasıl eşleşir?
@@ -183,4 +181,10 @@ Dikkat edin: `throw` anahtar kelimesi ile özel bir exception fırlatılır ve b
 
 Deneyin! Evet! Bir 404 yanıtı! "Starship not found" mesajı yalnızca geliştiricilere dev modda gösterilir. Üretimde tamamen farklı bir sayfa veya JSON döner. Detaylar için dökümana bakabilirsiniz.
 
+---
 
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./10_Creating your own Service.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./12_Generating URLs.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

@@ -9,7 +9,7 @@ Planımız şu: `iss_location_cache_ttl` değerimizin yerelde ve üretimde farkl
 parameters:
     iss_location_cache_ttl: 5
 // ... lines 8 - 26
- ```
+```
 
 En kolay yol, özel bir ortam değişkeni oluşturup bunu her ortam için (ör. `dev` ve `prod`) farklı bir değere ayarlamaktır.
 
@@ -29,7 +29,7 @@ ISS_LOCATION_CACHE_TTL=5
 ```yaml
 #config/services.yaml
 parameters:
-    iss_location_cache_ttl: '%env(ISS_LOCATION_CACHE_TTL)%'
+    iss_location_cache_ttl: "%env(ISS_LOCATION_CACHE_TTL)%"
 ```
 
 👉 Bu satır, `iss_location_cache_ttl` parametresini ortam değişkeninden alır.
@@ -91,4 +91,10 @@ php bin/console debug:dotenv
 
 Eğer hassas bilgilerinizi gerçekten güvenceye almak istiyorsanız, Symfony'nin bunun için özel bir aracı vardır: "Secrets Vault". Google'da "Symfony secrets" aratırsanız, üst sıralarda "How to Keep Sensitive Information Secret" (Hassas Bilgileri Gizli Tutmak) adlı dökümantasyona ulaşırsınız. "Secrets Vault" ile ortam değişkenlerinizi şifreleyerek Git deposuna güvenle ekleyebilirsiniz; şifre çözülmeden okunamazlar. Eğer bu seviyede veri korumasına ihtiyacınız varsa, dökümantasyonu okumanızı veya SymfonyCasts'teki ilgili videoları izlemenizi öneririm. Son olarak, homepage fonksiyonunda yaptığımız değişiklikleri geri alıp, `dd()` satırını kaldırıyorum; artık buna ihtiyacımız yok.
 
-Sonraki: Otomatik yapılandırma hakkında daha fazla konuşacağız.
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./12_Non-Autowireable Services.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./14_Autoconfiguration.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

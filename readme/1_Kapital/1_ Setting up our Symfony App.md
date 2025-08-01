@@ -114,3 +114,10 @@ Bunu bir tarayıcıda çalışır halde görmek için bir web sunucusu başlatma
 Ve... işte! Projemiz için yeni bir web sunucusu https://127.0.0.1:8000 adresinde çalışıyor. Bunu kopyalayın, favori tarayıcınıza yapıştırın ve... Symfony 7’ye hoş geldiniz! Benim de söylemek istediğim buydu!
 
 Sonraki adımda, bir fincan Earl Grey çayı sipariş edip, uygulamamızdaki her dosyayla arkadaş olacağız... ki aslında çok fazla dosya yok.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./2_ Getting to Know our Tiny Project.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

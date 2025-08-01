@@ -1,6 +1,4 @@
-
 # 🛠️ Maker Bundle: Let's Generate Some Code!
-
 
 ## Maker Bundle: Let's Generate Some Code! / Maker Bundle: Haydi Kod Üretelim!
 
@@ -180,3 +178,10 @@ Ve... işte bu kadar! Kendinize bir çak bi’şey verin... ya da daha iyisi, i�
 Ve eğer bir sorunuz olursa, her videonun altındaki yorumları dikkatle takip ediyoruz ve her soruya cevap veriyoruz. Ayrıca devam edin! Bir sonraki eğitimde Symfony'nin yapılandırma ve servislerine daha derinlemesine dalacağız: Symfony'de yapacağınız her şeyi yöneten sistemlere!
 
 Pekâlâ dostlar, bir sonraki derste görüşmek üzere!
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./19_Your Single Page App.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+</div>
