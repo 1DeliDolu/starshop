@@ -37,23 +37,6 @@ class AppFixtures extends Fixture
             'arrivedAt' => new \DateTimeImmutable('-1 month'),
         ]);
         StarshipFactory::createMany(20);
-        \App\Factory\StarshipPartFactory::createMany(50);
-        $manager->flush();
-
-        // Manuel ilişki kurma örneği
-        $starship = new \App\Entity\Starship();
-        $starship->setName('USS Taco Tuesday');
-        $starship->setClass('Tex-Mex');
-        $starship->checkIn();
-        $starship->setCaptain('James T. Nacho');
-        $manager->persist($starship);
-
-        $part = new \App\Entity\StarshipPart();
-        $part->setName('spoiler');
-        $part->setNotes("There's no air drag in space, but it looks cool.");
-        $part->setPrice(500);
-        $part->setStarship($starship);
-        $manager->persist($part);
-        $manager->flush();
+        \App\Factory\StarshipPartFactory::createMany(100);
     }
 }
