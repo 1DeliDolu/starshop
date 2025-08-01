@@ -12,7 +12,7 @@
 				Ship Repair Queue
 			</h1>
 			 <div class="text-slate-400 mb-4">
-				{{ ships.nbResults }} ships (Page {{ ships.currentPage }} of {{ ships.nbPages }})
+				{{ ships|length }} ships
 			</div>
 
 			<div class="space-y-5">
@@ -60,54 +60,6 @@
 					{{ ships|length * 10 }}
 					starships for sale!</a>
 			</p>
-			{% if ships.haveToPaginate %}
-				<nav class="flex justify-center mt-6 items-center gap-4">
-					{% if ships.hasPreviousPage %}
-						<a href="{{ path('app_homepage', {page: ships.getPreviousPage}) }}"
-						   class="px-4 py-2 rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700 transition font-semibold shadow"
-						   aria-label="Previous Page">
-							&larr; Prev
-						</a>
-					{% else %}
-						<span class="px-4 py-2 rounded-lg bg-slate-700 text-slate-500 font-semibold cursor-not-allowed">&larr; Prev</span>
-					{% endif %}
-
-					<span class="text-lg font-semibold text-slate-300 select-none">
-						Page <span class="text-amber-400">{{ ships.currentPage }}</span>
-						<span class="mx-1 text-slate-500">/</span>
-						<span>{{ ships.nbPages }}</span>
-					</span>
-
-					{% if ships.hasNextPage %}
-						<a href="{{ path('app_homepage', {page: ships.getNextPage}) }}"
-						   class="px-4 py-2 rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700 transition font-semibold shadow"
-						   aria-label="Next Page">
-							Next &rarr;
-						</a>
-					{% else %}
-						<span class="px-4 py-2 rounded-lg bg-slate-700 text-slate-500 font-semibold cursor-not-allowed">Next &rarr;</span>
-					{% endif %}
-				</nav>
-			{% endif %}
-
-			{% if issData %}
-				<p>Updated At:
-					{{ issData.timestamp|date }}</p>
-				<div>
-					<h2 class="text-4xl font-semibold my-8">ISS Location</h2>
-					<p>Time:
-						{{ issData.timestamp|date }}</p>
-					<p>Altitude:
-						{{ issData.altitude }}</p>
-					<p>Latitude:
-						{{ issData.latitude }}</p>
-					<p>Longitude:
-						{{ issData.longitude }}</p>
-					<p>Visibility:
-						{{ issData.visibility }}</p>
-				</div>
-			{% endif %}
-
 		</div>
 	</main>
 {% endblock %}
