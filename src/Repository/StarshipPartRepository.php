@@ -34,6 +34,19 @@ class StarshipPartRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    /**
+     * @return StarshipPart[] Returns an array of StarshipPart objects ordered by price descending
+     */
+    public function findAllOrderedByPrice(): array
+    {
+        return $this->createQueryBuilder('sp')
+            ->innerJoin('sp.starship', 's')
+            ->addSelect('s')
+            ->orderBy('sp.price', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return StarshipPart[] Returns an array of StarshipPart objects
     //     */

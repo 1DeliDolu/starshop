@@ -125,3 +125,5 @@
 ### [Akıllı Kriter Sistemi](./4_Kapital/10_1_%20The%20Clever%20Criteria%20System.md)
 
 ### [Parçaları Listeleme](./4_Kapital/11_1_Listing%20Parts.md)
+
+### [N+1 Tuzağından Kaçınmak için JOIN Kullanmak](./4_Kapital/12_1_Joining%20to%20Avoid%20the%20N+1%20Trap.md)
