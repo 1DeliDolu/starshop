@@ -4,8 +4,10 @@ namespace App\Entity;
 
 use App\Model\StarshipStatusEnum;
 use App\Repository\StarshipRepository;
+use App\Repository\StarshipPartRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation\Slug;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
@@ -155,6 +157,14 @@ class Starship
     public function getParts(): Collection
     {
         return $this->parts;
+    }
+
+    /**
+     * @return Collection<int, StarshipPart>
+     */
+    public function getExpensiveParts(): Collection
+    {
+        return $this->parts->matching(StarshipPartRepository::createExpensiveCriteria());
     }
 
     public function addPart(StarshipPart $part): static

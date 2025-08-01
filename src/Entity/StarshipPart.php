@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
+use App\Repository\StarshipPartRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: StarshipPartRepository::class)]
 class StarshipPart
 {
     use TimestampableEntity;
