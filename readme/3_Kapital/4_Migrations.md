@@ -25,7 +25,14 @@ final class Version20241111171351 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE starship (id SERIAL NOT NULL, name VARCHAR(255) NOT NULL, class VARCHAR(255) NOT NULL, captain VARCHAR(255) NOT NULL, status VARCHAR(255) NOT NULL, arrived_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE starship (
+        id SERIAL NOT NULL, 
+        name VARCHAR(255) NOT NULL, 
+        class VARCHAR(255) NOT NULL, 
+        captain VARCHAR(255) NOT NULL, 
+        status VARCHAR(255) NOT NULL, 
+        arrived_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, 
+        PRIMARY KEY(id))');
         $this->addSql('COMMENT ON COLUMN starship.arrived_at IS \'(DC2Type:datetime_immutable)\'');
     }
 // ... lines 26 - 32
@@ -55,7 +62,7 @@ final class Version20241111171351 extends AbstractMigration
 
 👉 Bu metod, geçişin açıklamasını döndürür.
 
-### Geçiş Durumunu Kontrol Etme
+## Checking the Migration Status /   Geçiş Durumunu Kontrol Etme
 
 Terminale geçin ve şunu çalıştırın:
 
@@ -81,14 +88,14 @@ symfony console doctrine:migrations:list
 
 👉 Bu komutla geçişin artık "migrated" olduğunu görebilirsiniz.
 
-### Geçişler Nasıl Çalışır?
+## How Migrations Work / Geçişler Nasıl Çalışır?
 
 Doctrine, hangi geçişlerin çalıştırıldığını nasıl izler? Bir `doctrine_migration_versions` tablosu oluşturur ve her çalıştırılan geçiş için bu tabloya bir satır ekler.
 
 Görebiliriz! Şunu çalıştırın:
 
 ```bash
-symfony console doctrine:query:sql 'select * from doctrine_migration_versions'
+symfony console doctrine:query:sql "select * from doctrine_migration_versions"
 ```
 
 👉 Bu komut, geçişlerin kaydedildiği tabloyu sorgular.
@@ -98,7 +105,7 @@ Bakın! Orada geçiş sınıfımız var, ne zaman çalıştırıldığı, ne kad
 Bu, artık bir `starship` tablomuz olduğu anlamına mı geliyor? Bir başka ham SQL sorgusu ile öğrenelim!
 
 ```bash
-symfony console doctrine:query:sql 'select * from starship'
+symfony console doctrine:query:sql "select * from starship"
 ```
 
 👉 Bu komut, `starship` tablosundaki verileri sorgular.

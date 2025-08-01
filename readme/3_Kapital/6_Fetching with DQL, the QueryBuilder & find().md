@@ -5,7 +5,7 @@ Veritabanımız artık parıldayan, sahte yıldız gemileriyle dolu! Ama ana say
 Terminalinize geçin. Tüm yıldız gemilerini seçmek için olan SQL sorgusunu hatırlıyor musunuz? Tekrar çalıştırın:
 
 ```bash
-symfony console doctrine:query:sql 'select * from starship'
+symfony console doctrine:query:sql "select * from starship"
 ```
 
 👉 Bu komut, tüm `starship` tablosunu SQL ile listeler.
@@ -13,7 +13,7 @@ symfony console doctrine:query:sql 'select * from starship'
 Bu ham SQL, ancak Doctrine ORM'in kendine ait bir sorgulama dili vardır: `DQL` yani Doctrine Query Language! SQL'e benzer, fakat tablolar yerine varlık (entity) nesneleri üzerinden sorgulama yaparsınız. Yukarıdaki sorguyu DQL olarak çalıştırın:
 
 ```bash
-symfony console doctrine:query:dql 'select s from App\Entity\Starship s'
+symfony console doctrine:query:dql "select s from App\Entity\Starship s"
 ```
 
 👉 Bu komut, `Starship` varlıklarını DQL ile getirir.
@@ -37,7 +37,11 @@ class MainController extends AbstractController
 
 👉 Bu yapı ile Doctrine'in entity yöneticisi otomatik olarak enjekte edilir.
 
-## createQuery() Kullanımı
+## EntityManagerInterface / EntityManagerInterface
+
+Son bölümde, Doctrine'in `AppFixture::load()` metoduna bir `ObjectManager` ilettiğini gördük. Bu `EntityManagerInterface`, bir tür `ObjectManager`'dır ve Doctrine entity yöneticisini otomatik olarak bağlamak (autowire) için kullanacağımız arayüzdür.
+
+## Using createQuery() / createQuery() Kullanımı
 
 Aşağıya şu kodu yazın: `$ships = $em->createQuery()` ve DQL sorgusunu `SELECT s FROM App\Entity\Starship s` olarak geçin. Son olarak `->getResult()` çağırın.
 
@@ -61,7 +65,7 @@ Metodun kalanını olduğu gibi bırakın.
 
 Ana sayfayı yenileyin. Görünüş aynı... bu iyi bir işaret! Web hata ayıklama araç çubuğuna yakından bakın – yeni bir "Doctrine" bölümü var. OooooooOooo.
 
-## Doctrine Profiler
+## Doctrine Profiler / Doctrine Profiler
 
 "Doctrine" profiler panelini açmak için tıklayın. Harika! Bu panel, son istekte yürütülen tüm sorguları gösterir. Yalnızca bir tane var – bu mantıklı!
 
@@ -69,7 +73,7 @@ Daha okunabilir biçimde biçimlendirilmiş sorguyu görebilir, SQL aracınıza 
 
 Bu benim favorim! Sorguya yol açan çağrı yığınını gösterir – bu durumda `homepage()` metodumuz.
 
-## QueryBuilder Kullanımı
+## Using the QueryBuilder / QueryBuilder Kullanımı
 
 DQL çok da güzel görünmüyor! Neyse ki Doctrine'in bir de `query builder`'ı var. Bu harika bir araç: DQL dizesini elle yazmak yerine, bir nesne ile oluştururuz. `homepage()` metoduna dönün, `$em->createQuery()` yerine `$em->createQueryBuilder()` yazın. Üzerinden `->select('s')`, sonra `->from(Starship::class, 's')` zincirleyin. `App\Entity`'den `use` satırını eklemeyi unutmayın. Bonus: `'App\Entity\Starship'` dizesi yerine `Starship::class` kullanabiliriz.
 
@@ -118,7 +122,7 @@ class StarshipController extends AbstractController
 
 👉 Bu yapı ile entity yöneticisi üzerinden sorgulama yapılabilir.
 
-## find() Kullanımı
+## Using find() / find() Kullanımı
 
 `$ship = $em->find(Starship::class, $id)` yazın.
 
