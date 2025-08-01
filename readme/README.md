@@ -123,3 +123,5 @@
 ### [İlişkiyi Sıralama ve Fetch Tipleri](./4_Kapital/9_1_Ordering%20a%20Relation%20and%20fetch%20type.md)
 
 ### [Akıllı Kriter Sistemi](./4_Kapital/10_1_%20The%20Clever%20Criteria%20System.md)
+
+### [Parçaları Listeleme](./4_Kapital/11_1_Listing%20Parts.md)
