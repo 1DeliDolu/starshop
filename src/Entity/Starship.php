@@ -164,6 +164,7 @@ class Starship
      */
     public function getExpensiveParts(): Collection
     {
+        //ignore
         return $this->parts->matching(StarshipPartRepository::createExpensiveCriteria());
     }
 
