@@ -1,4 +1,4 @@
-# 🧩 Setting Relations in Foundry / Foundry'de İlişkileri Ayarlama
+# 🧩 Setting Relations in Foundry / Foundry'de İlişkileri Ayarlama {#setting-relations-foundry}
 
 Tamam, elimizde birkaç parça ve birkaç yıldız gemisi var, ancak test verisi filomuzu doldurmak için çok daha fazlasını istiyorum. Bu iş, bizim iyi dostumuz olan `Foundry` için mükemmel bir görev. Manuel kodu kaldırın, ardından herhangi bir yere örneğin: `StarshipPartFactory::createMany(100)` yazın:
 

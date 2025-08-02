@@ -1,4 +1,4 @@
-## 🚀 Setup / Kurulum
+# <h1 id="setup">🚀 Setup / Kurulum </h1>
 
 Merhaba arkadaşlar! Tekrar hoş geldiniz! Ve izin verirseniz, ben de kendime hoş geldin diyeyim. 14 aylık beyin kanseri "tatilimden" dönüyorum. Ne yazık ki tamamen iyileşmiş değilim ve evet, bir elimle yazıyorum, bir nevi Symfony korsanı gibi. Ama sizi çok özledim ve Symfony’yi de öyle. Bugün güzel bir gün. Destek, sevgi ve sabrınız için teşekkür ederim. Şimdi işimize bakalım!
 
@@ -45,7 +45,35 @@ class Starship
 Şimdi işleri biraz renklendirme zamanı: bir geminin parçalarını ve bunların maliyetlerini takip edeceğiz. Ardından her parçayı veritabanında bir gemiye atayacağız.
 
 ---
+
 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
     <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
     <a href="./2_ Part Entity.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
 </div>
+
+<!-- Scroll to Top Button -->
+<div id="scrollToTop" style="position: fixed; bottom: 30px; right: 30px; display: none; z-index: 1000;">
+    <a href="#setup" title="Yukarı Çık" style="background-color: #007bff; color: white; padding: 12px 16px; text-decoration: none; border-radius: 50%; font-size: 1.2em; display: inline-block; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: all 0.3s ease;">⬆️</a>
+</div>
+
+<script>
+// Scroll to top button functionality
+window.onscroll = function() {
+    var scrollToTopBtn = document.getElementById("scrollToTop");
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        scrollToTopBtn.style.display = "block";
+        scrollToTopBtn.style.opacity = "1";
+    } else {
+        scrollToTopBtn.style.display = "none";
+        scrollToTopBtn.style.opacity = "0";
+    }
+};
+
+// Smooth scroll effect
+document.getElementById("scrollToTop").addEventListener("click", function(e) {
+    e.preventDefault();
+    document.getElementById("setup").scrollIntoView({
+        behavior: 'smooth'
+    });
+});
+</script>

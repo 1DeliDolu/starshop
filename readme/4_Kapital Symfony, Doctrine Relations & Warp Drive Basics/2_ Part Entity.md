@@ -1,4 +1,4 @@
-# ⚙️ Part Entity / Parça Varlığı
+# ⚙️ Part Entity / Parça Varlığı {#part-entity} {#c1-2}
 
 Ana sayfada `Starship` varlığımız sayesinde zaten uzay gemileri gösteriliyor. Ama artık bir adım ileri gitme zamanı. Her `Starship`te kullanılan bireysel parçaları takip etmemiz gerekiyor. Plan şöyle: her parça yalnızca bir `Starship`e ait olacak ve her `Starship` birçok parçaya sahip olacak. Ancak ilişkilere geçmeden önce, basit başlamalıyız: bu parçaları takip edecek yeni bir `entity`'ye ihtiyacımız var! Terminali açın, yeni bir sekme oluşturun (çünkü sunucumuz hâlâ çalışıyor) ve şu komutu çalıştırın:
 
@@ -140,7 +140,7 @@ class AppFixtures extends Fixture
         StarshipPartFactory::createMany(50);
     }
 }
-````
+```
 
 👉 Bu `fixture`, 20 `Starship` ve 50 `StarshipPart` nesnesi oluşturur.
 
@@ -160,10 +160,14 @@ symfony console doctrine:query:sql "select * from starship_part";
 
 👉 Bu SQL komutu, `starship_part` tablosundaki tüm verileri listeler.
 
-Ve sadece birkaç satır kodla, veritabanında 50 rastgele parçamız oldu. Sıradaki adım: bu parçaları ait oldukları gemilere bağlayarak ilk ilişkimizi oluşturmak – yani `ManyToOne` ilişkisi.
----
+## Ve sadece birkaç satır kodla, veritabanında 50 rastgele parçamız oldu. Sıradaki adım: bu parçaları ait oldukları gemilere bağlayarak ilk ilişkimizi oluşturmak – yani `ManyToOne` ilişkisi.
+
 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
     <a href="./1_Setup.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
     <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
     <a href="./3_Many To One The King of Relationships.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>
+
+<div style="text-align: center; margin-top: 20px;">
+    <a href="#c1-2" title="Yukarı Çık" style="background-color: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 1em; display: inline-block;">⬆️ Yukarı Çık</a>
 </div>

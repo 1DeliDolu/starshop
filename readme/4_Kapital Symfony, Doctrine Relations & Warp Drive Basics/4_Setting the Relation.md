@@ -1,4 +1,4 @@
-# 🔧 Setting the Relation / İlişkiyi Kurmak
+# 🔧 Setting the Relation / İlişkiyi Kurmak {#setting-relation}
 
 Peki, ilişkiyi gerçekten nasıl kurarız? Nasıl deriz:
 

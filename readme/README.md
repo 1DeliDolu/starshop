@@ -99,3 +99,53 @@
 ### 14. [Ship Upgrades: Updating an Entity](./3_Kapital%20Doctrine%2C%20Symfony%207%20%26%20the%20Database/14_Ship%20Upgrades%20Updating%20an%20Entity.md)
 
 ### 15. [Quantum Refactor: Rich Entities](./3_Kapital%20Doctrine%2C%20Symfony%207%20%26%20the%20Database/15_Quantum%20Refactor%20Rich%20Entities.md)
+
+## Kapital 4
+
+### 1. [Setup](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/1_Setup.md#setup)
+
+### 2. [Part Entity](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/2_%20Part%20Entity.md#part-entity)
+
+### 3. [Many To One: The King of Relationships](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/3_Many%20To%20One%20The%20King%20of%20Relationships.md#many-to-one)
+
+### 4. [Setting the Relation](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/4_Setting%20the%20Relation.md#setting-relation)
+
+### 5. [Setting Relations in Foundry](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/5_%20Setting%20Relations%20in%20Foundry.md#setting-relations-foundry)
+
+### 6. [Fetching a Relation's Data](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/6_Fetching%20a%20Relation%27s%20Data.md#fetching-relation-data)
+
+### 7. [The Two Sides of a Relation: Owning vs Inverse](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/7_The%20Two%20Sides%20of%20a%20Relation%20Owning%20vs%20Inverse.md#owning-vs-inverse)
+
+### 8. [Orphan Removal](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/8_Orphan%20Removal.md#orphan-removal)
+
+### 9. [Ordering a Relation and fetch type](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/9_Ordering%20a%20Relation%20and%20fetch%20type.md#ordering-relation)
+
+### 10. [The Clever Criteria System](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/10_The%20Clever%20Criteria%20System.md#criteria-system)
+
+### 11. [Listing Parts](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/11_Listing%20Parts.md#listing-parts)
+
+### 12. [Joining to Avoid the N+1 Trap](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/12_Joining%20to%20Avoid%20the%20N%2B1%20Trap.md#n-plus-1-trap)
+
+### 13. [Adding a Search + the Request Object](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/13_Adding%20a%20Search%20%2B%20the%20Request%20Object.md#search-request)
+
+### 14. [Droid Entity for the ManyToMany Relationship](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/14_Droid%20Entity%20for%20the%20ManyToMany%20Relationship.md#droid-entity)
+
+### 15. [Many-To-Many Relationship](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/15_Many-To-Many%20Relationship.md#many-to-many)
+
+### 16. [Setting Many To Many Relations](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/16_Setting%20Many%20To%20Many%20Relations.md#setting-many-to-many)
+
+### 17. [Accessing Data on a ManyToMany](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/17_Accessing%20Data%20on%20a%20ManyToMany.md#accessing-many-to-many)
+
+### 18. [Many To Many with Foundry](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/18_Many%20To%20Many%20with%20Foundry.md#many-to-many-foundry)
+
+### 19. [Joining Across a Many-to-Many Relationship](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/19_Joining%20Across%20a%20Many-to-Many%20Relationship.md#joining-many-to-many)
+
+### 20. [Many-to-Many but with Extra Data](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/20_Many-to-Many%20but%20with%20Extra%20Data.md#many-to-many-extra-data)
+
+### 21. [Persisting the More Complex Many-to-Many Relationship](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/21_Persisting%20the%20More%20Complex%20Many-to-Many%20Relationship.md#complex-many-to-many)
+
+### 22. [Hiding the Join Entity](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/22_Hiding%20the%20Join%20Entity.md#hiding-join-entity)
+
+### 23. [Re-adding addDroid(): Hide that Join Entity!](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/23_Re-adding%20addDroid%28%29%20Hide%20that%20Join%20Entity.md#re-adding-adddroid)
+
+### 24. [Cascade Persist](./4_Kapital%20Symfony%2C%20Doctrine%20Relations%20%26%20Warp%20Drive%20Basics/24_Cascade%20Persist.md#cascade-persist)

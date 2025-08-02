@@ -1,4 +1,6 @@
-# 🚦 Cascade Persist / Kademeli Persist
+# 🚦 Cascade Persist / Kademeli Persist {#cascade-persist}
+## <a id="c1-1" href="#c1-2"> Back to Adding Droids </a>
+## <a id="c2-1" href="#c2-2"> Finer Control with assignedAt </a>
 
 Bu hataya göz at: tam bir baş belası!
 
@@ -14,7 +16,6 @@ cascade=\['persist'] Gücünden Yararlanmak
 Çözüm, `cascade persist` denen bir şeyi kullanmaktır.
 
 `$starshipDroids` özelliğine yukarı kaydır, ve `OneToMany`'yi bul. Yeni bir seçenek ekle: `cascade`. Bunu manuel olarak yazacağım. `persist` içeren bir dizi olarak ayarla:
-
 
 ```php
 // src/Entity/Starship.php
@@ -44,12 +45,11 @@ symfony console doctrine:fixtures:load
 
 👉 Bu komut, uygulamanın fixture verilerini yükler.
 
-## 🛠️ Back to Adding Droids / Droid Eklemeye Geri Dönüş
+## <h2 id="c1-2"><a href="#c1-1">🛠️ Back to Adding Droids / Droid Eklemeye Geri Dönüş</a></h2>
 
 Tekrar iş başındayız. Artık tekrar `ship->addDroid()` kullanabiliriz. Ama ben yine de droidleriyle birlikte bir filo `starship` oluşturmak istiyorum.
 
 Tüm manuel kodu kaldır ve `StarshipFactory`'deki `droids` özelliğini geri getir:
-
 
 ```php
 // src/DataFixtures/AppFixtures.php
@@ -84,10 +84,9 @@ Arka planda Foundry, her bir droid için her bir `Starship` üzerinde `addDroid(
 
 Artık `StarshipDroid` join entity'sinin oluşturulması tüm kod tabanımızdan gizlendi!
 
-## 🎛️ Finer Control with assignedAt / assignedAt ile Daha Hassas Kontrol
+## <h2 id="c2-2"> <a href="#c2-1">🎛️ Finer Control with assignedAt / assignedAt ile Daha Hassas Kontrol</a></h2> 
 
 Ama, bir droid'i bir starship'e ekleyip `assignedAt` özelliğini kontrol etmek istersen ne olacak? `Starship` içinde `addDroid()` metoduna bir `DateTimeImmutable` argümanı ekle. Esnek olsun diye bunu isteğe bağlı yap. Sonra, `StarshipDroid`'i oluşturduktan sonra `$assignedAt` gönderildiyse ayarla:
-
 
 ```php
 // src/Entity/Starship.php
@@ -119,7 +118,6 @@ Güzel... ama ufak bir sorun var. Foundry, `assignedAt` alanını kontrol etmemi
 Son olarak, `assignedAt`'ı sitemizde görünür yapalım. Bunun için `StarshipDroid` join entity nesnesine ihtiyacımız olacak. Biraz daha fazla iş, ama kesinlikle yapılabilir.
 
 Döngüyü değiştir; `for starshipDroid in ship.starshipDroids` şeklinde yap. Sonra `starshipDroid.droid.name` ve `starshipDroid.assignedAt` ile, biraz süs için `ago` filtresiyle göster:
-
 
 ```twig
 // templates/starship/show\.html.twig

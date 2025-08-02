@@ -1,4 +1,4 @@
-## 🧩 Many To One: The King of Relationships / Çoktan Bire: İlişkilerin Kralı
+## 🧩 Many To One: The King of Relationships / Çoktan Bire: İlişkilerin Kralı {#many-to-one} {#c1-3}
 
 Pekâlâ dostlar, `Starship` ve `StarshipPart` varlıklarını başarıyla oluşturduk ve... veritabanında gayet güzel duruyorlar. Ama işte bilmece: Bu parçaları ilgili yıldız gemisine nasıl bağlayacağız? Her `StarshipPart`'a hakkı olan bir `Starship` yuvası nasıl vereceğiz? İşte burada sihirli `make:entity` komutu yeniden devreye giriyor. Ne gösteriş ama. Terminalinizi açın ve şunu çalıştırın:
 
@@ -64,6 +64,7 @@ class StarshipPart
     }
 }
 ```
+
 👉 Bu kod, her `StarshipPart` örneğinin bir `Starship` nesnesine ait olmasını sağlar.
 
 `Starship` tarafında ise `ORM\OneToMany` ile yeni bir `parts` özelliği var. Aşağıya doğru kaydırınca işe yarar bir `getParts()` metodu görüyoruz. Ama `setParts()` yerine bize `addPart()` ve `removePart()` metodları verilmiş:
@@ -133,6 +134,7 @@ class Starship
 // ... lines 52 - 180
 }
 ```
+
 👉 Bu kod, `parts` koleksiyonunun boş ama kullanılabilir bir `ArrayCollection` örneği ile başlamasını sağlar.
 
 Bir düşünün: `OneToMany` ve `ManyToOne` aslında aynı ilişkinin iki farklı görünümüdür. Bir parça bir yıldız gemisine aitse, o yıldız gemisi birçok parçaya sahiptir. Biz tek bir ilişki ekledik ama onu iki farklı bakış açısından görebiliyoruz.
