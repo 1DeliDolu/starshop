@@ -47,6 +47,15 @@
                         </li>
                     {% endfor %}
                 </ul>
+
+                <h4 class="text-xs text-slate-300 font-semibold mt-2 uppercase">
+                    Droids ({{ ship.starshipDroids|length }})
+                </h4>
+                <p class="text-[22px] font-semibold">
+                    {% for starshipDroid in ship.starshipDroids %}
+                        {{ starshipDroid.droid.name }} (assigned {{ starshipDroid.assignedAt|ago }}){% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
             </div>
         </div>
     </div>

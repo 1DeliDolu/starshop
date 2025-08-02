@@ -5,7 +5,7 @@ namespace App\DataFixtures;
 use App\Factory\StarshipFactory;
 use App\Factory\DroidFactory;
 use App\Entity\Droid;
-
+use App\Entity\StarshipDroid;
 use App\Entity\Starship;
 use App\Model\StarshipStatusEnum;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -39,12 +39,13 @@ class AppFixtures extends Fixture
             'arrivedAt' => new \DateTimeImmutable('-1 month'),
         ]);
         StarshipFactory::createMany(20);
-        \App\Factory\StarshipPartFactory::createMany(100);
 
         // Foundry ile Join Entity: Droid ordusu ve Starship filosu
         DroidFactory::createMany(100);
-        // TODO: StarshipDroid entity ile ilişkilendirme yapılacak
-        StarshipFactory::createMany(100);
+        StarshipFactory::createMany(100, fn() => [
+            'droids' => DroidFactory::randomRange(1, 5),
+        ]);
+        \App\Factory\StarshipPartFactory::createMany(100);
 
         $manager->flush();
     }

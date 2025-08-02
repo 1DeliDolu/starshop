@@ -52,7 +52,7 @@ class Starship
     /**
      * @var Collection<int, StarshipDroid>
      */
-    #[ORM\OneToMany(targetEntity: StarshipDroid::class, mappedBy: 'starship', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: StarshipDroid::class, mappedBy: 'starship', orphanRemoval: true, cascade: ['persist'])]
     private Collection $starshipDroids;
 
     public function __construct()
@@ -203,6 +203,11 @@ class Starship
         return $this->starshipDroids;
     }
 
+    public function getDroids(): Collection
+    {
+        return $this->starshipDroids->map(fn(StarshipDroid $starshipDroid) => $starshipDroid->getDroid());
+    }
+
     public function addStarshipDroid(StarshipDroid $starshipDroid): static
     {
         if (!$this->starshipDroids->contains($starshipDroid)) {
@@ -223,5 +228,38 @@ class Starship
         }
 
         return $this;
+    }
+
+    public function addDroid(Droid $droid, ?\DateTimeImmutable $assignedAt = null): static
+    {
+        if (!$this->getDroids()->contains($droid)) {
+            $starshipDroid = new StarshipDroid();
+            $starshipDroid->setDroid($droid);
+            $starshipDroid->setStarship($this);
+            if ($assignedAt) {
+                $starshipDroid->setAssignedAt($assignedAt);
+            }
+            $this->starshipDroids->add($starshipDroid);
+            $droid->getStarshipDroids()->add($starshipDroid);
+        }
+        return $this;
+    }
+
+    public function removeDroid(Droid $droid): static
+    {
+        $starshipDroidsToRemove = $this->starshipDroids->filter(function (StarshipDroid $starshipDroid) use ($droid) {
+            return $starshipDroid->getDroid() === $droid;
+        });
+
+        foreach ($starshipDroidsToRemove as $starshipDroid) {
+            $this->removeStarshipDroid($starshipDroid);
+        }
+
+        return $this;
+    }
+
+    public function getDroidNames(): string
+    {
+        return implode(', ', $this->getDroids()->map(fn(Droid $droid) => $droid->getName())->toArray());
     }
 }

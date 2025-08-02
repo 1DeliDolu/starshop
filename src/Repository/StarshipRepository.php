@@ -25,22 +25,18 @@ class StarshipRepository extends ServiceEntityRepository
     //     */
     public function findIncompleteOrderedByDroidCount(): Pagerfanta
     {
-        // Basit çözüm: Memory'de sıralama yapalım
-        $query = $this->createQueryBuilder('s')
+        // Basit yaklaşım: tüm starship'leri alıp PHP'de sıralayalım
+        $starships = $this->createQueryBuilder('s')
             ->where('s.status != :status')
             ->setParameter('status', StarshipStatusEnum::COMPLETED)
-            ->getQuery();
+            ->getQuery()
+            ->getResult();
 
-        $starships = $query->getResult();
-
-        // Her starship için droid sayısını hesaplayıp sıralayalım
+        // PHP'de droid sayısına göre sıralama
         usort($starships, function ($a, $b) {
-            $aDroidCount = $a->getStarshipDroids()->count();
-            $bDroidCount = $b->getStarshipDroids()->count();
-            return $aDroidCount <=> $bDroidCount;
+            return count($a->getStarshipDroids()) <=> count($b->getStarshipDroids());
         });
 
-        // ArrayAdapter kullanarak paginator oluşturalım
         return new Pagerfanta(new ArrayAdapter($starships));
     }
 
