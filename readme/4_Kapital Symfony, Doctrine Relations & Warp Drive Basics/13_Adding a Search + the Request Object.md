@@ -4,7 +4,6 @@ Doctrine İlişkilerinden kısa ama faydalı bir şekilde ayrılıyoruz. Doctrin
 
 `index.html.twig` şablonunu açın. Sayfanın en üstüne bir arama girişi ekleyeceğim:
 
-
 ```twig
 // templates/part/index.html.twig
 // ... lines 1 - 4
@@ -29,7 +28,6 @@ Doctrine İlişkilerinden kısa ama faydalı bir şekilde ayrılıyoruz. Doctrin
 Burada özel bir şey yok: sadece bir `<input type="text" placeholder="Search..."`, ardından birkaç sınıf ve SVG ile görsel olarak hoş bir görünüm elde edilmiş.
 
 Bu kutunun gönderebilmesi için, onu bir `form` etiketiyle sarmalayın. `action` olarak yine bu sayfaya göndermesini sağlayın: `{{ path('app_part_index') }}`. Ayrıca `name="query"` ve `method="get"` ekleyin:
-
 
 ```twig
 // ... lines 1 - 4
@@ -61,7 +59,6 @@ Bu kutunun gönderebilmesi için, onu bir `form` etiketiyle sarmalayın. `action
 
 Daha önce servisleri böyle otomatik olarak (autowire) alabildiğinizi hatırlıyorsunuzdur. `Request` nesnesi teknik olarak bir servis değildir ama Symfony bunu yine de otomatik olarak sağlar. Bunu `Symfony\Component\HttpFoundation\Request` içinden alın. İsmini istediğiniz gibi verebilirsiniz, ama tutarlı olmak için `$request` diyelim:
 
-
 ```php
 // src/Controller/PartController.php
 // ... lines 1 - 6
@@ -80,7 +77,6 @@ final class PartController extends AbstractController
 👉 Bu kodda, `index` metoduna `Request` nesnesi parametre olarak eklenmiştir.
 
 `$query = $request->query->get('query')` satırını ekleyin: ilk `query` sorgu parametrelerini, ikinci `query` ise input alanının adını temsil eder. Bunun çalıştığından emin olmak için `dd($query);` kullanın:
-
 
 ```php
 // src/Controller/PartController.php
@@ -105,7 +101,6 @@ Deneyin; "holodeck" gibi bir değerin geldiğini göreceksiniz.
 
 Şimdi `findAllOrderedByPrice()` metodunu arama yapacak şekilde geliştirelim. `dd($query);` satırını kaldırın ve bunu metoda parametre olarak iletin:
 
-
 ```php
 // src/Controller/PartController.php
 // ... lines 1 - 10
@@ -128,7 +123,6 @@ Bunu birkaç satıra bölün ve bir if bloğu ekleyin. Ayrıca return'u `$qb = $
 Şimdi sihir zamanı. Eğer bir arama varsa, Starship parça adının küçük harfe çevrilmiş halinin aramayla eşleşip eşleşmediğini kontrol eden bir `andWhere()` ekleyin. PostgreSQL büyük/küçük harfe duyarlı olduğu için böyle yazıyoruz.
 
 Sonunda, sorgunun sonucunu döndürün:
-
 
 ```php
 // src/Repository/StarshipPartRepository.php
@@ -159,7 +153,6 @@ class StarshipPartRepository extends ServiceEntityRepository
 
 Arama yaptıktan sonra, arama kutusunda yazdığımız değerin kaybolduğunu görebilirsiniz. Bunu düzeltmek için şablona `value="{{ app.request.query.get('query') }}"` ekleyin. Evet, bu `Request` nesnesi şablonlarda `app.request` ile zaten mevcut:
 
-
 ```twig
 // templates/part/index.html.twig
 // ... lines 1 - 4
@@ -188,7 +181,6 @@ Ayrıca parça notlarında (`notes`) da arama yapmak istemez miyiz? Örneğin, "
 
 `OR` mantığına ihtiyacımız var. Repository'ye dönüp, `andWhere()` ifadesine bir `OR` ekleyin:
 
-
 ```php
 // src/Repository/StarshipPartRepository.php
 // ... lines 1 - 13
@@ -214,3 +206,11 @@ class StarshipPartRepository extends ServiceEntityRepository
 Artık arama hem notlarda hem de isimde çalışıyor. Sonuç olarak, `orWhere()` yerine `andWhere()` içinde `OR` kullanarak mantıksal kontrolü elinizde tutabilirsiniz.
 
 Araya bu güzel deturu ekledik, şimdi son ilişki tipimiz olan many to many ilişkisine geçebiliriz.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./12_Joining to Avoid the N+1 Trap.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./14_Droid Entity for the ManyToMany Relationship.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

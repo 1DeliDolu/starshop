@@ -12,7 +12,6 @@ Bu sayfanın denetleyicisini açın: `src/Controller/StarshipController.php`
 
 Parçaları sorgulamak için genellikle `StarshipPartRepository`'yi autowire ederiz. Burada da aynı şekilde başlayın: `StarshipPartRepository $partRepository` argümanını ekleyin:
 
-
 ```php
 // src/Controller/StarshipController.php
 // ... lines 1 - 5
@@ -42,7 +41,6 @@ Ve hayır, burada herhangi bir şekilde `Starship ID` kullanmıyoruz. ID'leri bu
 
 Ne aldığımızı görmek için hata ayıklayalım: `dd($parts)`:
 
-
 ```php
 // src/Controller/StarshipController.php
 // ... lines 1 - 12
@@ -68,7 +66,6 @@ Sayfayı yenileyin ve işte! Bu yıldız gemisiyle ilişkili 10 adet `StarshipPa
 
 `$parts` değişkenini `$ship->getParts()` ile değiştirin:
 
-
 ```php
 // src/Controller/StarshipController.php
 // ... lines 1 - 12
@@ -88,7 +85,6 @@ class StarshipController extends AbstractController
 👉 Bu kod, gemiye ait parçaları doğrudan getirir.
 
 Yenileyin! Artık `StarshipPart` nesnelerinden oluşan bir dizi yerine, boş gibi görünen bir `PersistentCollection` nesnesi görürsünüz. `make:entity` komutunun, `Starship` yapıcısına eklediği `ArrayCollection`'ı hatırlayın mı? `PersistentCollection` ve `ArrayCollection`, aynı koleksiyon ailesindendir. Nesne olsalar da dizi gibi davranırlar. Güzel... ama neden bu koleksiyon boş görünüyor? Çünkü Doctrine akıllıdır: Parçalar sorgulanana kadar onları çekmez. `$ship->getParts()` üzerinden döngü yapıp `$part`'ı dökelim:
-
 
 ```php
 // src/Controller/StarshipController.php
@@ -124,7 +120,6 @@ Bu harika değil mi? Doctrine için parti yapmak istiyorum.
 
 Parçalar değişkenini tamamen kaldırın... ve `StarshipPartRepository`'yi de kaldırın: bu gereğinden fazla işti. Bunun yerine, `parts` değişkenini `$ship->getParts()` olarak ayarlayın:
 
-
 ```php
 // src/Controller/StarshipController.php
 // ... lines 1 - 12
@@ -146,7 +141,6 @@ class StarshipController extends AbstractController
 👉 Bu kod, şablona gemiyi ve parçalarını gönderir.
 
 Artık yepyeni `parts` değişkenimiz olduğuna göre, şablonda bunun üzerinde döngü yapalım. `templates/starship/show.html.twig` dosyasını açın ve sabit kodlanmış bölümü şu döngüyle değiştirin: for part in parts, part.name, part.price, part.notes, endfor:
-
 
 ```twig
 // templates/starship/show\.html.twig
@@ -185,7 +179,6 @@ Artık yepyeni `parts` değişkenimiz olduğuna göre, şablonda bunun üzerinde
 Ve başardık! `parts` değişkeni sayesinde tüm ilişkili parçaları ciddi bir iş yükü olmadan listeledik.
 
 Ama biliyor musunuz? Bu bile fazla iş! `parts` değişkenini tamamen kaldırın:
-
 
 ```php
 // src/Controller/StarshipController.php
@@ -235,7 +228,6 @@ templates/starship/show\.html.twig
 
 Ve... hâlâ çalışıyor! Keyif için, bu geminin parça sayısını da gösterelim: `ship.parts|length`
 
-
 ```twig
 // templates/starship/show\.html.twig
 // ... lines 1 - 4
@@ -263,3 +255,11 @@ Ve... hâlâ çalışıyor! Keyif için, bu geminin parça sayısını da göste
 İki sorgumuz hâlâ var, ancak Doctrine yine akıllı: Tüm `StarshipPart`'ları sorguladığımızı bildiği için, sayıyı hesaplarken ekstra bir sorguya gerek duymaz.
 
 Sıradaki: Doctrine ilişkilerinde sıkça yanlış anlaşılan bir konu olan "sahip olan (owning)" ve "ters (inverse)" tarafı konuşacağız.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./5_ Setting Relations in Foundry.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./7_The Two Sides of a Relation Owning vs Inverse.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

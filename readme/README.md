@@ -1,129 +1,101 @@
-# STARSHOP
+<div align="center" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100px;">
 
-## Kapital 1
+# 🌟 STARSHOP
 
-### [Symfony Uygulamamızı Kurmak](./1_Kapital/1_%20Setting%20up%20our%20Symfony%20App.md)
+</div>
 
-### [Küçük Projemizi Tanımak](./1_Kapital/2_%20Getting%20to%20Know%20our%20Tiny%20Project.md)
+# Kapital 1
 
-### [Rotalar, Controllerlar & Yanıtlar](./1_Kapital/3_Routes%20Controllers%20&%20Responses.md)
+### 1. [Setting up our Symfony App](./1_Kapital%20Cosmic%20Coding%20with%20Symfony%207/1_%20Setting%20up%20our%20Symfony%20App.md)
 
-### [Routing (Yönlendirme)](./1_Kapital/3.1_Routing.md)
+### 2. [Getting to Know our Tiny Project](./1_Kapital%20Cosmic%20Coding%20with%20Symfony%207/2_Getting%20to%20Know%20our%20Tiny%20Project.md)
 
-### [Twig & Templates](./1_Kapital/5_Twig%20&%20Templates.md)
+### 3. [Routes, Controllers & Responses](./1_Kapital%20Cosmic%20Coding%20with%20Symfony%207/3_Routes%20Controllers%20&%20Responses.md)
 
-### [Kendi Servisini Oluşturmak](./1_Kapital/10_Creating%20your%20own%20Service.md)
+### 4. [Routing](./1_Kapital%20Cosmic%20Coding%20with%20Symfony%207/3.1_Routing.md)
 
-### [Daha Gelişmiş Route Gereksinimleri, Wildcardlar ve Daha Fazlası](./1_Kapital/11_Fancier%20Routes%20Requirements%2C%20Wildcards%2C%20and%20More.md)
+### 5. [Twig & Templates](./1_Kapital%20Cosmic%20Coding%20with%20Symfony%207/5_Twig%20&%20Templates.md)
 
-### [URL'ler Oluşturmak](./1_Kapital/12_Generating%20URLs.md)
+### 6. [Creating your own Service](./1_Kapital%20Cosmic%20Coding%20with%20Symfony%207/10_Creating%20your%20own%20Service.md)
 
-### [CSS & JavaScript ile Asset Mapper](./1_Kapital/13.CSS%20&%20JavaScript%20with%20Asset%20Mapper.md)
+### 7. [Fancier Routes Requirements, Wildcards, and More](./1_Kapital%20Cosmic%20Coding%20with%20Symfony%207/11_Fancier%20Routes%20Requirements%2C%20Wildcards%2C%20and%20More.md)
 
-### [Tailwind CSS](./1_Kapital/14.Tailwind%20CSS.md)
+### 8. [Generating URLs](./1_Kapital%20Cosmic%20Coding%20with%20Symfony%207/12_Generating%20URLs.md)
 
-### [Twig Partials & for Loops](./1_Kapital/15_Twig%20Partials%20&%20for%20Loops.md)
+### 9. [CSS & JavaScript with Asset Mapper](./1_Kapital%20Cosmic%20Coding%20with%20Symfony%207/13.CSS%20&%20JavaScript%20with%20Asset%20Mapper.md)
 
-### [PHP Enums](./1_Kapital/16_%20PHP%20Enums.md)
+### 10. [Tailwind CSS](./1_Kapital%20Cosmic%20Coding%20with%20Symfony%207/14.Tailwind%20CSS.md)
 
-### [Akıllı Model Metodları & Dinamik Tasarım](./1_Kapital/17_Smart%20Model%20Methods%20&%20Making%20the%20Design%20Dynamic.md)
+### 11. [Twig Partials & for Loops](./1_Kapital%20Cosmic%20Coding%20with%20Symfony%207/15_Twig%20Partials%20&%20for%20Loops.md)
 
-### [Stimulus ile Pro JavaScript](./1_Kapital/18.%20Stimulus%20Writing%20Pro%20JavaScript.md)
+### 12. [PHP Enums](./1_Kapital%20Cosmic%20Coding%20with%20Symfony%207/16_PHP%20Enums.md)
 
-### [Single Page App](./1_Kapital/19_Your%20Single%20Page%20App.md)
+### 13. [Smart Model Methods & Making the Design Dynamic](./1_Kapital%20Cosmic%20Coding%20with%20Symfony%207/17_Smart%20Model%20Methods%20&%20Making%20the%20Design%20Dynamic.md)
 
-### [Maker Bundle ile Kod Üretmek](./1_Kapital/20_Maker%20Bundle%20Let%27s%20Generate%20Some%20Code.md)
+### 14. [Stimulus: Writing Pro JavaScript](./1_Kapital%20Cosmic%20Coding%20with%20Symfony%207/18.Stimulus%20Writing%20Pro%20JavaScript.md)
+
+### 15. [Your Single Page App](./1_Kapital%20Cosmic%20Coding%20with%20Symfony%207/19_Your%20Single%20Page%20App.md)
+
+### 16. [Maker Bundle: Let's Generate Some Code](./1_Kapital%20Cosmic%20Coding%20with%20Symfony%207/20_Maker%20Bundle%20Let%27s%20Generate%20Some%20Code.md)
 
 ## Kapital 2
 
-### [Kurulum, Servisler & Servis Konteyneri](./2_Kapital/1_Setup%2C%20Services%20&%20the%20Service%20Container.md)
+### 1. [Setup, Services & the Service Container](./2_Kapital%20Symfony%207%20Fundamentals%20Services%2C%20Config%20%26%20Environments/1_Setup%2C%20Services%20%26%20the%20Service%20Container.md)
 
-### [KnpTimeBundle Kurulumu ve Kullanımı](./2_Kapital/2_KnpTimeBundle%20Install%20the%20Bundle%2C%20Get%20its%20Service.md)
+### 2. [KnpTimeBundle: Install the Bundle, Get its Service](./2_Kapital%20Symfony%207%20Fundamentals%20Services%2C%20Config%20%26%20Environments/2_KnpTimeBundle%20Install%20the%20Bundle%2C%20Get%20its%20Service.md)
 
-### [HTTP Client Servisi](./2_Kapital/3_The%20HTTP%20Client%20Service.md)
+### 3. [The HTTP Client Service](./2_Kapital%20Symfony%207%20Fundamentals%20Services%2C%20Config%20%26%20Environments/3_The%20HTTP%20Client%20Service.md)
 
-### [Mailer ile E-posta Göndermek](./2_Kapital/4_Mailer%20Sending%20Emails.md)
+### 4. [Mailer: Sending Emails](./2_Kapital%20Symfony%207%20Fundamentals%20Services%2C%20Config%20%26%20Environments/4_Mailer%20Sending%20Emails.md)
 
-### [Notifier ile Bildirimler](./2_Kapital/5_Notifier%20Sending%20Notifications.md)
+### 5. [Notifier: Sending Notifications](./2_Kapital%20Symfony%207%20Fundamentals%20Services%2C%20Config%20%26%20Environments/5_Notifier%20Sending%20Notifications.md)
 
-### [Logger ile Kayıt Tutmak](./2_Kapital/6_Logger%20Logging.md)
+### 6. [Logger: Logging](./2_Kapital%20Symfony%207%20Fundamentals%20Services%2C%20Config%20%26%20Environments/6_Logger%20Logging.md)
 
-### [Cache ile Verileri Saklamak](./2_Kapital/7_Cache%20Storing%20Data.md)
+### 7. [Cache: Storing Data](./2_Kapital%20Symfony%207%20Fundamentals%20Services%2C%20Config%20%26%20Environments/7_Cache%20Storing%20Data.md)
 
-### [Profiler ile Hata Ayıklama](./2_Kapital/8_Profiler%20Debugging.md)
+### 8. [Profiler: Debugging](./2_Kapital%20Symfony%207%20Fundamentals%20Services%2C%20Config%20%26%20Environments/8_Profiler%20Debugging.md)
 
-### [Testler ile Kodunuzu Güvenceye Almak](./2_Kapital/9_Tests%20Testing%20your%20Code.md)
+### 9. [Tests: Testing your Code](./2_Kapital%20Symfony%207%20Fundamentals%20Services%2C%20Config%20%26%20Environments/9_Tests%20Testing%20your%20Code.md)
 
-### [Parametreler](./2_Kapital/10_Parameters.md)
+### 10. [Parameters](./2_Kapital%20Symfony%207%20Fundamentals%20Services%2C%20Config%20%26%20Environments/10_Parameters.md)
 
-### [Otomatik Bağımlılık Çözümlenemeyen Argümanlar](./2_Kapital/11_Non-Autowireable%20Arguments.md)
+### 11. [Non-Autowireable Arguments](./2_Kapital%20Symfony%207%20Fundamentals%20Services%2C%20Config%20%26%20Environments/11_Non-Autowireable%20Arguments.md)
 
-### [Otomatik Bağımlılık Çözümlenemeyen Servisler](./2_Kapital/12_Non-Autowireable%20Services.md)
+### 12. [Non-Autowireable Services](./2_Kapital%20Symfony%207%20Fundamentals%20Services%2C%20Config%20%26%20Environments/12_Non-Autowireable%20Services.md)
 
-### [Ortam Değişkenleri](./2_Kapital/13_Environment%20Variables.md)
+### 13. [Environment Variables](./2_Kapital%20Symfony%207%20Fundamentals%20Services%2C%20Config%20%26%20Environments/13_Environment%20Variables.md)
 
-### [Otomatik Yapılandırma](./2_Kapital/14_Autoconfiguration.md)
+### 14. [Autoconfiguration](./2_Kapital%20Symfony%207%20Fundamentals%20Services%2C%20Config%20%26%20Environments/14_Autoconfiguration.md)
 
 ## Kapital 3
 
-### [Doctrine Kurulumu](./3_Kapital/1_Installing%20Doctrine.md)
+### 1. [Installing Doctrine](./3_Kapital%20Doctrine%2C%20Symfony%207%20%26%20the%20Database/1_Installing%20Doctrine.md)
 
-### [Entity Oluşturmak](./3_Kapital/2_Database%20Setup%20&%20Docker.md)
+### 2. [Database Setup & Docker](./3_Kapital%20Doctrine%2C%20Symfony%207%20%26%20the%20Database/2_Database%20Setup%20%26%20Docker.md)
 
-### [DNS](./3_Kapital/2_1_DSN.md)
+### 3. [Starship Entity](./3_Kapital%20Doctrine%2C%20Symfony%207%20%26%20the%20Database/3_Starship%20Entity.md)
 
-### [Entity'yi Kaydetmek](./3_Kapital/3_Starship%20Entity.md)
+### 4. [Migrations](./3_Kapital%20Doctrine%2C%20Symfony%207%20%26%20the%20Database/4_Migrations.md)
 
-### [Entity'leri Listelemek](./3_Kapital/4_Migrations.md)
+### 5. [Inserting Data via Fixtures](./3_Kapital%20Doctrine%2C%20Symfony%207%20%26%20the%20Database/5_Inserting%20Data%20via%20Fixtures.md)
 
-### [mysql](./3_Kapital/4_1_mysql.md)
+### 6. [Fetching with DQL, the QueryBuilder & find()](<./3_Kapital%20Doctrine%2C%20Symfony%207%20%26%20the%20Database/6_Fetching%20with%20DQL,%20the%20QueryBuilder%20&%20find().md>)
 
-### [Entity'yi Göstermek](./3_Kapital/5_Inserting%20Data%20via%20Fixtures.md)
+### 7. [Cosmic Queries: the Repository Class](./3_Kapital%20Doctrine%2C%20Symfony%207%20%26%20the%20Database/7_Cosmic%20Queries%20the%20Repository%20Class.md)
 
-### [Entity'yi Göstermek](./3_Kapital/5_1_Inserting%20Data%20via%20Fixtures.md)
+### 8. [Alien Tech for Fixtures: Foundry & Faker](./3_Kapital%20Doctrine%2C%20Symfony%207%20%26%20the%20Database/8_Alien%20Tech%20for%20Fixtures%20Foundry%20&%20Faker.md)
 
-### [Entity'yi Düzenlemek](./3_Kapital/6_Fetching%20with%20DQL,%20the%20QueryBuilder%20&%20find().md
+### 9. [Pagination](./3_Kapital%20Doctrine%2C%20Symfony%207%20%26%20the%20Database/9_Pagination.md)
 
-### [Entity'yi Silmek](./3_Kapital/7_Cosmic%20Queries%20the%20Repository%20Class.md)
+### 10. [Starship Upgrade: Adding Slug and Timestamp Fields](./3_Kapital%20Doctrine%2C%20Symfony%207%20%26%20the%20Database/10_%20Starship%20Upgrade%20Adding%20Slug%20and%20Timestamp%20Fields.md)
 
-### [Formlar ile Çalışmak](./3_Kapital/8_Alien%20Tech%20for%20Fixtures%20Foundry%20&%20Faker.md)
+### 11. [Auto Slug and Timestamps with Doctrine Extensions](./3_Kapital%20Doctrine%2C%20Symfony%207%20%26%20the%20Database/11_Auto%20Slug%20and%20Timestamps%20with%20Doctrine%20Extensions.md)
 
-### [Sayfalama](./3_Kapital/9_Pagination.md)
+### 12. [High-Tech Controllers: Auto-inject Entities](./3_Kapital%20Doctrine%2C%20Symfony%207%20%26%20the%20Database/12_High-Tech%20Controllers%20Auto-inject%20Entities.md)
 
-### [Starship'e Slug ve Timestamp Alanları Eklemek](./3_Kapital/10_%20Starship%20Upgrade%20Adding%20Slug%20and%20Timestamp%20Fields.md)
+### 13. [Black Hole: Deleting Entities](./3_Kapital%20Doctrine%2C%20Symfony%207%20%26%20the%20Database/13_Black%20Hole%20Deleting%20Entities.md)
 
-### [Doctrine Extensions ile Otomatik Slug ve Timestamp](./3_Kapital/11_Auto%20Slug%20and%20Timestamps%20with%20Doctrine%20Extensions.md)
+### 14. [Ship Upgrades: Updating an Entity](./3_Kapital%20Doctrine%2C%20Symfony%207%20%26%20the%20Database/14_Ship%20Upgrades%20Updating%20an%20Entity.md)
 
-### [Controller'da Entity Otomatik Enjekte Etmek](./3_Kapital/12_High-Tech%20Controllers%20Auto-inject%20Entities.md)
-
-### [Entity Silme: Black Hole](./3_Kapital/13_Black%20Hole%20Deleting%20Entities.md)
-
-### [Ship Upgrades Updating an Entity](./3_Kapital/14_Ship%20Upgrades%20Updating%20an%20Entity.md)
-
-### [Quantum Refactor Rich Entities](./3_Kapital/15_Quantum%20Refactor%20Rich%20Entities.md)
-
-## Kapital 4
-
-### [Kurulum](./4_Kapital/1_Setup.md)
-
-### [Parça Entity'si](./4_Kapital/2_%20Part%20Entity.md)
-
-### [Many To One: İlişkilerin Kralı](./4_Kapital/3_Many%20To%20One%20The%20King%20of%20Relationships.md)
-
-### [İlişkiyi Kurmak](./4_Kapital/4_Setting%20the%20Relation.md)
-
-### [Foundry'de İlişkileri Ayarlamak](./4_Kapital/5_1_Setting%20Relations%20in%20Foundry.md)
-
-### [İlişkinin Verilerini Getirmek](./4_Kapital/6_Fetching%20a%20Relation's%20Data.md)
-
-### [İlişkinin İki Yüzü: Owning vs Inverse](./4_Kapital/7_1_The%20Two%20Sides%20of%20a%20Relation%20Owning%20vs%20Inverse.md)
-
-### [Orphan Removal](./4_Kapital/8_1_Orphan%20Removal.md)
-
-### [İlişkiyi Sıralama ve Fetch Tipleri](./4_Kapital/9_1_Ordering%20a%20Relation%20and%20fetch%20type.md)
-
-### [Akıllı Kriter Sistemi](./4_Kapital/10_1_%20The%20Clever%20Criteria%20System.md)
-
-### [Parçaları Listeleme](./4_Kapital/11_1_Listing%20Parts.md)
-
-### [N+1 Tuzağından Kaçınmak için JOIN Kullanmak](./4_Kapital/12_1_Joining%20to%20Avoid%20the%20N+1%20Trap.md)
+### 15. [Quantum Refactor: Rich Entities](./3_Kapital%20Doctrine%2C%20Symfony%207%20%26%20the%20Database/15_Quantum%20Refactor%20Rich%20Entities.md)

@@ -55,3 +55,8 @@ Değiştirilen dosyalar, standart Flex tarifi dosyalarıdır. `.env` dosyası Do
 Tarifler ayrıca boş bir `migrations/` klasörü, boş bir `src/Entity/` klasörü ve boş bir `src/Repository/` klasörü ekledi. Bunların hepsine tek tek değineceğiz.
 
 Tamam! Artık Doctrine kurulu, yani veritabanlarıyla konuşabiliriz... ama aslında henüz bir veritabanı sunucumuz çalışmıyor. Şimdi bir tane başlatalım!
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./2_Database Setup & Docker.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

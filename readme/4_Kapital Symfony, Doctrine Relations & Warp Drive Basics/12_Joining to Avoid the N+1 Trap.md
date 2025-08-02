@@ -128,3 +128,11 @@ Tüm verileri istiyorum.
 Artık 9 sorgudan 1 sorguya düştük. Gerçekten sihirli bir çözüm. Gördüğünüz gibi, `StarshipPart` tablosundan seçiyoruz, hem `Starship` hem de `StarshipPart` verilerini alıyoruz ve ortada güzel bir `innerJoin()` var. En güzel yanı ise, hangi kolonların birleştirileceğiyle uğraşmak zorunda olmamamız. Sadece ilişki property’sini belirtiyoruz, gerisini Doctrine hallediyor.
 
 Sırada sayfamıza arama eklemek var. O zaman `JOIN` kullanımının ikinci sebebini göreceğiz ve son olarak `Request` objesiyle de oynayacağız.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./11_Listing Parts.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./13_Adding a Search + the Request Object.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

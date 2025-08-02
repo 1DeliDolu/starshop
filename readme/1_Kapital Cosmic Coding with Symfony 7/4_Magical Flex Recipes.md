@@ -1,6 +1,10 @@
-# 4_Sihirli Flex Tarifleri
+# ✨ Magical Flex Recipes
 
-Bir sırrım var. Projemiz oluşturulduğunda aslında 15 dosya değildi... bir dosyaydı. Eğer symfony new komutunun koduna bakarsan, bunun iki şey için bir kısayol olduğunu görürsün. Önce symfony/skeleton adlı bir repoyu klonlar... ki lisansı saymazsan sadece bir dosyadır. Sonra composer install çalıştırır.
+Bir sırrım var. Projemiz oluşturulduğunda aslında 15 dosya değildi... bir dosyaydı. Eğer symfony new komutunun koduna bakarsan, bunun iki şey için bir kısayol olduğunu görürsün. Önce symfony/skeleton adlı bir repoyu Sırada, PHP'deki en sevdiğim kütüphanelerden biriyle tanışıp kuracağız: Twig şablon motoru.
+
+---
+
+ki lisansı saymazsan sadece bir dosyadır. Sonra composer install çalıştırır.
 
 Hepsi bu! Ama dur, öyleyse bu diğer dosyalar nereden geldi? Mesela bin/, config/ ve src/ içindeki şeyler? Cevap composer.json dosyamızdaki özel bir paketle başlıyor: symfony/flex. Flex, Composer’a iki süper güç ekleyen bir Composer eklentisidir: takma adlar (alias) ve tarifler (recipe).
 

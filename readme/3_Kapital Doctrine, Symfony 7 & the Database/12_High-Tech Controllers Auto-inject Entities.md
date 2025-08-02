@@ -161,3 +161,10 @@ Slug yerine rastgele bir metin girin... ve 404! Harika!
 Artık gemi URL’lerimiz daha şık, insan okunabilir ve SEO dostu!
 
 Uzayda uçmak tehlikeli iştir. Bazen yıldız gemileri "hızlı, planlanmamış ayrışmalara" uğrar... yani patlarlar. Artık var olmayan gemileri veritabanından silmenin bir yoluna ihtiyacımız var. Sonraki bölümde Doctrine ile varlıkları nasıl sileceğimizi göreceğiz.
+
+---
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./11_Auto Slug and Timestamps with Doctrine Extensions.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./13_Black Hole Deleting Entities.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

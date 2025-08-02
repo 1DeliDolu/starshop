@@ -35,6 +35,7 @@ class StarshipRepository extends ServiceEntityRepository
 // ... lines 36 - 65
 }
 ```
+
 👉 Bu metot artık `Pagerfanta` nesnesi döndürüyor.
 
 Sorguyu sayfalarken dikkat edilmesi gereken çok önemli bir şey var: öngörülebilir bir sıralama yapmanız gerekir. `->orderBy('s.arrivedAt', 'DESC')` satırını ekleyin:
@@ -78,6 +79,7 @@ class StarshipRepository extends ServiceEntityRepository
 // ... lines 36 - 65
 }
 ```
+
 👉 `QueryBuilder` ile oluşturulan sorgu artık `Pagerfanta` adaptörü ile döndürülür.
 
 ## ⚙️ Configure the Page / Sayfayı Yapılandırma
@@ -116,6 +118,7 @@ class StarshipRepository extends ServiceEntityRepository
     }
 }
 ```
+
 👉 Bu, ikinci sayfayı görüntüler.
 
 Hâlâ 5 gemi ama farklıları: bu ikinci sayfa. Sorguya bakalım. Birden fazla sorgu çalışıyor! Biri toplam sonuç sayısını sayıyor, diğeri ise sadece bu sayfaya ait verileri getiriyor. Gerçekten harika.
@@ -172,6 +175,7 @@ Bu bilgileri `<h1>` etiketinin altına yerleştirin. Alt kenar boşluğunu deği
     </main>
 {% endblock %}
 ```
+
 👉 Bu blok, toplam gemi sayısını, geçerli sayfa numarasını ve toplam sayfa sayısını gösterir.
 
 ## 🔗 Pagination Links / Sayfalama Bağlantıları
@@ -212,3 +216,9 @@ Bu bilgileri `<h1>` etiketinin altına yerleştirin. Alt kenar boşluğunu deği
 Bağlantıları elle oluşturduk, bu da bize sınırsız özelleştirme gücü sağlıyor. Ancak `Pagerfanta`, bu bağlantıları bizim yerimize oluşturabilir. Nasıl yapılacağını görmek için `Pagerfanta` belgelerine göz atabilirsiniz. Dezavantajı, HTML'yi özelleştirmenin biraz daha zor olmasıdır.
 
 Sırada ne var? `Starship` varlığına daha fazla alan ekleyelim. En güzel kısmı mı? Bu sütunu veritabanına eklemenin ne kadar kolay olduğunu görmek. Haydi yapalım!
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./8_Alien Tech for Fixtures Foundry & Faker.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./10_ Starship Upgrade Adding Slug and Timestamp Fields.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

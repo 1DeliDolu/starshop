@@ -18,7 +18,6 @@ Peki bu neden önemli? İki sebebi var. Birincisi, `JoinColumn` yalnızca sahip 
 
 src/DataFixtures/AppFixtures.php dosyasını açın ve biraz oynayalım: `$starship = StarshipFactory::createOne();` satırının altına, iki adet `StarshipPart` nesnesi oluşturup bunları kaydedelim:
 
-
 ```php
 // src/DataFixtures/AppFixtures.php
 // ... lines 1 - 11
@@ -59,7 +58,6 @@ Beklenildiği gibi.
 
 Owning vs Inverse farkını göstermek için, `$starship`'ın sonuna `_real()` ekleyin:
 
-
 ```php
 // src/DataFixtures/AppFixtures.php
 // ... lines 1 - 11
@@ -79,7 +77,6 @@ Foundry ile bir entity oluşturduğunuzda, aslında onu proxy nesnesi olarak sar
 
 Şimdi bu parçaları bu yıldıza bağlama zamanı. Normalde şöyle deriz: `$part1->setStarship($starship);` — bu sahip olan tarafı ayarlamak olur. Ama bu sefer ters tarafı ayarlayalım:
 `$starship->addPart($part1);` ve `$starship->addPart($part2);`:
-
 
 ```php
 // src/DataFixtures/AppFixtures.php
@@ -121,7 +118,6 @@ Yani burada ne oldu? Yalnızca ilişkinin ters tarafını ayarladık ve yine de 
 
 `Starship` entity'sini açın ve `addPart()` metodunu bulun:
 
-
 ```php
 // src/Entity/Starship.php
 // ... lines 1 - 13
@@ -159,3 +155,11 @@ symfony console doctrine:fixtures:load
 👉 Kod temizlendikten sonra fixture'lar tekrar yüklenir.
 
 Sırada: `orphanRemoval`. İsmi kadar korkutucu değildir.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./6_Fetching a Relation's Data.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./8_Orphan Removal.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

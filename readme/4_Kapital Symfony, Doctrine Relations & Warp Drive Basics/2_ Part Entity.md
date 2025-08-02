@@ -161,3 +161,9 @@ symfony console doctrine:query:sql "select * from starship_part";
 👉 Bu SQL komutu, `starship_part` tablosundaki tüm verileri listeler.
 
 Ve sadece birkaç satır kodla, veritabanında 50 rastgele parçamız oldu. Sıradaki adım: bu parçaları ait oldukları gemilere bağlayarak ilk ilişkimizi oluşturmak – yani `ManyToOne` ilişkisi.
+---
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./1_Setup.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./3_Many To One The King of Relationships.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

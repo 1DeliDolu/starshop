@@ -19,8 +19,8 @@ Sihirbaz, ilişkinin ters tarafını da haritalamak isteyip istemediğimizi sora
 Her iki tarafı da (hem `Starship` hem de `Droid`) güncellediğine dikkat edin. Değişiklikleri inceleyin.
 
 ## The 'ManyToMany' Magic / ManyToMany Sihri
-`Starship` içerisinde artık yeni bir `droids` özelliğimiz var, bu bir `ManyToMany` ilişki. Ayrıca, `droids` özelliği `ArrayCollection` ile başlatıldı ve `getDroids()`, `addDroid()`, `removeDroid()` metodları eklendi:
 
+`Starship` içerisinde artık yeni bir `droids` özelliğimiz var, bu bir `ManyToMany` ilişki. Ayrıca, `droids` özelliği `ArrayCollection` ile başlatıldı ve `getDroids()`, `addDroid()`, `removeDroid()` metodları eklendi:
 
 ```php
 // src/Entity/Starship.php
@@ -66,7 +66,6 @@ class Starship
 Eğer bunun bir `OneToMany` ilişkisine çok benzediğini düşünüyorsanız, doğru! Çünkü aslında öyle görünüyor.
 
 `Droid` tarafında da benzer bir durum var. `starships` adında bir özelliğimiz var, bu bir `ManyToMany` ve constructor'da başlatılmış. Sonra aynı şekilde `getStarships()`, `addStarship()`, ve `removeStarship()` metotları var:
-
 
 ```php
 // src/Entity/Droid.php
@@ -120,8 +119,8 @@ symfony console make:migration
 👉 Bu komut, ManyToMany ilişkisi için migration dosyası oluşturur.
 
 ## Unveiling the Join Table / Join Tablosunu Ortaya Çıkarmak
-Harika! Oluşan migration dosyasına göz atın: gerçekten ilginç. Artık `starship_droid` adında yeni bir tablo var! Bu tabloda bir `starship_id` yabancı anahtarı ile bir `droid_id` yabancı anahtarı bulunuyor:
 
+Harika! Oluşan migration dosyasına göz atın: gerçekten ilginç. Artık `starship_droid` adında yeni bir tablo var! Bu tabloda bir `starship_id` yabancı anahtarı ile bir `droid_id` yabancı anahtarı bulunuyor:
 
 ```php
 // migrations/Version20250311014256.php
@@ -155,3 +154,11 @@ symfony console doctrine:migrations:migrate
 👉 Bu komut, join tablosunu ve ilişkileri veritabanında aktif hale getirir.
 
 Harika! Artık yepyeni bir join tablosuna sahibiz. Peki… `Droid` nesnelerini `Starship` nesneleriyle nasıl ilişkilendireceğiz? Sıradaki adımda bu anlatılacak... Ve buna bayılacaksınız!
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./14_Droid Entity for the ManyToMany Relationship.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./16_Setting Many To Many Relations.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

@@ -71,3 +71,11 @@ A new entity was found through the relationship Starship#starshipDroids that was
 Bu, aslında şu anlama gelir: Yeni bir `StarshipDroid` nesnesi oluşturduk ve Doctrine’e ilişkili `Starship`’i kaydetmesini söyledik. Ama Doctrine’e, `StarshipDroid` nesnesinin kendisini de kaydetmesini söylemedik.
 
 Sorun şu ki: Entity manager’a erişimimiz yok. Yani doğrudan `$entityManager->persist($starshipDroid)` diyemeyiz. Bunun yerine, `cascade=['persist']` denilen bir özelliğe güveneceğiz. Şimdi buna geçiyoruz.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./22_Hiding the Join Entity.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./24_Cascade Persist.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

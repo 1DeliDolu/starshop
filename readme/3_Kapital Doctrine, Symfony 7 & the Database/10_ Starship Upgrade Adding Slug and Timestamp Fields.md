@@ -30,6 +30,7 @@ class Starship
 // ... lines 39 - 153
 }
 ```
+
 👉 `slug`, `createdAt` ve `updatedAt` alanları başarıyla eklendi. `slug` için `length: 255` silinebilir, çünkü bu zaten varsayılandır.
 
 ## 📦 First Migration / İlk Göç (Migration)
@@ -111,6 +112,7 @@ class Starship
 // ... lines 39 - 153
 }
 ```
+
 👉 Alanlar artık zorunlu (`NOT NULL`) ve `slug` benzersiz (`UNIQUE`) olacak şekilde ayarlandı.
 
 ## 📦 Second Migration / İkinci Göç
@@ -123,7 +125,7 @@ symfony console make:migration
 
 Yeni migration dosyasını açın. `up()` metodunda sütunları `NOT NULL` olarak değiştiren ve `slug` için `UNIQUE INDEX` oluşturan SQL var:
 
-```php 
+```php
 
 //bmigrations/Version20241201203519.php
 
@@ -182,6 +184,7 @@ final class Version20241201203519 extends AbstractMigration
     }
 }
 ```
+
 👉 Bu SQL, `slug` alanına `id`, `created_at` ve `updated_at` alanlarına da `arrived_at` zamanını kopyalar.
 
 Şimdi tekrar migration’ı çalıştırın:
@@ -210,3 +213,8 @@ symfony console doctrine:fixtures:load
 
 `StarshipFactory` dosyasını güncelleyerek bu alanlara varsayılan değerler atayabiliriz… ama bir sonraki adımda çok daha iyi bir yöntem göstereceğiz: bu alanları otomatik olarak ayarlayan bir "doctrine extension" paketi. En iyisi bu… sırada o var!
 
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./9_Pagination.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./11_Auto Slug and Timestamps with Doctrine Extensions.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

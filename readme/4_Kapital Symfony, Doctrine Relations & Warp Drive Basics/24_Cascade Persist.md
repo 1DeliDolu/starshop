@@ -151,3 +151,10 @@ Döngüyü değiştir; `for starshipDroid in ship.starshipDroids` şeklinde yap.
 Sayfayı yenile ve... artık her bir droid’in ne zaman atandığını görebiliyoruz.
 
 Hepsi bu kadar! Doctrine ilişkilerinin en derin köşelerini, hatta ek alanları olan çoktan-çoğa ilişkileri bile keşfettik. Her zaman olduğu gibi, sorularınız varsa yorumlara yazabilirsiniz. Hep birlikteyiz!
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./23_Re-adding addDroid() Hide that Join Entity.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+</div>

@@ -12,7 +12,6 @@ Korkmayın! Birkaç pratik yol var!
 
 `Starship` entity'sine gidin ve `parts` özelliğini bulun. Üstüne yeni bir öznitelik ekleyin: `#[ORM\OrderBy(['name' => 'ASC'])]` — `position` değil, dikkat:
 
-
 ```php
 // src/Entity/Starship.php
 // ... lines 1 - 13
@@ -38,7 +37,6 @@ Bu sayfadaki sorguları inceleyin ve biçimlendirilmiş SQL'e bakın. Sorgu şu 
 ## 🏎️ The N+1 Problem / N+1 Problemi
 
 Anasayfaya dönün ve şablonunu açın: `templates/main/homepage.html.twig`. "arrived" satırından sonra bir div ekleyin ve parça sayısını yazdırın: `ship.parts|length`:
-
 
 ```twig
 // templates/main/homepage.html.twig
@@ -85,7 +83,6 @@ Ama burada daha büyük bir sorun var! Sadece parça sayısını öğrenmek içi
 
 Bunu düzeltmek için, `Starship` entity'sinde OneToMany ilişkisine `fetch` seçeneğini `EXTRA_LAZY` olarak ayarlayın:
 
-
 ```php
 // src/Entity/Starship.php
 // ... lines 1 - 13
@@ -99,7 +96,7 @@ class Starship
 }
 ```
 
-👉 Bu kod, ilişkiyi "EXTRA\_LAZY" olarak ayarlar.
+👉 Bu kod, ilişkiyi "EXTRA_LAZY" olarak ayarlar.
 
 Sonucu görmek için tekrar bakın!
 
@@ -112,3 +109,11 @@ Belki merak ediyorsunuz – ben ettim – neden her zaman `fetch="EXTRA_LAZY"` k
 ## 🧩 The Criteria System / Criteria Sistemi
 
 Sıradaki soruya geçiyoruz! Ya sadece belirli bir fiyattan pahalı olan ilgili parçaları getirmek istersek? Yine `ship.parts` kısayolunu kullanabilir miyiz yoksa özel bir sorgu mu yazmamız gerekir? Takipte kalın, sırada criteria sistemi var.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./8_Orphan Removal.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./10_The Clever Criteria System.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

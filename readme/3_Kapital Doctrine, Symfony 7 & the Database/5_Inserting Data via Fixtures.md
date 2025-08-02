@@ -42,14 +42,14 @@ class AppFixtures extends Fixture
 
 Önceki bölümde `src/Model/` dizininde `StarshipRepository` servisini oluşturmuştuk. Orayı açın. `findAll()` metodumuz bu `Starship` nesnelerini anlık olarak oluşturuyor. Bu verileri fixture olarak kullanacağız!
 
-İlk `Starship` için ikinci argümanı (isim) kopyalayın. `AppFixtures` içinde şu çağrıyı yapın: 
-    `$ship1->setName('USS LeafyCruiser (NCC-0001)')`. 
-Aynısını 
-    `class`: `$ship1->setClass('Garden')`, 
-    `captain`: `$ship1->setCaptain('John Luke Pickles')`, 
-    `status`: `$ship1->setStatus(StarshipStatusEnum::IN_PROGRESS)` 
-için yapın ve `enum`'u import etmeyi unutmayın. Son olarak 
-    `arrivedAt`: `$ship1->setArrivedAt(new \DateTimeImmutable('-1 day'))`.
+İlk `Starship` için ikinci argümanı (isim) kopyalayın. `AppFixtures` içinde şu çağrıyı yapın:
+`$ship1->setName('USS LeafyCruiser (NCC-0001)')`.
+Aynısını
+`class`: `$ship1->setClass('Garden')`,
+`captain`: `$ship1->setCaptain('John Luke Pickles')`,
+`status`: `$ship1->setStatus(StarshipStatusEnum::IN_PROGRESS)`
+için yapın ve `enum`'u import etmeyi unutmayın. Son olarak
+`arrivedAt`: `$ship1->setArrivedAt(new \DateTimeImmutable('-1 day'))`.
 
 ```php
 // src/DataFixtures/AppFixtures.php
@@ -70,12 +70,11 @@ class AppFixtures extends Fixture
 }
 ```
 
-
 👉 Bu kod bloğunda `Starship` nesnesi özellikleriyle dolduruluyor.
 
 Diğer iki gemi için tutorial/ dizininden kodları kopyalayın ve yapıştırın.
 
-```php 
+```php
 // src/DataFixtures/AppFixtures.php
 
 // ... lines 1 - 9
@@ -100,7 +99,6 @@ class AppFixtures extends Fixture
     }
 }
 ```
-
 
 👉 Bu kod bloğunda iki yeni `Starship` nesnesi oluşturuluyor.
 
@@ -127,14 +125,13 @@ class AppFixtures extends Fixture
 }
 ```
 
-
 👉 Bu kod bloğunda üç `Starship` nesnesi `persist()` edilerek kaydedilmek üzere kuyruklanıyor.
 
 ## 🚀 Flush / Kaydet (Flush)
 
 Bu gemileri veritabanına gerçekten eklemek için şu satırı yazın: `$manager->flush()`.
 
-```php 
+```php
 // src/DataFixtures/AppFixtures.php
 
 // ... lines 1 - 9
@@ -147,7 +144,6 @@ class AppFixtures extends Fixture
     }
 }
 ```
-
 
 👉 Bu komut, tüm `persist()` edilen nesneleri veritabanına tek sorguda yazar.
 
@@ -176,3 +172,9 @@ symfony console doctrine:query:sql "SELECT * FROM starship"
 Gemilerimiz geldi! Harika!
 
 Şimdi elimizde verilerle dolu bir veritabanı var! Bir sonraki adımda, uygulamamızın denetleyicilerini yeniden düzenleyip gemileri veritabanından çekerek sayfada göstermeye başlayacağız. Bu, tahmin ettiğinizden çok daha kolay olacak!
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./4_1_mysql.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./5_1_Inserting Data via Fixtures.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

@@ -6,7 +6,6 @@ Aslında basit bir hedef: bir yıldız gemisine atanan tüm droidleri yazdırmak
 
 ---
 
-
 ```twig
 // templates/starship/show\.html.twig
 // ... lines 1 - 4
@@ -48,7 +47,6 @@ Hiç droid yoksa, `else` etiketiyle "No droids on board (clean up your own mess)
 
 ---
 
-
 ```twig
 // templates/starship/show\.html.twig
 // ... lines 1 - 4
@@ -87,7 +85,6 @@ Hiç droid yoksa, `else` etiketiyle "No droids on board (clean up your own mess)
 Ana sayfada da droidleri göstermek istiyoruz. `templates/main/homepage.html.twig` şablonunu aç. Parçalardan hemen sonra yeni bir div ekle ve şunu yaz: `Droids: {{ ship.droidNames ?: 'none' }}`
 
 ---
-
 
 ```twig
 // templates/main/homepage.html.twig
@@ -131,7 +128,6 @@ Virgül ekleme işini tekrar döngüyle yapabilirdik, ama droid isimlerine iki y
 
 ---
 
-
 ```php
 // src/Entity/Starship.php
 // ... lines 1 - 15
@@ -159,3 +155,11 @@ Hepsi bu kadar! Sayfayı yenile... ve ana sayfada droid isimlerinin tadını ç�
 ---
 
 Sonraki: Foundry ile ManyToMany ilişkisinin fixture'larda nasıl ayarlanacağını göreceğiz. Foundry burada da parlıyor!
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./16_Setting Many To Many Relations.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./18_Many To Many with Foundry.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

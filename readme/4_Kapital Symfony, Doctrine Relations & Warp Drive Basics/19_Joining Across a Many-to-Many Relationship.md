@@ -8,7 +8,6 @@ O metoda tıkla ve ona yeni, havalı bir isim ver: `findIncompleteOrderedByDroid
 
 ---
 
-
 ```php
 // src/Repository/StarshipRepository.php
 // ... lines 1 - 14
@@ -30,7 +29,6 @@ class StarshipRepository extends ServiceEntityRepository
 Bunu yaptıktan sonra, kontrolcüye geri dön ve eski metodu yenisiyle değiştir:
 
 ---
-
 
 ```php
 // src/Controller/MainController.php
@@ -62,7 +60,6 @@ class MainController extends AbstractController
 Sıralama için mevcut `orderBy()` ifadesini `orderBy('COUNT(droid)', 'ASC')` ile değiştir:
 
 ---
-
 
 ```php
 // src/Repository/StarshipRepository.php
@@ -96,3 +93,11 @@ Buradaki anahtar nokta şu: Bu birleştirmenin özel bir yanı yok. İlişki üz
 Sayfadaki sorguya bakarsan, tüm detayları nasıl ele aldığını görebilirsin. Sorguda `starship_droid` ifadesini arayabilirsin. Bu kısım karmaşık görünebilir, ama sorguyu formatlarsan aslında `starship`ten başlıyor, ilişki tablosuna, sonra da tekrar `droid` tablosuna geçiyor. Böylece `droid` tablosundaki sayıya göre sıralama yapılabiliyor. Doctrine gerçekten etkileyici!
 
 Teknik olarak `ManyToMany` kısmı bu kadar! Ama sırada daha gelişmiş, ama yaygın bir kullanım var: ilişki (join) tablosuna veri eklemek, örneğin bir `droid`in bir `starship`e katıldığı tarih gibi.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./18_Many To Many with Foundry.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./20_Many-to-Many but with Extra Data.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

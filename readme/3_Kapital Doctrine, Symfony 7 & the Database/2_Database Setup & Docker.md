@@ -61,3 +61,9 @@ symfony console doctrine:database:create
 👉 Bu komut, veritabanını oluşturur. Eğer hata alırsanız, bu büyük ihtimalle veritabanının zaten var olduğunu belirtir. Bu iyi bir şeydir; veritabanı sunucusuna başarıyla bağlandığınız anlamına gelir!
 
 Artık elimizde Doctrine ve bir veritabanı var. Sırada bir tablo oluşturmak var! Bunu bir sonraki adımda, varlıklar (entities) ve geçişler (migrations) dünyasına atlayarak yapacağız.
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./1_Installing Doctrine.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./2_1_DSN.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

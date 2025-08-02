@@ -26,12 +26,12 @@ final class Version20241111171351 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE starship (
-        id SERIAL NOT NULL, 
-        name VARCHAR(255) NOT NULL, 
-        class VARCHAR(255) NOT NULL, 
-        captain VARCHAR(255) NOT NULL, 
-        status VARCHAR(255) NOT NULL, 
-        arrived_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, 
+        id SERIAL NOT NULL,
+        name VARCHAR(255) NOT NULL,
+        class VARCHAR(255) NOT NULL,
+        captain VARCHAR(255) NOT NULL,
+        status VARCHAR(255) NOT NULL,
+        arrived_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
         PRIMARY KEY(id))');
         $this->addSql('COMMENT ON COLUMN starship.arrived_at IS \'(DC2Type:datetime_immutable)\'');
     }
@@ -62,7 +62,7 @@ final class Version20241111171351 extends AbstractMigration
 
 👉 Bu metod, geçişin açıklamasını döndürür.
 
-## Checking the Migration Status /   Geçiş Durumunu Kontrol Etme
+## Checking the Migration Status / Geçiş Durumunu Kontrol Etme
 
 Terminale geçin ve şunu çalıştırın:
 
@@ -117,3 +117,9 @@ Yeşil demek iyi demek, değil mi? Aynen öyle! Bu bize `starship` tablosunda he
 Varlık sınıfı tamam: ✅
 Veritabanı tablosu tamam: ✅
 Veritabanında veri? Bunu bir sonraki bölümde öğreneceğiz!
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./3_Starship Entity.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./4_1_mysql.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

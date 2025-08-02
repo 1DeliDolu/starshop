@@ -43,3 +43,9 @@ class Starship
 ## 🛠️ Next Steps: Tracking Ship Parts / Sonraki Adımlar: Gemi Parçalarını Takip Etmek
 
 Şimdi işleri biraz renklendirme zamanı: bir geminin parçalarını ve bunların maliyetlerini takip edeceğiz. Ardından her parçayı veritabanında bir gemiye atayacağız.
+
+---
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./2_ Part Entity.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

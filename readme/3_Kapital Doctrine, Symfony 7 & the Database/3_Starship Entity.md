@@ -119,7 +119,7 @@ Aşağıda, maker aracı tüm özellikler için getter ve setter metodlarını �
 ---
 
 ```php
-//src/Entity/Starship.php 
+//src/Entity/Starship.php
 // ... lines 1 - 9
 class Starship
 {
@@ -158,3 +158,9 @@ Bu, Doctrine’in özniteliklerimizi görebildiği ve okuyabildiği anlamına ge
 Bir `entity` sınıfımız var... ama veritabanında henüz bir `starship` tablomuz yok.
 
 Bu tabloyu veritabanına eklemenin birkaç yolu var ama en iyi yol: `migrations`. Sıradaki adım bu olacak!
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./2_1_DSN.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./4_Migrations.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

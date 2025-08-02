@@ -14,61 +14,65 @@ composer require --dev orm-fixtures
 
 `src/DataFixtures/AppFixtures.php` dosyasında aşağıdaki değişiklikler yapıldı:
 
-- Doğru entity ve enum import edildi:
-  ```php
-  use App\Entity\Starship;
-  use App\Model\StarshipStatusEnum;
-  ```
-- Üç adet Starship entity'si oluşturuldu ve özellikleri set edildi:
-  ```php
-  $ship1 = new Starship();
-  $ship1->setName('USS LeafyCruiser (NCC-0001)');
-  $ship1->setClass('Garden');
-  $ship1->setCaptain('Jean-Luc Pickles');
-  $ship1->setStatus(StarshipStatusEnum::IN_PROGRESS);
-  $ship1->setArrivedAt(new \DateTimeImmutable('-1 day'));
+-   Doğru entity ve enum import edildi:
+    ```php
+    use App\Entity\Starship;
+    use App\Model\StarshipStatusEnum;
+    ```
+-   Üç adet Starship entity'si oluşturuldu ve özellikleri set edildi:
 
-  $ship2 = new Starship();
-  $ship2->setName('USS Espresso (NCC-1234-C)');
-  $ship2->setClass('Latte');
-  $ship2->setCaptain('James T. Quick!');
-  $ship2->setStatus(StarshipStatusEnum::COMPLETED);
-  $ship2->setArrivedAt(new \DateTimeImmutable('-1 week'));
+    ```php
+    $ship1 = new Starship();
+    $ship1->setName('USS LeafyCruiser (NCC-0001)');
+    $ship1->setClass('Garden');
+    $ship1->setCaptain('Jean-Luc Pickles');
+    $ship1->setStatus(StarshipStatusEnum::IN_PROGRESS);
+    $ship1->setArrivedAt(new \DateTimeImmutable('-1 day'));
 
-  $ship3 = new Starship();
-  $ship3->setName('USS Wanderlust (NCC-2024-W)');
-  $ship3->setClass('Delta Tourist');
-  $ship3->setCaptain('Kathryn Journeyway');
-  $ship3->setStatus(StarshipStatusEnum::WAITING);
-  $ship3->setArrivedAt(new \DateTimeImmutable('-1 month'));
-  ```
-- Persist ve flush işlemleri eklendi:
-  ```php
-  $manager->persist($ship1);
-  $manager->persist($ship2);
-  $manager->persist($ship3);
-  $manager->flush();
-  ```
+    $ship2 = new Starship();
+    $ship2->setName('USS Espresso (NCC-1234-C)');
+    $ship2->setClass('Latte');
+    $ship2->setCaptain('James T. Quick!');
+    $ship2->setStatus(StarshipStatusEnum::COMPLETED);
+    $ship2->setArrivedAt(new \DateTimeImmutable('-1 week'));
+
+    $ship3 = new Starship();
+    $ship3->setName('USS Wanderlust (NCC-2024-W)');
+    $ship3->setClass('Delta Tourist');
+    $ship3->setCaptain('Kathryn Journeyway');
+    $ship3->setStatus(StarshipStatusEnum::WAITING);
+    $ship3->setArrivedAt(new \DateTimeImmutable('-1 month'));
+    ```
+
+-   Persist ve flush işlemleri eklendi:
+    ```php
+    $manager->persist($ship1);
+    $manager->persist($ship2);
+    $manager->persist($ship3);
+    $manager->flush();
+    ```
 
 ## 3. Starship Entity Güncellendi
 
-- `setStatus()` metodu eklendi:
-  ```php
-  public function setStatus(?StarshipStatusEnum $status): static
-  {
-      $this->status = $status;
-      return $this;
-  }
-  ```
+-   `setStatus()` metodu eklendi:
+    ```php
+    public function setStatus(?StarshipStatusEnum $status): static
+    {
+        $this->status = $status;
+        return $this;
+    }
+    ```
 
 ## 4. Fixture'ları Yükleme
 
 Fixture'lar şu komutla yüklendi:
+
 ```
 symfony console doctrine:fixtures:load
 ```
 
 Bu işlemler sonucunda veritabanına örnek Starship verileri başarıyla eklendi.
+
 ## 🌱 Inserting Data via Fixtures / Fixtures ile Veri Ekleme
 
 Artık bir veritabanı tablomuz var, ama verimiz yok! Geliştirme ortamında çalışırken, veritabanınızı doldurmak için sahte verilere sahip olmak faydalıdır: uygulamayı geliştirirken oynayabileceğiniz örnek veriler. Bu verilere `fixtures` denir.
@@ -232,3 +236,9 @@ symfony console doctrine:query:sql 'SELECT * FROM starship'
 Gemilerimiz var! Harika!
 
 Artık veri içeren bir veritabanımız var! Sırada ne mi var? Uygulamanın denetleyicilerini, `Starship` verilerini veritabanından çekip sayfada gösterecek şekilde yeniden düzenleyeceğiz. Bu, sandığınızdan çok daha kolay olacak!
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./5_Inserting Data via Fixtures.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./5_1_Setting Relations in Foundry.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

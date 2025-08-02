@@ -10,7 +10,6 @@ Aşağıda, yıldız gemilerini ve parçalarını oluşturduğumuz yere gel. Art
 
 Aşağıda, `droids`'u `DroidFactory::randomRange(1, 5)` olarak ayarla:
 
-
 ```php
 // src/DataFixtures/AppFixtures.php
 // ... lines 1 - 12
@@ -72,7 +71,6 @@ Ama dur bir dakika. Bu "rastgele" droidler – ironik tırnak işaretlerimi hiss
 
 Bunu, bir closure (anonim fonksiyon) geçirerek düzelt:
 
-
 ```php
 // src/DataFixtures/AppFixtures.php
 // ... lines 1 - 12
@@ -94,7 +92,6 @@ class AppFixtures extends Fixture
 
 Foundry, bu callback'i 100 yıldız gemisinin her biri için çalıştıracak. Yani `randomRange(1, 5)` her seferinde çağrılacak ve her gemi için gerçekten rastgele bir droid dizisi oluşturulacak.
 
-
 Fixtures'ı tekrar çalıştır ve SQL sorgusunu yükle:
 
 ```bash
@@ -114,3 +111,11 @@ Artık yıldız gemilerine gerçekten rastgele droidler atanmış olacak.
 Bunu ayrıca, `droids` anahtarını aşağıda, `StarshipFactory`'deki `defaults()` metoduna taşıyarak da çözebilirdik. Ama ben `defaults()`'u sadece gerekli özellikler için tutmayı seviyorum. Ve droidler teknik olarak zorunlu olmadığından – onlarsız tuvaleti temizlemek kolay değil! – onları `defaults()` dışında tutmayı ve `StarshipFactory`'yi kullandığımız yerde ayarlamayı tercih ediyorum.
 
 Sonraki adımda, Çoktan Çoğa ilişkiler arasında nasıl JOIN yapılacağını öğreneceğiz. Yine, bu işin çoğunu Doctrine hallediyor.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./17_Accessing Data on a ManyToMany.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./19_Joining Across a Many-to-Many Relationship.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

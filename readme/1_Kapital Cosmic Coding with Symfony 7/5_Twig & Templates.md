@@ -211,7 +211,7 @@ Bu şekilde, Twig’in güçlü ve esnek bir şablon sistemi olduğunu görmüş
 ---
 
 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
-    <a href="./4_Magical Flex Recipes.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="./4_Magical Flex Recipes.md" title="Magical Flex Recipes" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
     <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
-    <a href="./6_ Twig Template Inheritance.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+    <a href="./10_Creating your own Service.md" title="Creating your own Service" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
 </div>

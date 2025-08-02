@@ -10,7 +10,6 @@ Bunu, `$ship->starshipDroids` üzerinde döngü kurup her birinden ismi alarak y
 
 Her bir `StarshipDroid` koleksiyonunu bir `Droid` nesnesine dönüştürmek için `$this->starshipDroids->map()` kullanın:
 
-
 ```php
 // src/Entity/Starship.php
 // ... lines 1 - 15
@@ -28,7 +27,6 @@ class Starship
 👉 Bu yöntem, artık tekrar bir `Droid` nesneleri koleksiyonu döndürüyor.
 
 Artık bu metoda sahip olduğumuza göre, aşağıda `getDroidNames()` içinde `droids` özelliğini kullanmak yerine `getDroids()` metoduna geçiş yapın:
-
 
 ```php
 // src/Entity/Starship.php
@@ -52,7 +50,6 @@ Anasayfa şablonuna dönüp sayfayı yenileyin. Başarılı! Bir geminin droidle
 
 `Droid` varlığını açıp `getStarships()` metodunu bulun. Bu yöntemi henüz kullanmadık ama bunu da düzeltelim. Bu da bir `Starship` nesneleri koleksiyonu döndürmeli. Aynı `map()` yöntemini kullanarak `StarshipDroid` koleksiyonunu bir `Starship` nesneleri koleksiyonuna dönüştürün:
 
-
 ```php
 // src/Entity/Droid.ph
 // ... lines 1 - 10
@@ -72,3 +69,11 @@ class Droid
 ## 🪄 Hiding the Join Entity When We Create the Relationship / İlişki Oluştururken Birleştirme Varlığını Gizlemek
 
 Ele almamız gereken son bir şey kaldı. İlişkiyi oluştururken, bu birleştirme varlığını (join entity) oluşturmak için hâlâ biraz ek iş yapmamız gerekiyor. Bu, basitçe `$ship->addDroid($droid)` kadar kolay değil. Bunu bir sonraki bölümde ele alacağız.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./21_Persisting the More Complex Many-to-Many Relationship.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./23_Re-adding addDroid() Hide that Join Entity.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

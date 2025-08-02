@@ -189,3 +189,11 @@ class StarshipPartRepository extends ServiceEntityRepository
 Criteria ile Query Builder’ı birleştirmek güçlü bir hamle.
 
 Tamam, bu kadar yeterli. Sırada, her bir parçayı listeleyen tamamen yeni bir sayfa oluşturmak var. Artık JOIN’lere ihtiyaç duymaya başlıyoruz!
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./9_Ordering a Relation and fetch type.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./11_Listing Parts.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

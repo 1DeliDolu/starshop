@@ -119,7 +119,7 @@ class ShipRemoveCommand extends Command
 
 `if` ifadesini şu şekilde düzenleyin: `if (!$ship)` — çünkü `findOneBy()` bulunamazsa `null` döner. İçine şu satırları ekleyin: `$io->error('Starship not found.')` ve `return Command::FAILURE`
 
-```php 
+```php
 // src/Command/ShipRemoveCommand.php
 
 // ... lines 1 - 17
@@ -136,13 +136,13 @@ class ShipRemoveCommand extends Command
     // ... lines 45 - 53
     }
 }
-``` 
+```
 
 👉 Bu kontrol, gemi bulunamadığında hatayı bildirir ve komutu başarısız olarak sonlandırır.
 
 Kullanıcıya hangi geminin silineceğini göstermek için bir yorum satırı yazın: `$io->comment(sprintf('Removing starship: %s', $ship->getName()))`
 
-```php 
+```php
 // src/Command/ShipRemoveCommand.php
 
 // ... lines 1 - 17
@@ -162,7 +162,7 @@ class ShipRemoveCommand extends Command
 
 Şablon kodu kaldırın ve şu iki satırı yazın: `$this->em->remove($ship);` ve ardından `$this->em->flush();`
 
-```php 
+```php
 // src/Command/ShipRemoveCommand.php
 
 // ... lines 1 - 17
@@ -183,7 +183,7 @@ class ShipRemoveCommand extends Command
 
 Bir başarı mesajı ekleyin: `$io->success('Starship removed.')` ve ardından `return Command::SUCCESS;`
 
-```php 
+```php
 // src/Command/ShipRemoveCommand.php
 // ... lines 1 - 17
 class ShipRemoveCommand extends Command
@@ -208,16 +208,22 @@ Uygulamaya dönün, sayfayı yenileyin ve geminin hala orada olduğundan emin ol
 
 Terminale dönün ve şu komutu çalıştırın:
 
-```bash 
+```bash
 symfony console app:ship:remove
 ```
 
 Kopyaladığınız `slug`'ı yapıştırın ve çalıştırın. Başarılı! Gemi silindi. Aynı komutu tekrar çalıştırın:
 
-```bash 
+```bash
 symfony console app:ship:remove leafy-cruiser-ncc-0001
 ```
 
 "Starship not found." Harika! Uygulamaya dönün ve sayfayı yenileyin. 404. Gemi veritabanından silinmiş!
 
 Tamamdır! Varlıkları kaydetmeyi ve silmeyi gördük. Sırada yıldız gemisi varlığını güncellemeyi öğrenmek var.
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./12_High-Tech Controllers Auto-inject Entities.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./14_Ship Upgrades Updating an Entity.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

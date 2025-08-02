@@ -124,3 +124,11 @@ Evet! `slug` `name` alanından oluşturulmuş, `updatedAt` ve `createdAt` ise va
 Biraz aşağı kaydırın. Bu `slug` değerlerinin `-1` ile bittiğini fark ettiniz mi? Bu neden böyle? Çünkü `slug` alanı benzersiz (`unique`), ancak `name` alanı değil. Örneğin bazı `starship` nesneleri (mesela `Lunar Marauder`) aynı isme sahip. `slug` uzantısı bunu akıllıca algılar ve benzersizliği sağlamak için otomatik olarak sayısal bir sonek (`-1`, `-2` vb.) ekler. Akıllıca!
 
 Artık `starship` varlıklarımız için benzersiz, insan tarafından okunabilir bir `slug` değerimiz var. Şimdi bu değeri çirkin `id` yerine URL’lerde kullanalım. Ayrıca `Controller Value Resolvers` adlı bir şey kullanarak denetleyicilerimizi ileri teknolojiye kavuşturacağız! Sırada bu var!
+
+
+---
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./10_ Starship Upgrade Adding Slug and Timestamp Fields.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./12_High-Tech Controllers Auto-inject Entities.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

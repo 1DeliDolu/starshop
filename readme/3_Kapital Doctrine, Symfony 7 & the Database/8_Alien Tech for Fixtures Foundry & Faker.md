@@ -34,6 +34,7 @@ Bakın! Şu `self::faker()` çağrılarına göz atın! Bu şekilde rastgele ver
 
 ````markdown
 src/Factory/StarshipFactory.php
+
 ```php
 // ... lines 1 - 11
 final class StarshipFactory extends PersistentProxyObjectFactory
@@ -49,6 +50,7 @@ final class StarshipFactory extends PersistentProxyObjectFactory
 // ... lines 122 - 131
 }
 ```
+
 👉 Bu kod bloğu, `arrivedAt` alanı için son bir yıl içinden rastgele bir tarih üretir.
 ````
 
@@ -56,6 +58,7 @@ final class StarshipFactory extends PersistentProxyObjectFactory
 
 ````markdown
 src/Factory/StarshipFactory.php
+
 ```php
 // ... lines 1 - 11
 final class StarshipFactory extends PersistentProxyObjectFactory
@@ -83,6 +86,7 @@ final class StarshipFactory extends PersistentProxyObjectFactory
 // ... lines 92 - 131
 }
 ```
+
 👉 Bu sabitler, gemi isimleri, sınıflar ve kaptan isimleri için özel listeler tanımlar.
 ````
 
@@ -90,6 +94,7 @@ Daha sonra, `captain` için `randomElement(self::CAPTAINS)`, `class` için `rand
 
 ````markdown
 src/Factory/StarshipFactory.php
+
 ```php
 // ... lines 1 - 11
 final class StarshipFactory extends PersistentProxyObjectFactory
@@ -108,6 +113,7 @@ final class StarshipFactory extends PersistentProxyObjectFactory
 // ... lines 122 - 131
 }
 ```
+
 👉 Bu kod, kaptan, sınıf ve isim için önceden tanımlanmış listelerden rastgele birer öğe seçer.
 ````
 
@@ -117,6 +123,7 @@ Bu fabrikayı kullanma zamanı! `src/DataFixtures/AppFixtures.php` içindeki `lo
 
 ````markdown
 src/DataFixtures/AppFixtures.php
+
 ```php
 // ... lines 1 - 9
 class AppFixtures extends Fixture
@@ -134,6 +141,7 @@ class AppFixtures extends Fixture
     }
 }
 ```
+
 👉 Bu kod, belirli özelliklerle bir adet starship oluşturur.
 ````
 
@@ -141,6 +149,7 @@ Diğer iki gemiyi de ekleyin ve eski kodu kaldırın:
 
 ````markdown
 src/DataFixtures/AppFixtures.php
+
 ```php
 // ... lines 1 - 9
 class AppFixtures extends Fixture
@@ -165,6 +174,7 @@ class AppFixtures extends Fixture
     }
 }
 ```
+
 👉 Bu kod, iki farklı starship daha oluşturur ve önceki fixture verileri yerine geçer.
 ````
 
@@ -184,6 +194,7 @@ Evet’i seçin ve... başarı! Tarayıcıda sayfayı yenileyin ve... her şey a
 
 ````markdown
 src/DataFixtures/AppFixtures.php
+
 ```php
 // ... lines 1 - 9
 class AppFixtures extends Fixture
@@ -195,6 +206,7 @@ class AppFixtures extends Fixture
     }
 }
 ```
+
 👉 Bu kod, rastgele özelliklere sahip 20 yeni starship oluşturur.
 ````
 
@@ -207,3 +219,9 @@ symfony console doctrine:fixtures:load
 Uygulamada sayfayı yenileyin ve... işte karşınızda! Koca bir gemi filosu, ve evet, hepsinin rastgele verileri var!
 
 Sahte veriler artık daha gerçekçi göründüğüne göre, aklıma şu geliyor: ya uygulamamız yüzlerce hatta binlerce geminin bulunduğu dev bir uzay üssünde çalışsaydı? Bu çok uzun bir sayfa olurdu. Sonraki adımda, bu sonuçları daha küçük parçalara ayırarak sayfalamayı öğreneceğiz.
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./7_Cosmic Queries the Repository Class.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./9_Pagination.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

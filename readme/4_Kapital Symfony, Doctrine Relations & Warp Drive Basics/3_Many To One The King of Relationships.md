@@ -184,3 +184,11 @@ symfony console doctrine:migrations:migrate
 ## 🔗 Next Up: Connecting the Dots / Sıradaki Adım: Noktaları Birleştirmek
 
 Peki bir `StarshipPart` nesnesini bir `Starship` ile nasıl ilişkilendiririz? Kemerlerinizi bağlayın, çünkü sıradaki konu bu!
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./2_ Part Entity.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./4_Setting the Relation.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

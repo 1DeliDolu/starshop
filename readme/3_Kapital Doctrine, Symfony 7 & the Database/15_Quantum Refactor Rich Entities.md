@@ -1,6 +1,6 @@
 # 🧠 Quantum Refactor: Rich Entities / Quantum Refactor: Zengin Entity'ler
 
-Starship entity'sine bir göz atalım. Bir sürü özellik, getter ve setter içeriyor. Biraz sıkıcı, değil mi? Olmak zorunda değil! Entity'ler standart PHP sınıfları olduğundan, iş mantığımızı tanımlayan anlamlı ve açık metotlar ekleyebiliriz, örneğin `goToWarp(7)` veya `enterOrbitAround($millersPlanet)`. Bunlara *zengin entity metotları* denir.
+Starship entity'sine bir göz atalım. Bir sürü özellik, getter ve setter içeriyor. Biraz sıkıcı, değil mi? Olmak zorunda değil! Entity'ler standart PHP sınıfları olduğundan, iş mantığımızı tanımlayan anlamlı ve açık metotlar ekleyebiliriz, örneğin `goToWarp(7)` veya `enterOrbitAround($millersPlanet)`. Bunlara _zengin entity metotları_ denir.
 
 Haydi bunu deneyelim ve faydalarını keşfedelim.
 
@@ -30,7 +30,7 @@ class Starship
 
 > return $this:
 
-```php 
+```php
 // src/Entity/Starship.php
 
 // ... lines 1 - 10
@@ -49,7 +49,7 @@ class Starship
 
 Yukarıya check-in mantığını ekleyin: `$this->arrivedAt = $arrivedAt`, ve eğer parametre verilmemişse `?? new \DateTimeImmutable('now')`. Ardından, `$this->status = StarshipStatusEnum::WAITING`:
 
-```php 
+```php
 // src/Entity/Starship.php
 
 // ... lines 1 - 10
@@ -67,7 +67,7 @@ class Starship
 
 👉 Bu metod, geminin geldiği zamanı ve durumunu ayarlar.
 
-## Using the `Starship::checkIn()` Method /  `Starship::checkIn()` Metodunu Kullanma
+## Using the `Starship::checkIn()` Method / `Starship::checkIn()` Metodunu Kullanma
 
 `ShipCheckInCommand` sınıfına geri dönün ve mantığı `$ship->checkIn()` ile değiştirin:
 
@@ -104,3 +104,8 @@ Eğer kendinizi entity'ler üzerinde tekrar eden işlemler yaparken buluyorsanı
 Tamam ekip, `Doctrine Fundamentals` dersi bu kadar! Doctrine becerilerinizi geliştirmek istiyorsanız, SymfonyCasts üzerinde "Doctrine" araması yaparak daha ileri seviye kurslara ulaşabilirsiniz. Doctrine dokümantasyonu da harika bir kaynaktır. Ve her zaman olduğu gibi, yorumlar bölümünde sorularınızı yanıtlamaya hazırız.
 
 Bir dahaki sefere kadar, mutlu kodlamalar!
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./14_Ship Upgrades Updating an Entity.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+</div>

@@ -6,7 +6,6 @@
 
 Önce, birkaç droid ekleyelim. Üç droid oluşturan kodu ekleyeceğim. Sınıfı hızlıca içe aktarın ya da `Alt + Enter` kullanın:
 
-
 ```php
 // src/DataFixtures/AppFixtures.php
 // ... lines 1 - 4
@@ -43,7 +42,6 @@ Ve... droidlerimiz oldu! Pek bir numarası yok: yeni bir `Droid` oluşturmak, ge
 
 Şimdi eğlenceli kısma geçelim: Bir `Droid`'i bir `Starship`'e atamak. Bir `Starship` değişkeni oluşturun ve büyüye hazır olun:
 
-
 ```php
 // src/DataFixtures/AppFixtures.php
 // ... lines 1 - 11
@@ -64,7 +62,6 @@ class AppFixtures extends Fixture
 Bu iki varlığı ilişkilendirmenin yolu şaşırtıcı derecede basit ve `OneToMany` ilişkisinden tanıdık gelecektir. Tahmin edebilirsin!
 
 `flush()`'tan önce: `$starship->addDroid($droid1)`. Aynı şeyi diğer iki droid için de yap — `$starship->addDroid($droid2)` ve `$starship->addDroid($droid3)`:
-
 
 ```php
 // src/DataFixtures/AppFixtures.php
@@ -95,7 +92,7 @@ class AppFixtures extends Fixture
 
 Ekip droid yapımı pankeklerine hazır, haydi bunu deneyelim!
 
-```shell 
+```shell
 symfony console doctrine:fixtures:load
 ```
 
@@ -122,7 +119,6 @@ symfony console doctrine:query:sql 'SELECT * FROM starship_droid'
 Gerçek büyü, Doctrine ile ilgilenmemiz gereken tek şeyin bir `Droid` nesnesini bir `Starship` nesnesine ilişkilendirmek olması. Sonrasını, join tablosundaki satırların eklenmesi ve silinmesini Doctrine hallediyor.
 
 `flush` sonrası, join tablosunda üç satır olduğunu biliyoruz. Şimdi, `flush`'tan sonra bir atamayı kaldır: `$starship->removeDroid($droid1)`:
-
 
 ```php
 // src/DataFixtures/AppFixtures.php
@@ -154,7 +150,6 @@ symfony console doctrine:query:sql 'SELECT * FROM droid'
 
 `ManyToMany` ile ilgili son bir dokunuş — ilişki taraflarından hangisinin "sahip olan" hangisinin "ters" taraf olduğunu hatırlıyor musun? Gördüğümüz gibi, metotlarımız ilişkiyi senkronize ediyor, `addDroid()` çağrıldığında `Droid`'i `Starship`'e ekliyor:
 
-
 ```php
 // src/Entity/Starship.php
 // ... lines 1 - 15
@@ -183,3 +178,11 @@ Kimin patron olduğunu öğrenmek için `inversedBy` seçeneğine bakın. Orada 
 Bu çoğunlukla önemsizdir ama kontrol manyağıysanız ve join tablosunun adını belirlemek istiyorsanız, bir `JoinTable` niteliği ekleyebilirsiniz. Ama unutmayın, bu sadece sahip olan tarafa eklenebilir. Onun dışında, endişelenmeye gerek yok.
 
 Sonraki adımda, yeni ilişkiyi kullanarak her gemiye atanan droidleri göstereceğiz.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./15_Many-To-Many Relationship.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./17_Accessing Data on a ManyToMany.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

@@ -52,7 +52,6 @@ symfony console make:factory Droid
 
 Şimdi `src/Factory/DroidFactory.php` dosyasını açın. Hazır durumda, ama biraz kişiliğe ihtiyaçları var. Diziyi daha ilginç verilerle değiştiriyorum:
 
-
 ```php
 // src/Factory/DroidFactory.php
 // ... lines 1 - 10
@@ -102,3 +101,11 @@ symfony console doctrine:fixtures:load
 👉 Bu komut, veritabanına yeni droid verileri yükler.
 
 Ve işte bu kadar! Uzayda kaybolmadan önce yardım etmeye hazır, droidlerle dolu bir tabloya sahip olduk. Ama henüz bir droid bir gemiye atanamıyor. Bunu, son ilişki türümüz olan `ManyToMany` ile değiştireceğiz.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./13_Adding a Search + the Request Object.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./15_Many-To-Many Relationship.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

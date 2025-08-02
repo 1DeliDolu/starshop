@@ -6,7 +6,6 @@ Fixture'larda `$starshipPart = StarshipPartFactory::createOne()` ile başlayın.
 
 Bu parçayı yukarıdaki Starship'e atayın (eksik olan `$ship =` satırını ekleyin) ve ardından `$starshipPart`'ı dökün:
 
-
 ```php
 // src/DataFixtures/AppFixtures.php
 // ... lines 1 - 10
@@ -44,7 +43,6 @@ Unutmayın: Foundry ile bir nesne oluşturduğunuzda, size dönen nesne aslında
 
 Ama burada her şeyin net olması için, hem `$ship` hem de `$starshipPart`'ı `_real()` ile çıkaralım:
 
-
 ```php
 // src/DataFixtures/AppFixtures.php
 // ... lines 1 - 10
@@ -79,7 +77,6 @@ symfony console doctrine:fixtures:load
 ## 🗑️ Deleting a Starship Part: The Plot Thickens / Bir StarshipPart'ı Silmek
 
 Peki bir `StarshipPart` silmek istersek ne olur? Normalde şöyle yaparız: `$manager->remove($starshipPart)`, sonra `$manager->flush()`. Ama biraz farklı bir yol deneyelim: parçayı gemisinden sadece çıkaralım: `$ship->removePart($starshipPart);`
-
 
 ```php
 // src/DataFixtures/AppFixtures.php
@@ -118,7 +115,6 @@ Neden bu oldu? `removePart()` çağrıldığında, parçanın gemisi null olarak
 
 Yoksa bir parça gemisinden çıkarılırsa, tamamen veritabanından silinsin mi istiyorsunuz? Belki gemi sahibi geri dönüşüm sevmiyor! Bunu yapmak için, `Starship`'e gidin ve OneToMany ilişkiye `orphanRemoval: true` ekleyin:
 
-
 ```php
 // src/Entity/Starship.php
 // ... lines 1 - 13
@@ -147,3 +143,11 @@ symfony console doctrine:fixtures:load
 Herhangi bir parça yetim kalırsa, onu tamamen sil.
 
 Sırada: Bir ilişkinin sırasını kontrol etmenin bir yolu – örneğin, `$ship->getParts()`'ın alfabetik olarak dönmesini sağlamak.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./7_The Two Sides of a Relation Owning vs Inverse.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./9_Ordering a Relation and fetch type.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

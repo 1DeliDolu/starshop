@@ -2,7 +2,6 @@
 
 Tamam, elimizde birkaç parça ve birkaç yıldız gemisi var, ancak test verisi filomuzu doldurmak için çok daha fazlasını istiyorum. Bu iş, bizim iyi dostumuz olan `Foundry` için mükemmel bir görev. Manuel kodu kaldırın, ardından herhangi bir yere örneğin: `StarshipPartFactory::createMany(100)` yazın:
 
-
 ```php
 // src/DataFixtures/AppFixtures.php
 // ... lines 1 - 8
@@ -34,7 +33,6 @@ Uh-oh!
 
 Bu, `StarshipPartFactory`'ye kadar izleniyor, `defaults()` metodunda. Bu metot, her yeni `StarshipPart` oluşturulduğunda ona gönderilen veridir. Altın kural, `defaults()` metodunun, nesnedeki her zorunlu özellik için bir anahtar döndürmesidir. Şu anda açıkça `starship` özelliğini atlıyoruz, o yüzden bunu ekleyelim. `starship`'i, `starship_id` değil, ve dizi aktararak `Starship::randomOrCreate()` adlı hoş bir metoda ayarlayın:
 
-
 ```php
 // src/Factory/StarshipPartFactory.php
 // ... lines 1 - 11
@@ -60,7 +58,6 @@ final class StarshipPartFactory extends PersistentProxyObjectFactory
 ## 🎬 Setting the Stage for Starship Parts / Yıldız Gemisi Parçaları için Zemin Hazırlama
 
 Anasayfada sadece `in progress` veya `waiting` durumundaki yıldız gemilerini listeliyoruz. Bu parçaların, `in progress` durumuna sahip bir gemiyle ilişkili olduğundan emin olmak için, dizideki `status` anahtarını `StarshipStatusEnum::IN_PROGRESS` olarak ayarlayın:
-
 
 ```php
 // src/Factory/StarshipPartFactory.php
@@ -132,7 +129,6 @@ class AppFixtures extends Fixture
 👉 Bu kod, bir yıldız gemisi oluşturur ve değişkende saklar.
 
 Ardından, `StarshipPartFactory::createMany()` içinde, ikinci argümanı belirterek tüm parçaların bu belirli gemiye atanmasını sağlayın:
-
 
 ```php
 // src/DataFixtures/AppFixtures.php
@@ -210,7 +206,6 @@ Her bir parça için `defaults()` metodu çağrılıyor. Yani 100 parçanın her
 
 Çözüm? Bunu `StarshipFactory::new()` olarak değiştirin:
 
-
 ```php
 // src/Factory/StarshipPartFactory.php
 // ... lines 1 - 11
@@ -253,7 +248,6 @@ Mükemmel! Tekrar 23 tane gemimiz var.
 
 Fixture'larımızı, override'ı kaldırarak temizleyin:
 
-
 ```php
 // src/DataFixtures/AppFixtures.php
 // ... lines 1 - 12
@@ -270,7 +264,6 @@ class AppFixtures extends Fixture
 👉 Artık tüm parçalar yine uygun şekilde oluşturulacak.
 
 Ve... tekrar `randomOrCreate()`e dönün:
-
 
 ```php
 // src/Factory/StarshipPartFactory.php
@@ -301,3 +294,11 @@ symfony console doctrine:fixtures:load
 ```
 
 👉 Fixture'lar sorunsuzca yüklenir.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./4_Setting the Relation.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./6_Fetching a Relation's Data.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

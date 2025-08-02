@@ -218,3 +218,11 @@ symfony console app:ship:check-in
 `slug`’ı yapıştırın ve çalıştırın. Başarılı! Uygulamaya dönüp sayfayı yenileyin. Gemi artık "waiting" durumunda ve 9 saniye önce ulaşmış. Çalışıyor!
 
 `ShipCheckInCommand` içindeki güncelleme mantığına tekrar dönün. Şu anda iki alanı güncellemek için `setter` metodlarını çağırıyoruz. Sıradaki adım, bu mantığı `Starship` varlığı içinde özel bir metoda kapsüllemek olacak.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./13_Black Hole Deleting Entities.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./15_Quantum Refactor Rich Entities.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

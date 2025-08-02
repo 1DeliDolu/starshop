@@ -237,3 +237,12 @@ class MainController extends AbstractController
 ---
 
 Sonraki adımda, `Foundry` kütüphanesiyle fixture’larımızı eğlenceli hâle getireceğiz – sanki elimizde bir çoğaltıcı varmış gibi bir gemi filosu oluşturacağız. Haydi başlayalım!
+
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./6_Fetching with DQL, the QueryBuilder & find().md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./8_Alien Tech for Fixtures Foundry & Faker.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

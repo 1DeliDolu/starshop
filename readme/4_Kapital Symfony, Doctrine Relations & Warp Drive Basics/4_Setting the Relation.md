@@ -31,6 +31,7 @@ class AppFixtures extends Fixture
     }
 }
 ```
+
 👉 Bu kod, manuel olarak yeni bir `Starship` nesnesi oluşturur ve `persist()` ile kaydeder.
 
 Sonra yeni bir `StarshipPart` oluşturun ve öncekine benzer şekilde özellikleri doldurun. Ardından `\$manager->persist(\$part)` ile kaydedin ve sonunda `\$manager->flush()` çağırın:
@@ -98,6 +99,7 @@ class StarshipPart
 // ... lines 32 - 84
 }
 ```
+
 👉 Bu kod, her `StarshipPart`'ın bir `Starship`'e ait olmasını zorunlu kılar (`nullable: false`).
 
 ## 🧩 Assigning the Part to the Starship / Parçayı Starship'e Atamak
@@ -157,3 +159,11 @@ Görüldüğü üzere: `Starship id 75`, `StarshipPart id 1`'e sahip. Harikayız
 Özetle: Doctrine ilişkileriyle çalışırken, nesneler dünyasındasınız. Kimlikleri unutun. Doctrine bu kısmı sizin yerinize halleder. Sadece nesneyi ayarlayın, gerisini Doctrine halleder.
 
 Ama doğrusu, `AppFixtures` içinde tek bir `Starship` ve tek bir `StarshipPart` oluşturmak çok fazla iş. Bu yüzden bir sonraki adımda `Foundry`'yi geri getirip bir gemi filosu ve bir yığın parça oluşturacağız ve hepsini tek seferde ilişkilendireceğiz. İşte `Foundry` burada parlıyor!
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./3_Many To One The King of Relationships.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./5_ Setting Relations in Foundry.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

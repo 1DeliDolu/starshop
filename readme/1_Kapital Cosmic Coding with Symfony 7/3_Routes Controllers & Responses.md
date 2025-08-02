@@ -1,4 +1,6 @@
-# 3_Rotalar, Controllerlar & Yanıtlar
+# 🛤️ Routes, Controllers & Responses
+
+Tamam, işin aslı şu: Wesley Crusher - Star Trek'in en sevilen ensign'ı - Starfleet'ten emekli oldu ve bizimle yeni bir iş kuruyor: Wesley's Star Shop. Birinin galaksideki Ferengi tekelini kırması gerekiyor ve siteyi inşa etmemiz için bizi tuttu. Ferengi'ye latinumlarını kaptırmayacağız!\_Rotalar, Controllerlar & Yanıtlar
 
 Tamam, işin aslı şu: Wesley Crusher - Star Trek’in en sevilen ensign’ı - Starfleet’ten emekli oldu ve bizimle yeni bir iş kuruyor: Wesley’s Star Shop. Birinin galaksideki Ferengi tekelini kırması gerekiyor ve siteyi inşa etmemiz için bizi tuttu. Ferengi’ye latinumlarını kaptırmayacağız!
 
@@ -184,7 +186,7 @@ composer global require laravel/installer
 For a fully-featured, graphical PHP installation and management experience, check out Laravel Herd.
 
 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
-    <a href="./2_ Getting to Know our Tiny Project.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="./2_ Getting to Know our Tiny Project.md" title="Getting to Know our Tiny Project" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
     <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
-    <a href="./4_Magical Flex Recipes.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+    <a href="./4_Magical Flex Recipes.md" title="Magical Flex Recipes" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
 </div>

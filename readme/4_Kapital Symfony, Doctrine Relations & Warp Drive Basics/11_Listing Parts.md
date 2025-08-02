@@ -18,7 +18,6 @@ Ve işte! Bir sınıf ve bir şablon dosyası. Şimdiye kadar her şey yolunda. 
 
 ---
 
-
 ```php
 // src/Controller/PartController.php
 // ... lines 1 - 2
@@ -44,7 +43,6 @@ final class PartController extends AbstractController
 
 URL'yi `/parts` olarak değiştirin ve adını `app_part_index` yapın:
 
-
 ```php
 // src/Controller/PartController.php
 // ... lines 1 - 8
@@ -67,28 +65,34 @@ Rota adını kopyalayın, böylece bağlantı verebiliriz... ve `base.html.twig`
 
 O boş duran "About" bağlantısını hatırlıyor musunuz? Onu kullanın ve "Parts" bağlantısına çevirin. `href` değerini `{{ path('app_part_index') }}` olarak ayarlayın:
 
-
 ```html
-// templates/base.html.twig
-// ... line 1
+// templates/base.html.twig // ... line 1
 <html>
-// ... lines 3 - 13
-    <body class="text-white" style="background: radial-gradient(102.21% 102.21% at 50% 28.75%, #00121C 42.62%, #013954 100%);">
+    // ... lines 3 - 13
+    <body
+        class="text-white"
+        style="background: radial-gradient(102.21% 102.21% at 50% 28.75%, #00121C 42.62%, #013954 100%);"
+    >
         <div class="flex flex-col justify-between min-h-screen relative">
             <div>
-                <header class="h-[114px] shrink-0 flex flex-col sm:flex-row items-center sm:justify-between py-4 sm:py-0 px-6 border-b border-white/20 shadow-md">
-// ... lines 18 - 20
+                <header
+                    class="h-[114px] shrink-0 flex flex-col sm:flex-row items-center sm:justify-between py-4 sm:py-0 px-6 border-b border-white/20 shadow-md"
+                >
+                    // ... lines 18 - 20
                     <nav class="flex space-x-4 font-semibold">
-// ... lines 22 - 24
-                        <a class="hover:text-amber-400  pt-2" href="{{ path('app_part_index') }}">
+                        // ... lines 22 - 24
+                        <a
+                            class="hover:text-amber-400  pt-2"
+                            href="{{ path('app_part_index') }}"
+                        >
                             Parts
                         </a>
-// ... lines 28 - 33
+                        // ... lines 28 - 33
                     </nav>
                 </header>
-// ... line 36
+                // ... line 36
             </div>
-// ... lines 38 - 40
+            // ... lines 38 - 40
         </div>
     </body>
 </html>
@@ -101,7 +105,6 @@ O boş duran "About" bağlantısını hatırlıyor musunuz? Onu kullanın ve "Pa
 Ana sayfaya gidin, yeni bağlantıya tıklayın ve... henüz çok güzel görünmese de, çalışıyor!
 
 Kutlamadan önce, başlığı sıkıcı `Hello PartController` ifadesinden değiştirelim. `templates/part/index.html.twig` dosyasını açın. Zaten `title` bloğunu override ediyoruz, bunu `Parts` olarak ayarlayalım:
-
 
 ```twig
 // templates/part/index.html.twig
@@ -119,7 +122,6 @@ Kutlamadan önce, başlığı sıkıcı `Hello PartController` ifadesinden deği
 Parçaları döngüyle göstermek için, `PartController` içinde tüm parçaları sorgulamalıyız.
 
 Bir `StarshipPartRepository` argümanı ekleyerek otomatik bağlamasını sağlayın. Ona istediğiniz ismi verebilirsiniz, örneğin `$repository`. Tüm parçaları almak için: `$parts = $repository->findAll()` yeterli:
-
 
 ```php
 // src/Controller/PartController.php
@@ -145,7 +147,6 @@ final class PartController extends AbstractController
 
 Artık `parts` değişkenimiz şablonda mevcut, bu yüzden döngü kurabiliriz:
 
-
 ```php
 // src/Controller/PartController.php
 // ... lines 1 - 9
@@ -167,7 +168,6 @@ final class PartController extends AbstractController
 ---
 
 Ve işte şablon kodu:
-
 
 ```twig
 // templates/part/index.html.twig
@@ -204,7 +204,6 @@ Ve işte şablon kodu:
 
 Burada dikkat çekenlerden biri, `cycle()` fonksiyonu:
 
-
 ```twig
 // templates/part/index.html.twig
 // ... lines 1 - 4
@@ -228,7 +227,6 @@ Burada dikkat çekenlerden biri, `cycle()` fonksiyonu:
 ---
 
 Son olarak, `assigned to SHIP NAME` kısmını değiştirin ve `{{ part.starship.name }}` olarak yazın:
-
 
 ```twig
 // templates/part/index.html.twig
@@ -257,4 +255,13 @@ Son olarak, `assigned to SHIP NAME` kısmını değiştirin ve `{{ part.starship
 👉 Bu kodda, parça ile ilişkilendirilmiş geminin adı gösteriliyor.
 
 ---
+
 Sırada join işlemleri var. Bize katılın! Şaka bir yana, şimdi join konusunu ele alacağız.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./10_The Clever Criteria System.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./12_Joining to Avoid the N+1 Trap.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

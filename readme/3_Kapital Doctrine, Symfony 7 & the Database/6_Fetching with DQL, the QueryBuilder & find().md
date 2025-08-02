@@ -146,3 +146,9 @@ Uygulamaya dönün ve… yenileyin. Çalışıyor! Web hata ayıklama çubuğuna
 `Model/` dizinimizle işimiz bitti. Gerçi `StarshipStatusEnum` hâlâ lazım, bu yüzden düzenli olması için onu `Entity/` klasörüne taşıyın. PhpStorm yeniden adlandırmayı halleder. Şimdi `src/Model` dizinini silin ve kutlayın! Kullanılmayan kodları silmeyi seviyorum!
 
 Sırada ne var? Sorgulama mantığını denetleyicilerden çıkarmak için varlık depolarına (repository) bakalım.
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./5_1_Setting Relations in Foundry.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./7_Cosmic Queries the Repository Class.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

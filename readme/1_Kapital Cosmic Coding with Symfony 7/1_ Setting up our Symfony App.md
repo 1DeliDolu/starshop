@@ -1,4 +1,6 @@
-# Symfony Uygulamamızı Kurmak
+# 🚀 Setting up our Symfony App
+
+Symfony 7 eğitimine hoş geldiniz! Benim adım Ryan - Symfonycasts'in fantastik dünyasında yaşıyorum ve... bu seride size rehberlik edeceğim için fazlasıyla heyecanlıyım. Symfony, web geliştirme... kötü şakalar... uzay animasyonları ve en önemlisi, gurur duyabileceğimiz gerçek şeyler inşa etmek hakkında her şey burada olacak. Benim için, Enterprise'ın kişisel turunu size sunan şanslı kişi gibi hissediyorum... ya da sizi en çok heyecanlandıran başka bir nerd şeyi.ymfony Uygulamamızı Kurmak
 
 Symfony 7 eğitimine hoş geldiniz! Benim adım Ryan - Symfonycasts’in fantastik dünyasında yaşıyorum ve... bu seride size rehberlik edeceğim için fazlasıyla heyecanlıyım. Symfony, web geliştirme... kötü şakalar... uzay animasyonları ve en önemlisi, gurur duyabileceğimiz gerçek şeyler inşa etmek hakkında her şey burada olacak. Benim için, Enterprise’ın kişisel turunu size sunan şanslı kişi gibi hissediyorum... ya da sizi en çok heyecanlandıran başka bir nerd şeyi.
 
@@ -119,5 +121,5 @@ Sonraki adımda, bir fincan Earl Grey çayı sipariş edip, uygulamamızdaki her
 
 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
     <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
-    <a href="./2_ Getting to Know our Tiny Project.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+    <a href="#file:README.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
 </div>
