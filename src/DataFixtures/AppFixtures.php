@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Factory\StarshipFactory;
+use App\Factory\DroidFactory;
 
 use App\Entity\Starship;
 use App\Model\StarshipStatusEnum;
@@ -38,5 +39,6 @@ class AppFixtures extends Fixture
         ]);
         StarshipFactory::createMany(20);
         \App\Factory\StarshipPartFactory::createMany(100);
+        DroidFactory::createMany(100);
     }
 }
