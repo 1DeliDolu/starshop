@@ -247,6 +247,41 @@ symfony console doctrine:fixtures:load --no-interaction
 
 👉 PHP 8.4'te implicit nullable parametreler deprecated oldu, açık nullable type (`?`) kullanılması gerekiyor.
 
+### 8. Doctrine Collection matching() Düzeltmesi
+
+**Sorun**: `Call to unknown method: Doctrine\Common\Collections\Collection::matching()`
+
+**Çözüm**:
+
+```php
+// Import eklendi:
+use Doctrine\Common\Collections\Selectable;
+
+// Property type güncellendi:
+/**
+ * @var Collection<int, StarshipPart> & Selectable<int, StarshipPart>
+ */
+private Collection $parts;
+
+// Method return type güncellendi:
+/**
+ * @return Collection<int, StarshipPart> & Selectable<int, StarshipPart>
+ */
+public function getParts(): Collection
+{
+    return $this->parts;
+}
+
+// getExpensiveParts() metodu düzeltildi:
+public function getExpensiveParts(): Collection
+{
+    $criteria = StarshipPartRepository::createExpensiveCriteria();
+    return $this->parts->matching($criteria);
+}
+```
+
+👉 `matching()` metodu sadece `Selectable` interface'ini implement eden koleksiyonlarda mevcut. `Collection & Selectable` intersection type kullanarak sorunu çözdük.
+
 Artık Foundry'nin PropertyAccessor sistemi hem `addDroid()` hem de `removeDroid()` metodlarını bulabilir ve `droids` özelliğini sorunsuz kullanabilir!
 
 Hepsi bu kadar! Doctrine ilişkilerinin en derin köşelerini, hatta ek alanları olan çoktan-çoğa ilişkileri bile keşfettik. Her zaman olduğu gibi, sorularınız varsa yorumlara yazabilirsiniz. Hep birlikteyiz!

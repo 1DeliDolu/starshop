@@ -8,6 +8,7 @@ use App\Repository\StarshipPartRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation\Slug;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
@@ -43,7 +44,7 @@ class Starship
     private ?string $slug = null;
 
     /**
-     * @var Collection<int, StarshipPart>
+     * @var Collection<int, StarshipPart> & Selectable<int, StarshipPart>
      */
     #[ORM\OneToMany(targetEntity: StarshipPart::class, mappedBy: 'starship', fetch: 'EXTRA_LAZY', orphanRemoval: true)]
     #[ORM\OrderBy(['name' => 'ASC'])]
@@ -159,7 +160,7 @@ class Starship
     }
 
     /**
-     * @return Collection<int, StarshipPart>
+     * @return Collection<int, StarshipPart> & Selectable<int, StarshipPart>
      */
     public function getParts(): Collection
     {
@@ -172,7 +173,8 @@ class Starship
     public function getExpensiveParts(): Collection
     {
         //ignore
-        return $this->parts->matching(StarshipPartRepository::createExpensiveCriteria());
+        $criteria = StarshipPartRepository::createExpensiveCriteria();
+        return $this->parts->matching($criteria);
     }
 
     public function addPart(StarshipPart $part): static
