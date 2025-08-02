@@ -13,7 +13,7 @@ class MainController extends AbstractController
     #[Route('/', name: 'app_homepage')]
     public function homepage(StarshipRepository $repository, Request $request): Response
     {
-        $ships = $repository->findIncomplete();
+        $ships = $repository->findIncompleteOrderedByDroidCount();
         $ships->setMaxPerPage(5);
         $ships->setCurrentPage($request->query->get('page', 1));
         $myShip = $repository->findMyShip();

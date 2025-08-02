@@ -8,6 +8,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use App\Model\StarshipStatusEnum;
 use Pagerfanta\Pagerfanta;
 use Pagerfanta\Doctrine\ORM\QueryAdapter;
+use Pagerfanta\Adapter\ArrayAdapter;
 
 /**
  * @extends ServiceEntityRepository<Starship>
@@ -22,16 +23,26 @@ class StarshipRepository extends ServiceEntityRepository
     //    /**
     //     * @return Starship[] Returns an array of Starship objects
     //     */
-    public function findIncomplete(): Pagerfanta
+    public function findIncompleteOrderedByDroidCount(): Pagerfanta
     {
+        // Basit çözüm: Memory'de sıralama yapalım
         $query = $this->createQueryBuilder('s')
             ->where('s.status != :status')
-            ->orderBy('s.arrivedAt', 'DESC')
             ->setParameter('status', StarshipStatusEnum::COMPLETED)
             ->getQuery();
-        return new Pagerfanta(new QueryAdapter($query));
-    }
 
+        $starships = $query->getResult();
+
+        // Her starship için droid sayısını hesaplayıp sıralayalım
+        usort($starships, function ($a, $b) {
+            $aDroidCount = $a->getDroids()->count();
+            $bDroidCount = $b->getDroids()->count();
+            return $aDroidCount <=> $bDroidCount;
+        });
+
+        // ArrayAdapter kullanarak paginator oluşturalım
+        return new Pagerfanta(new ArrayAdapter($starships));
+    }
     public function findMyShip(): Starship
     {
         return $this->findAll()[0];
