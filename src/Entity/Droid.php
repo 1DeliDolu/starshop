@@ -22,14 +22,14 @@ class Droid
     private ?string $primaryFunction = null;
 
     /**
-     * @var Collection<int, Starship>
+     * @var Collection<int, StarshipDroid>
      */
-    #[ORM\ManyToMany(targetEntity: Starship::class, mappedBy: 'droids')]
-    private Collection $starships;
+    #[ORM\OneToMany(targetEntity: StarshipDroid::class, mappedBy: 'droid', orphanRemoval: true)]
+    private Collection $starshipDroids;
 
     public function __construct()
     {
-        $this->starships = new ArrayCollection();
+        $this->starshipDroids = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -62,27 +62,30 @@ class Droid
     }
 
     /**
-     * @return Collection<int, Starship>
+     * @return Collection<int, StarshipDroid>
      */
-    public function getStarships(): Collection
+    public function getStarshipDroids(): Collection
     {
-        return $this->starships;
+        return $this->starshipDroids;
     }
 
-    public function addStarship(Starship $starship): static
+    public function addStarshipDroid(StarshipDroid $starshipDroid): static
     {
-        if (!$this->starships->contains($starship)) {
-            $this->starships->add($starship);
-            $starship->addDroid($this); // İlişkiyi her iki tarafta da güncelle
+        if (!$this->starshipDroids->contains($starshipDroid)) {
+            $this->starshipDroids->add($starshipDroid);
+            $starshipDroid->setDroid($this);
         }
 
         return $this;
     }
 
-    public function removeStarship(Starship $starship): static
+    public function removeStarshipDroid(StarshipDroid $starshipDroid): static
     {
-        if ($this->starships->removeElement($starship)) {
-            $starship->removeDroid($this); // İlişkiyi her iki tarafta da güncelle
+        if ($this->starshipDroids->removeElement($starshipDroid)) {
+            // set the owning side to null (unless already changed)
+            if ($starshipDroid->getDroid() === $this) {
+                $starshipDroid->setDroid(null);
+            }
         }
 
         return $this;

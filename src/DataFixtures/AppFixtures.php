@@ -41,11 +41,10 @@ class AppFixtures extends Fixture
         StarshipFactory::createMany(20);
         \App\Factory\StarshipPartFactory::createMany(100);
 
-        // Foundry ile ManyToMany: Droid ordusu ve Starship filosu
+        // Foundry ile Join Entity: Droid ordusu ve Starship filosu
         DroidFactory::createMany(100);
-        StarshipFactory::createMany(100, fn() => [
-            'droids' => DroidFactory::randomRange(1, 5),
-        ]);
+        // TODO: StarshipDroid entity ile ilişkilendirme yapılacak
+        StarshipFactory::createMany(100);
 
         $manager->flush();
     }

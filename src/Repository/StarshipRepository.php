@@ -35,16 +35,18 @@ class StarshipRepository extends ServiceEntityRepository
 
         // Her starship için droid sayısını hesaplayıp sıralayalım
         usort($starships, function ($a, $b) {
-            $aDroidCount = $a->getDroids()->count();
-            $bDroidCount = $b->getDroids()->count();
+            $aDroidCount = $a->getStarshipDroids()->count();
+            $bDroidCount = $b->getStarshipDroids()->count();
             return $aDroidCount <=> $bDroidCount;
         });
 
         // ArrayAdapter kullanarak paginator oluşturalım
         return new Pagerfanta(new ArrayAdapter($starships));
     }
-    public function findMyShip(): Starship
+
+    public function findMyShip(): ?Starship
     {
-        return $this->findAll()[0];
+        $starships = $this->findAll();
+        return $starships ? $starships[0] : null;
     }
 }

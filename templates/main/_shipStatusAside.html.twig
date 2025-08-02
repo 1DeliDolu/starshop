@@ -9,6 +9,7 @@
         </button>
     </div>
 
+    {% if myShip %}
     <div>
         <div class="flex flex-col space-y-1.5">
             <div class="rounded-2xl py-1 px-3 flex justify-center w-32 items-center" style="background: rgba(255, 184, 0, .1);">
@@ -33,4 +34,10 @@
             </div>
         </div>
     </div>
+    {% else %}
+    <div class="text-center text-slate-400 mt-8">
+        <p class="text-lg">No ship assigned</p>
+        <p class="text-sm mt-2">Create a starship to see your status</p>
+    </div>
+    {% endif %}
 </aside>
