@@ -12,7 +12,11 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
 final class TripController extends AbstractController
 {
@@ -25,7 +29,13 @@ final class TripController extends AbstractController
     }
 
     #[Route('/trip/{slug:trip}', name: 'trip_show')]
-    public function show(Trip $trip, Request $request, CustomerRepository $customers, EntityManagerInterface $em): Response {
+    public function show(
+        Trip $trip,
+        Request $request,
+        CustomerRepository $customers,
+        EntityManagerInterface $em,
+        MailerInterface $mailer,
+    ): Response {
         $form = $this->createForm(BookingType::class)->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -37,6 +47,21 @@ final class TripController extends AbstractController
             $em->persist($customer);
             $em->persist($booking);
             $em->flush();
+
+            $email = (new TemplatedEmail())
+                ->from(new Address('info@universal-travel.com', 'Universal Travel'))
+                ->to(new Address($customer->getEmail(), $customer->getName()))
+                ->subject('Booking Confirmation for ' . $trip->getName())
+                ->textTemplate('email/booking_confirmation.txt.twig')
+                ->htmlTemplate('email/booking_confirmation.html.twig')
+                ->context([
+                    'customer' => $customer,
+                    'trip' => $trip,
+                    'booking' => $booking,
+                ])
+            ;
+
+            $mailer->send($email);
 
             return $this->redirectToRoute('booking_show', ['uid' => $booking->getUid()]);
         }
