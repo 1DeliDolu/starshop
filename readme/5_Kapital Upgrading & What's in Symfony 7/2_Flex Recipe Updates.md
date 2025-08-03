@@ -159,3 +159,11 @@ composer recipes:update
 Sırada `symfony/translation` var. Bu da kolay: `translation.yaml` eskiden örnek olarak bazı yorum satırı halindeki sağlayıcılar içeriyordu... şimdi ise çıkarılmışlar. Ama bu sağlayıcı paketlerinden birini kurarsanız, tarifi o satırı yeniden ekler.
 
 Commit edin... ve son 2 tarife geldik! Bunlar her ikisi de `Webpack Encore`'da ve yeni bir `StimulusBundle` ile ilgili değişikliklerle alakalı. Bu da bir sonraki bölümün konusu olacak!
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+    <a href="./1_Upgrading & What's in Symfony 7.md" title="Önceki" style="text-decoration: none; font-size: 1.2em;">⬅️ Önceki</a>
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./3_Encore, StimulusBundle & their Recipe Changes.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>

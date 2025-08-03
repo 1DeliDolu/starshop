@@ -4,9 +4,9 @@ Bir `parts` tablomuz var ve artık onu kullanıyoruz! Ama şimdi parçaları, fi
 
 O hazırdaki method gövdesini görüyor musunuz? Onu kopyalayın, ardından yorumu kaldırın; çünkü bu PHP dokümantasyonu faydalı ve kaybetmek istemeyiz. Son stubu silin ve adını `findAllOrderedByPrice()` yapın. `$value` parametresini kaldırın, buna ihtiyacımız yok:
 
-````
-src/Repository/StarshipPartRepository.php
 ```php
+// src/Repository/StarshipPartRepository.php
+
 // ... lines 1 - 13
 class StarshipPartRepository extends ServiceEntityRepository
 {
@@ -16,7 +16,7 @@ class StarshipPartRepository extends ServiceEntityRepository
 // ... lines 43 - 46
     }
 }
-````
+```
 
 👉 Bu kod, yeni bir `findAllOrderedByPrice` fonksiyonunun iskeletini oluşturur.
 

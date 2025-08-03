@@ -190,3 +190,10 @@ symfony serve -d
 Evet: sistemimdeki `PHP 8.3.1` sürümünü buldu. Ve sitede... tamam!
 
 Şimdi uygulama `Symfony 6.4` üzerinde çalışıyor. Şimdi işimiz, tüm `deprecation`ları bulmak ve düzeltmek. Web debug toolbar'da, bu sayfada 22 tane `deprecated` kod yolu kullandığımızı gösteriyor! Bunları düzeltmeye başlamak için... hile yapacağız... bir kestirme kullanıp Flex tariflerimizi yükselteceğiz.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">    
+    <a href="../README.md" title="Ana Sayfa" style="text-decoration: none; font-size: 1.2em;">🏠 Ana Sayfa</a>
+    <a href="./2_Flex Recipe Updates.md" title="Sonraki" style="text-decoration: none; font-size: 1.2em;">Sonraki ➡️</a>
+</div>
