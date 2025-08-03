@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Dto\BookingDto;
+use App\Email\BookingEmailFactory;
 use App\Entity\Booking;
 use App\Entity\Trip;
 use App\Form\BookingType;
@@ -12,6 +13,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class TripController extends AbstractController
@@ -25,7 +27,14 @@ final class TripController extends AbstractController
     }
 
     #[Route('/trip/{slug:trip}', name: 'trip_show')]
-    public function show(Trip $trip, Request $request, CustomerRepository $customers, EntityManagerInterface $em): Response {
+    public function show(
+        Trip $trip,
+        Request $request,
+        CustomerRepository $customers,
+        EntityManagerInterface $em,
+        MailerInterface $mailer,
+        BookingEmailFactory $emailFactory,
+    ): Response {
         $form = $this->createForm(BookingType::class)->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -37,6 +46,8 @@ final class TripController extends AbstractController
             $em->persist($customer);
             $em->persist($booking);
             $em->flush();
+
+            $mailer->send($emailFactory->createBookingConfirmation($booking));
 
             return $this->redirectToRoute('booking_show', ['uid' => $booking->getUid()]);
         }

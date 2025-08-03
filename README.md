@@ -22,22 +22,14 @@ composer install
 You may alternatively need to run `php composer.phar install`, depending
 on how you installed Composer.
 
-**Setup the Database (MySQL)**
+**Setup the Database**
 
-Your project is configured to use MySQL. Make sure your MySQL server is running and the credentials in your `.env` file are correct.
-
-Create the database, run migrations, and load the fixtures:
+Create the database (SQLite by default), the schema, and load the fixtures:
 
 ```
 symfony console doctrine:database:create
-symfony console doctrine:migrations:migrate
+symfony console doctrine:schema:create
 symfony console doctrine:fixtures:load
-```
-
-If you see an error about access denied or unknown database, check your MySQL username, password, and database name in `.env`:
-
-```
-DATABASE_URL="mysql://root@127.0.0.1:3306/starship?serverVersion=8.0.32&charset=utf8mb4"
 ```
 
 **Build Tailwind CSS**
