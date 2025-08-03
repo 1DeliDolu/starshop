@@ -34,9 +34,6 @@
             "src/DataFixtures/AppFixtures.php"
         ]
     },
-    "knplabs/knp-time-bundle": {
-        "version": "v2.4.0"
-    },
     "phpunit/phpunit": {
         "version": "9.6",
         "recipe": {
@@ -143,17 +140,8 @@
             "ref": "09051cfde49476e3c12cd3a0e44289ace1c75a4f"
         },
         "files": [
-            "config/packages/mailer.yaml"
+            "./config/packages/mailer.yaml"
         ]
-    },
-    "symfony/mailtrap-mailer": {
-        "version": "7.2",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "main",
-            "version": "7.2",
-            "ref": "e1d25e0fab8778b977233aff6762d3791eab3155"
-        }
     },
     "symfony/maker-bundle": {
         "version": "1.61",
@@ -173,7 +161,7 @@
             "ref": "ba1ac4e919baba5644d31b57a3284d6ba12d52ee"
         },
         "files": [
-            "config/packages/messenger.yaml"
+            "./config/packages/messenger.yaml"
         ]
     },
     "symfony/monolog-bundle": {
@@ -216,18 +204,6 @@
             "config/routes.yaml"
         ]
     },
-    "symfony/scheduler": {
-        "version": "7.2",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "main",
-            "version": "7.2",
-            "ref": "caea3c928ee9e1b21288fd76aef36f16ea355515"
-        },
-        "files": [
-            "src/Schedule.php"
-        ]
-    },
     "symfony/stimulus-bundle": {
         "version": "2.22",
         "recipe": {
@@ -249,11 +225,11 @@
             "repo": "github.com/symfony/recipes",
             "branch": "main",
             "version": "6.3",
-            "ref": "e28e27f53663cc34f0be2837aba18e3a1bef8e7b"
+            "ref": "620a1b84865ceb2ba304c8f8bf2a185fbf32a843"
         },
         "files": [
-            "config/packages/translation.yaml",
-            "translations/.gitignore"
+            "./config/packages/translation.yaml",
+            "./translations/.gitignore"
         ]
     },
     "symfony/twig-bundle": {
@@ -303,7 +279,7 @@
             "ref": "0bc853a74c98e448116ba53e118a7b6b3cdf9a03"
         },
         "files": [
-            "config/routes/webhook.yaml"
+            "./config/routes/webhook.yaml"
         ]
     },
     "symfonycasts/tailwind-bundle": {
@@ -331,23 +307,6 @@
         },
         "files": [
             "config/packages/zenstruck_foundry.yaml"
-        ]
-    },
-    "zenstruck/mailer-test": {
-        "version": "v1.4.2"
-    },
-    "zenstruck/messenger-monitor-bundle": {
-        "version": "0.5",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "main",
-            "version": "0.5",
-            "ref": "e830a96e19aef36b23c63a4f8884fe51815f06d8"
-        },
-        "files": [
-            "config/packages/zenstruck_messenger_monitor.yaml",
-            "src/Controller/Admin/MessengerMonitorController.php",
-            "src/Entity/ProcessedMessage.php"
         ]
     }
 }

@@ -9,36 +9,28 @@
         "doctrine/doctrine-bundle": "^2.13",
         "doctrine/doctrine-fixtures-bundle": "^3.6",
         "doctrine/orm": "^3.3",
-        "dragonmantank/cron-expression": "^3.4",
-        "knplabs/knp-time-bundle": "^2.4",
-        "league/html-to-markdown": "^5.1",
         "symfony/asset": "7.2.*",
         "symfony/asset-mapper": "7.2.*",
         "symfony/console": "7.2.*",
-        "symfony/doctrine-messenger": "7.2.*",
         "symfony/dotenv": "7.2.*",
         "symfony/flex": "^2",
         "symfony/form": "7.2.*",
         "symfony/framework-bundle": "7.2.*",
         "symfony/mailer": "7.2.*",
-        "symfony/mailtrap-mailer": "7.2.*",
         "symfony/messenger": "7.2.*",
         "symfony/monolog-bundle": "^3.10",
         "symfony/remote-event": "7.2.*",
         "symfony/runtime": "7.2.*",
-        "symfony/scheduler": "7.2.*",
         "symfony/security-csrf": "7.2.*",
         "symfony/stimulus-bundle": "^2.21",
+        "symfony/translation": "7.2.*",
         "symfony/twig-bundle": "7.2.*",
         "symfony/validator": "7.2.*",
         "symfony/webhook": "7.2.*",
         "symfony/yaml": "7.2.*",
         "symfonycasts/tailwind-bundle": "^0.7.1",
-        "twig/cssinliner-extra": "^3.18",
         "twig/extra-bundle": "^3.0",
-        "twig/inky-extra": "^3.19",
-        "twig/twig": "^3.0",
-        "zenstruck/messenger-monitor-bundle": "^0.5.1"
+        "twig/twig": "^3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
@@ -50,9 +42,7 @@
         "symfony/stopwatch": "7.2.*",
         "symfony/web-profiler-bundle": "7.2.*",
         "zenstruck/browser": "^1.9",
-        "zenstruck/console-test": "^1.7",
-        "zenstruck/foundry": "^2.2",
-        "zenstruck/mailer-test": "^1.4"
+        "zenstruck/foundry": "^2.2"
     },
     "config": {
         "allow-plugins": {
@@ -60,7 +50,9 @@
             "symfony/flex": true,
             "symfony/runtime": true
         },
-        "platform": {},
+        "platform": {
+            "php": "8.2"
+        },
         "sort-packages": true
     },
     "autoload": {
