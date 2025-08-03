@@ -1,7 +1,7 @@
-# Symfony, Doctrine Relations & Warp Drive Basics
+# Mailer and Webhook with Mailtrap
 
 Well hi there! This repository holds the code and script for the
-[Symfony, Doctrine Relations & Warp Drive Basics](https://symfonycasts.com/screencast/symfony7-doctrine-relations)
+[Mailer and Webhook with Mailtrap](https://symfonycasts.com/screencast/mailtrap)
 course on SymfonyCasts.
 
 ## Setup
@@ -22,12 +22,20 @@ composer install
 You may alternatively need to run `php composer.phar install`, depending
 on how you installed Composer.
 
-**Build TailwindCSS**
+**Setup the Database**
 
-This project uses TailwindCSS, to build the CSS file run:
+Create the database (SQLite by default), the schema, and load the fixtures:
 
 ```
-php bin/console tailwind:build
+symfony console doctrine:database:create
+symfony console doctrine:schema:create
+symfony console doctrine:fixtures:load
+```
+
+**Build Tailwind CSS**
+
+```
+symfony console tailwind:build
 ```
 
 **Start the Symfony web server**
@@ -44,7 +52,7 @@ Then, to start the web server, open a terminal, move into the
 project, and run:
 
 ```
-symfony serve
+symfony serve -d
 ```
 
 (If this is your first time using this command, you may see an
