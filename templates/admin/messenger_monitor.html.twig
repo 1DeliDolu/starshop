@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Messenger Monitor{% endblock %}
+
+{% block body %}
+<div class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-6">Messenger Monitor Dashboard</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Messenger Stats -->
+        <div class="bg-beige rounded-lg shadow p-6">
+            <h2 class="text-xl font-semibold mb-4">📊 Messenger Stats</h2>
+            <div class="space-y-2">
+            <p><strong>Async Transport:</strong> <span class="text-green-600">Active</span></p>
+            <p><strong>Scheduler Transport:</strong> <span class="text-yellow-600">Configured</span></p>
+            <p><strong>Failed Transport:</strong> <span class="text-blue-600">Available</span></p>
+            </div>
+        </div>
+
+        <!-- Schedule Status -->
+        <div class="bg-beige rounded-lg shadow p-6">
+            <h2 class="text-xl font-semibold mb-4">⏰ Scheduled Tasks</h2>
+            <div class="space-y-2">
+                <p><strong>Booking Reminders:</strong> <span class="text-blue-600">#midnight</span></p>
+                <p><strong>Monitor Purge:</strong> <span class="text-blue-600">#midnight</span></p>
+                <p><strong>Schedule Purge:</strong> <span class="text-blue-600">#midnight</span></p>
+            </div>
+        </div>
+
+        <!-- Email System -->
+        <div class="bg-beige rounded-lg shadow p-6">
+            <h2 class="text-xl font-semibold mb-4">📧 Email System</h2>
+            <div class="space-y-2">
+                <p><strong>Mailer:</strong> <span class="text-green-600">Mailtrap</span></p>
+                <p><strong>Async Emails:</strong> <span class="text-green-600">Enabled</span></p>
+                <p><strong>Webhooks:</strong> <span class="text-yellow-600">Configured</span></p>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="bg-beige rounded-lg shadow p-6">
+            <h2 class="text-xl font-semibold mb-4">🚀 Quick Actions</h2>
+            <div class="space-y-3">
+                <button onclick="alert('Run: php bin/console app:send-booking-reminders')" 
+                   class="block bg-blue-500 text-white px-4 py-2 rounded text-center hover:bg-blue-600 w-full">
+                    Send Reminders
+                </button>
+                <button onclick="alert('Run: php bin/console app:test-email')" 
+                   class="block bg-green-500 text-white px-4 py-2 rounded text-center hover:bg-green-600 w-full">
+                    Test Email
+                </button>
+            </div>
+        </div>
+
+        <!-- System Info -->
+        <div class="bg-beige rounded-lg shadow p-6">
+            <h2 class="text-xl font-semibold mb-4">ℹ️ System Info</h2>
+            <div class="space-y-2">
+                <p><strong>Environment:</strong> {{ app.environment }}</p>
+                <p><strong>Debug:</strong> {{ app.debug ? 'On' : 'Off' }}</p>
+                <p><strong>Symfony:</strong> {{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION') }}</p>
+            </div>
+        </div>
+
+        <!-- Webhook Test -->
+        <div class="bg-beige rounded-lg shadow p-6">
+            <h2 class="text-xl font-semibold mb-4">🪝 Webhook Status</h2>
+            <div class="space-y-2">
+                <p><strong>Endpoint:</strong> <code>/webhook/mailtrap</code></p>
+                <p><strong>Consumer:</strong> <span class="text-green-600">EmailEventConsumer</span></p>
+                <p><strong>Status:</strong> <span class="text-yellow-600">Ready</span></p>
+            </div>
+            <a href="/webhook/test" 
+               class="mt-3 block bg-purple-500 text-white px-4 py-2 rounded text-center hover:bg-purple-600">
+                Test Webhook
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Commands Section -->
+    <div class="mt-8">
+        <h2 class="text-2xl font-semibold mb-4">🛠️ Available Commands</h2>
+        <div class="bg-beige rounded-lg p-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold mb-2">Messenger Commands:</h3>
+                    <ul class="space-y-1 text-sm">
+                        <li><code>messenger:consume async</code></li>
+                        <li><code>messenger:consume scheduler_default</code></li>
+                        <li><code>messenger:stats</code></li>
+                        <li><code>messenger:stop-workers</code></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Application Commands:</h3>
+                    <ul class="space-y-1 text-sm">
+                        <li><code>app:send-booking-reminders</code></li>
+                        <li><code>app:test-email</code></li>
+                        <li><code>debug:schedule</code></li>
+                        <li><code>server:dump</code></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Indicators -->
+    <div class="mt-6">
+        <div class="flex space-x-4 text-sm">
+            <span class="flex items-center">
+                <span class="w-3 h-3 bg-green-500 rounded-full mr-2"></span>
+                Active/Working
+            </span>
+            <span class="flex items-center">
+                <span class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></span>
+                Configured/Pending
+            </span>
+            <span class="flex items-center">
+                <span class="w-3 h-3 bg-blue-500 rounded-full mr-2"></span>
+                Available/Ready
+            </span>
+        </div>
+    </div>
+</div>
+{% endblock %}
