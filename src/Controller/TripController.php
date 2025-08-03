@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Dto\BookingDto;
+use App\Email\BookingEmailFactory;
 use App\Entity\Booking;
 use App\Entity\Trip;
 use App\Form\BookingType;
@@ -15,6 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Email;
+use Symfony\Component\Mime\Header\Headers;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
@@ -35,6 +37,7 @@ final class TripController extends AbstractController
         CustomerRepository $customers,
         EntityManagerInterface $em,
         MailerInterface $mailer,
+        BookingEmailFactory $emailFactory,
     ): Response {
         $form = $this->createForm(BookingType::class)->handleRequest($request);
 
@@ -48,17 +51,19 @@ final class TripController extends AbstractController
             $em->persist($booking);
             $em->flush();
 
-            $email = (new TemplatedEmail())
-                ->to(new Address($customer->getEmail(), $customer->getName()))
-                ->subject('Booking Confirmation for ' . $trip->getName())
-                ->textTemplate('email/booking_confirmation.txt.twig')
-                ->htmlTemplate('email/booking_confirmation.html.twig')
-                ->context([
-                    'customer' => $customer,
-                    'trip' => $trip,
-                    'booking' => $booking,
-                ])
-            ;
+            $booking = new Booking($customer, $trip, new \DateTimeImmutable());
+            $em->persist($booking);
+            $em->flush();
+
+            $email = $emailFactory->createBookingConfirmation($booking);
+            $mailer->send($email);
+
+            // Tag for categorization (Mailtrap category)
+            $email->getHeaders()->addTextHeader('X-Tag', 'booking');
+
+            // Metadata for tracking (Mailtrap custom variables)
+            $email->getHeaders()->addTextHeader('X-Metadata-booking-uid', $booking->getUid());
+            $email->getHeaders()->addTextHeader('X-Metadata-customer-uid', $customer->getUid());
 
             $mailer->send($email);
 

@@ -6,13 +6,14 @@ use App\Factory\BookingFactory;
 use App\Factory\CustomerFactory;
 use App\Factory\TripFactory;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Symfony\Bundle\FrameworkBundle\Test\MailerAssertionsTrait;
 use Zenstruck\Browser\Test\HasBrowser;
 use Zenstruck\Foundry\Test\Factories;
 use Zenstruck\Foundry\Test\ResetDatabase;
 
 class BookingTest extends KernelTestCase
 {
-    use ResetDatabase, Factories, HasBrowser;
+    use ResetDatabase, Factories, HasBrowser, MailerAssertionsTrait;
 
     /**
      * @test
@@ -21,7 +22,7 @@ class BookingTest extends KernelTestCase
     {
         $trip = TripFactory::createOne([
             'name' => 'Visit Mars',
-            'slug' => 'mars',
+            'slug' => 'iss',
             'tagLine' => 'The red planet',
         ]);
 
@@ -29,13 +30,14 @@ class BookingTest extends KernelTestCase
         CustomerFactory::assert()->empty();
 
         $this->browser()
-            ->visit('/trip/mars')
+            ->throwExceptions()
+            ->visit('/trip/iss')
             ->assertSuccessful()
             ->fillField('Name', 'Bruce Wayne')
             ->fillField('Email', 'bruce@wayne-enterprises.com')
             ->fillField('Travel Date', (new \DateTime('+1 month'))->format('Y-m-d'))
             ->clickAndIntercept('Book Trip')
-            ->assertRedirectedTo('/booking/'.BookingFactory::first()->getUid())
+            ->assertRedirectedTo('/booking/' . BookingFactory::first()->getUid())
             ->assertSuccessful()
             ->assertSeeIn('h1', 'Visit Mars')
             ->assertSee('The red planet')
@@ -43,11 +45,20 @@ class BookingTest extends KernelTestCase
 
         CustomerFactory::assert()
             ->count(1)
-            ->exists(['name'=>'Bruce Wayne', 'email'=>'bruce@wayne-enterprises.com'])
+            ->exists(['name' => 'Bruce Wayne', 'email' => 'bruce@wayne-enterprises.com'])
         ;
         BookingFactory::assert()
             ->count(1)
-            ->exists(['trip'=>$trip, 'customer' => CustomerFactory::first()])
+            ->exists(['trip' => $trip, 'customer' => CustomerFactory::first()])
         ;
+
+        // Test email functionality with Symfony's built-in email testing
+        $this->assertEmailCount(1);
+        $email = $this->getMailerMessage();
+        $this->assertEmailHeaderSame($email, 'to', 'bruce@wayne-enterprises.com');
+        $this->assertEmailHeaderSame($email, 'subject', 'Booking Confirmation for Visit Mars');
+        $this->assertEmailTextBodyContains($email, 'Visit Mars');
+        $this->assertEmailHtmlBodyContains($email, 'Visit Mars');
+        $this->assertEmailHtmlBodyContains($email, '/booking/' . BookingFactory::first()->getUid());
     }
 }

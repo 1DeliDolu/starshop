@@ -45,7 +45,7 @@ class AppFixtures extends Fixture
             'tagLine' => 'Try your hand at creating your own vehicle transformers!',
         ]);
 
-        BookingFactory::createMany(10, function() {
+        BookingFactory::createMany(10, function () {
             return [
                 'customer' => CustomerFactory::random(),
                 'trip' => TripFactory::random(),
@@ -83,6 +83,13 @@ class AppFixtures extends Fixture
             'customer' => $clark,
             'trip' => $cybertron,
             'date' => new \DateTimeImmutable('-2 weeks'),
+        ]);
+
+        // Booking that should trigger a reminder (6 days from now)
+        BookingFactory::createOne([
+            'trip' => $arrakis,
+            'customer' => $clark,
+            'date' => new \DateTimeImmutable('+6 days'),
         ]);
     }
 }

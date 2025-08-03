@@ -2,26 +2,41 @@
 
 namespace App\Tests\Functional\Command;
 
-use App\Factory\BookingFactory;
+use Ap        // Assert email was sent
+        $this->assertEmailCount(1);
+        $email = $this->getMailerMessage();
+        $this->assertEmailHeaderSame($email, 'to', 'steve@minecraft.com');
+        $this->assertEmailHeaderSame($email, 'subject', 'Booking Reminder for Visit Mars');
+        $this->assertEmailHtmlBodyContains($email, 'Visit Mars');
+        $this->assertEmailHtmlBodyContains($email, '/booking/');
+
+        // Refresh booking entity from database
+        $booking->_real()->refresh();
+        $this->assertNotNull($booking->getReminderSentAt());\BookingFactory;
 use App\Factory\CustomerFactory;
 use App\Factory\TripFactory;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Zenstruck\Console\Test\InteractsWithConsole;
+use Symfony\Bundle\FrameworkBundle\Test\MailerAssertionsTrait;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Tester\CommandTester;
 use Zenstruck\Foundry\Test\Factories;
 use Zenstruck\Foundry\Test\ResetDatabase;
-use Zenstruck\Mailer\Test\InteractsWithMailer;
-use Zenstruck\Mailer\Test\TestEmail;
 
 class SendBookingRemindersCommandTest extends KernelTestCase
 {
-    use ResetDatabase, Factories, InteractsWithMailer, InteractsWithConsole;
+    use ResetDatabase, Factories, MailerAssertionsTrait;
 
     public function testNoRemindersSent()
     {
-        $this->executeConsoleCommand('app:send-booking-reminders')
-            ->assertSuccessful()
-            ->assertOutputContains('Sent 0 booking reminders')
-        ;
+        $kernel = static::bootKernel();
+        $application = new Application($kernel);
+
+        $command = $application->find('app:send-booking-reminders');
+        $commandTester = new CommandTester($command);
+        $commandTester->execute([]);
+
+        $commandTester->assertCommandIsSuccessful();
+        $this->assertStringContainsString('Sent 0 booking reminders', $commandTester->getDisplay());
     }
 
     public function testRemindersSent()
@@ -37,21 +52,23 @@ class SendBookingRemindersCommandTest extends KernelTestCase
 
         $this->assertNull($booking->getReminderSentAt());
 
-        $this->executeConsoleCommand('app:send-booking-reminders')
-            ->assertSuccessful()
-            ->assertOutputContains('Sent 1 booking reminders')
-        ;
+        $kernel = static::bootKernel();
+        $application = new Application($kernel);
 
-        $this->mailer()
-            ->assertSentEmailCount(1)
-            ->assertEmailSentTo('steve@minecraft.com', function(TestEmail $email) {
-                $email
-                    ->assertSubject('Booking Reminder for Visit Mars')
-                    ->assertContains('Visit Mars')
-                    ->assertContains('/booking/'.BookingFactory::first()->getUid())
-                ;
-            })
-        ;
+        $command = $application->find('app:send-booking-reminders');
+        $commandTester = new CommandTester($command);
+        $commandTester->execute([]);
+
+        $commandTester->assertCommandIsSuccessful();
+        $this->assertStringContainsString('Sent 1 booking reminders', $commandTester->getDisplay());
+
+        // Assert email was sent
+        $this->assertEmailCount(1);
+        $email = $this->getMailerMessage();
+        $this->assertEmailHeaderSame($email, 'to', 'steve@minecraft.com');
+        $this->assertEmailHeaderSame($email, 'subject', 'Booking Reminder for Visit Mars');
+        $this->assertEmailHtmlBodyContains($email, 'Visit Mars');
+        $this->assertEmailHtmlBodyContains($email, '/booking/' . $booking->getUid());
 
         $this->assertNotNull($booking->getReminderSentAt());
     }
