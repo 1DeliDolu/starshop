@@ -1,0 +1,38 @@
+diff --git a/src/Remote/Button/VolumeUpButton.php b/src/Remote/Button/VolumeUpButton.php
+index 080d1d2..b5022b4 100644
+--- a/src/Remote/Button/VolumeUpButton.php
++++ b/src/Remote/Button/VolumeUpButton.php
+@@ -4,25 +4,26 @@ namespace App\Remote\Button;
+ 
+ use App\Remote\ParentalControls;
+ use Symfony\Component\DependencyInjection\Attribute\AsTaggedItem;
+-use Symfony\Component\DependencyInjection\Attribute\Lazy;
++use Symfony\Component\DependencyInjection\Attribute\AutowireServiceClosure;
+ 
+ #[AsTaggedItem('volume-up', priority: 20)]
+ final class VolumeUpButton implements ButtonInterface
+ {
++    /**
++     * @param \Closure():ParentalControls $parentalControls
++     */
+     public function __construct(
+-        #[Lazy]
+-        private ParentalControls $parentalControls,
++        #[AutowireServiceClosure(ParentalControls::class)]
++        private \Closure $parentalControls,
+     ) {
+     }
+ 
+     public function press(): void
+     {
+-        if (false) { // determine if volume is too high
+-            $this->parentalControls->volumeTooHigh();
++        if (true) { // determine if volume is too high
++            ($this->parentalControls)()->volumeTooHigh();
+         }
+ 
+-        dump($this->parentalControls);
+-
+         dump('Change the volume up');
+     }
+ }

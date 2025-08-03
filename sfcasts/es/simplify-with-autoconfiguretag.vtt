@@ -1,0 +1,178 @@
+WEBVTT
+
+00:00:01.086 --> 00:00:04.146 align:middle
+En el último capítulo,
+refactorizamos la gran sentencia switch
+
+00:00:04.146 --> 00:00:06.736 align:middle
+de nuestro controlador a
+este pequeño try-catch.
+
+00:00:06.736 --> 00:00:11.466 align:middle
+Nuestro control funciona igual que antes, pero
+ahora estamos utilizando el patrón Comando.
+
+00:00:12.016 --> 00:00:17.036 align:middle
+También utilizamos este atributo AutowireLocator
+para decirle a Symfony cómo conectar este contenedor.
+
+00:00:17.036 --> 00:00:21.276 align:middle
+Esto está muy bien, pero ¿y si te dijera
+que podemos simplificarlo aún más?
+
+00:00:21.276 --> 00:00:24.826 align:middle
+Ya que todos nuestros botones
+implementan este ButtonInterface,
+
+00:00:25.086 --> 00:00:29.406 align:middle
+añadiremos nuestro segundo atributo de
+inyección de dependencia: #[AutoconfigureTag]:
+
+00:00:29.996 --> 00:00:34.976 align:middle
+Este atributo le dice a Symfony Oye, ¡añade una etiqueta
+a cualquier servicio que implemente esta interfaz!
+
+00:00:34.976 --> 00:00:38.126 align:middle
+Una etiqueta no es más que una
+cadena conectada a un servicio,
+
+00:00:38.326 --> 00:00:40.926 align:middle
+y por sí sola, no hace realmente nada.
+
+00:00:41.466 --> 00:00:46.356 align:middle
+Pero, ahora que nuestros servicios tienen esta etiqueta, podemos
+sustituir la asignación manual de servicios que utilizamos
+
+00:00:46.356 --> 00:00:50.426 align:middle
+en el atributo #[AutowireLocator] de
+ButtonRemote por el nombre de la etiqueta:
+
+00:00:51.766 --> 00:00:55.976 align:middle
+Cuando utilices el atributo #[AutoconfigureTag],
+puedes personalizar el nombre de la etiqueta.
+
+00:00:55.976 --> 00:00:59.976 align:middle
+Si decides no hacerlo, se utilizará
+por defecto el nombre de la interfaz.
+
+00:01:00.796 --> 00:01:04.086 align:middle
+Nos quedaremos con el nombre por defecto
+porque el nombre no es superimportante.
+
+00:01:05.446 --> 00:01:09.366 align:middle
+Bien, de vuelta en nuestro navegador,
+veamos si todo sigue funcionando.
+
+00:01:09.366 --> 00:01:10.436 align:middle
+Pulsa un botón y...
+
+00:01:10.856 --> 00:01:13.186 align:middle
+error. Botón "power" no encontrado.
+
+00:01:13.336 --> 00:01:16.316 align:middle
+Desplázate hacia abajo para ver
+los detalles de la excepción.
+
+00:01:16.316 --> 00:01:17.336 align:middle
+Ah, ¡aquí está!
+
+00:01:17.576 --> 00:01:22.136 align:middle
+Esta excepción "no encontrada" se lanzó desde
+el método press() porque no pudo encontrar
+
+00:01:22.136 --> 00:01:24.206 align:middle
+"power" en el contenedor de ButtonRemote.
+
+00:01:24.576 --> 00:01:29.076 align:middle
+Por suerte, los detalles de la excepción anterior
+nos muestran los ID de servicio que sí encontró:
+
+00:01:29.246 --> 00:01:31.296 align:middle
+los nombres de clase
+completos de nuestros botones.
+
+00:01:31.296 --> 00:01:34.806 align:middle
+Así que se están conectando,
+pero no por el ID que necesitamos.
+
+00:01:35.206 --> 00:01:39.426 align:middle
+Queremos que los ID de servicio de nuestro
+contenedor sean los nombres slug de nuestros botones.
+
+00:01:39.786 --> 00:01:44.216 align:middle
+Para ello, utilizaremos nuestro siguiente atributo
+de inyección de dependencia: #[AsTaggedItem].
+
+00:01:44.506 --> 00:01:46.026 align:middle
+Ponerlo en las implementaciones
+
+00:01:46.026 --> 00:01:49.296 align:middle
+de ButtonInterface nos permite
+personalizar el ID del servicio.
+
+00:01:49.296 --> 00:01:51.566 align:middle
+Empieza con la clase ChannelDownButton.
+
+00:01:53.296 --> 00:01:55.946 align:middle
+Añade #[AsTaggedItem] a la clase...
+
+00:01:56.116 --> 00:02:00.596 align:middle
+y para el primer argumento, que es el
+índice, escribiremos channel-down.
+
+00:02:01.876 --> 00:02:04.266 align:middle
+Haremos lo mismo en ChannelUpButton...
+
+00:02:05.986 --> 00:02:06.826 align:middle
+PowerButton...
+
+00:02:07.936 --> 00:02:09.186 align:middle
+VolumeDownButton...
+
+00:02:10.386 --> 00:02:11.496 align:middle
+y VolumeUpButton.
+
+00:02:12.606 --> 00:02:14.536 align:middle
+Muy bien, vuelve a tu navegador...
+
+00:02:14.656 --> 00:02:15.776 align:middle
+actualiza la página...
+
+00:02:16.016 --> 00:02:17.096 align:middle
+pulsa un botón, y...
+
+00:02:17.616 --> 00:02:20.036 align:middle
+¡funciona! Si miramos el perfilador,
+
+00:02:20.706 --> 00:02:23.356 align:middle
+podemos ver que está volcando el
+mensaje correcto para el botón.
+
+00:02:23.356 --> 00:02:28.376 align:middle
+Así que ahora, siempre que queramos añadir un nuevo
+botón, sólo tenemos que crear la clase botón,
+
+00:02:28.376 --> 00:02:30.286 align:middle
+hacer que implemente el ButtonInterface,
+
+00:02:30.416 --> 00:02:34.166 align:middle
+y añadir el atributo #[AsTaggedItem]
+con un nombre de botón único.
+
+00:02:34.166 --> 00:02:39.136 align:middle
+Si queremos que esto aparezca en nuestra IU remota,
+aún tendremos que añadirlo a nuestra plantilla.
+
+00:02:39.536 --> 00:02:41.146 align:middle
+Pero, ¿y si pudiéramos hacerlo aún mejor?
+
+00:02:41.146 --> 00:02:44.666 align:middle
+¿Y si no tuviéramos que editar este archivo
+cada vez que añadimos un nuevo botón?
+
+00:02:45.276 --> 00:02:48.696 align:middle
+Para ello, necesitamos utilizar otro
+atributo de inyección de dependencia.
+
+00:02:48.986 --> 00:02:49.666 align:middle
+Eso a continuación.

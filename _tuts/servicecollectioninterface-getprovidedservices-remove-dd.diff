@@ -1,0 +1,11 @@
+diff --git a/src/Remote/ButtonRemote.php b/src/Remote/ButtonRemote.php
+index 387255a..d8344b4 100644
+--- a/src/Remote/ButtonRemote.php
++++ b/src/Remote/ButtonRemote.php
+@@ -24,6 +24,5 @@ final class ButtonRemote
+      */
+     public function buttons(): iterable
+     {
+-        dd($this->buttons->getProvidedServices());
+     }
+ }

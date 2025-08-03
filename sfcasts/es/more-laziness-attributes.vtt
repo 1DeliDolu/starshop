@@ -1,0 +1,220 @@
+WEBVTT
+
+00:00:01.056 --> 00:00:04.886 align:middle
+Lo bueno de los "servicios perezosos"
+es que no requieren cambios
+
+00:00:04.886 --> 00:00:07.426 align:middle
+en tu código (siempre que los
+servicios no sean finales).
+
+00:00:08.016 --> 00:00:12.466 align:middle
+Pero, ¿y si el servicio ParentalControls viviera
+dentro de un paquete de terceros y fuera final?
+
+00:00:13.036 --> 00:00:15.226 align:middle
+¡Difícil! Pero tenemos algunas opciones.
+
+00:00:15.696 --> 00:00:19.626 align:middle
+Imagina que ParentalControls es final
+y vive en un paquete de terceros.
+
+00:00:20.146 --> 00:00:22.596 align:middle
+En VolumeUpButton, sustituye #[Lazy]
+
+00:00:22.836 --> 00:00:27.466 align:middle
+por #[AutowireServiceClosure]
+pasando por ParentalControls::class:
+
+00:00:28.076 --> 00:00:31.776 align:middle
+Esto inyectará un cierre que devuelve
+una instancia de ParentalControls
+
+00:00:31.776 --> 00:00:35.326 align:middle
+cuando se invoca (y sólo se
+instanciará cuando se invoque).
+
+00:00:36.016 --> 00:00:39.256 align:middle
+Para ayudar a nuestro IDE, añade
+un docblock encima del constructor:
+
+00:00:39.666 --> 00:00:45.866 align:middle
+@param \Closure():ParentalControls
+$parentalControls: Ahora,
+
+00:00:45.996 --> 00:00:49.326 align:middle
+abajo en la sentencia if del método
+press(), cambia false por true
+
+00:00:49.526 --> 00:00:51.796 align:middle
+para que siempre detectemos que
+el volumen es demasiado alto.
+
+00:00:51.796 --> 00:00:58.086 align:middle
+Como $parentalControls es un cierre, tenemos que
+envolver $this->parentalControls entre llaves
+
+00:00:58.446 --> 00:01:04.026 align:middle
+e invocarlo con () antes de llamar
+a ->volumeTooHigh(): ¡Mira esto!
+
+00:01:04.416 --> 00:01:09.286 align:middle
+Como hemos añadido el docblock, nuestro IDE
+proporciona autocompletado y nos permite hacer clic
+
+00:01:09.286 --> 00:01:12.366 align:middle
+(con CMD+clic) en el método volumeTooHigh().
+
+00:01:12.846 --> 00:01:20.126 align:middle
+¡Fantástico! Quita el dump(), gira hasta nuestra
+aplicación, actualiza y pulsa el botón "subir volumen".
+
+00:01:20.726 --> 00:01:21.856 align:middle
+Salta al perfilador.
+
+00:01:23.486 --> 00:01:26.196 align:middle
+Vemos que se está llamando
+a la lógica volumeTooHigh().
+
+00:01:26.536 --> 00:01:31.656 align:middle
+¡Estupendo! El servicio ParentalControls
+sólo se instancia cuando se invoca el cierre,
+
+00:01:31.926 --> 00:01:33.586 align:middle
+y sólo lo invocamos cuando es necesario.
+
+00:01:34.306 --> 00:01:36.236 align:middle
+Veamos otra forma de hacer lo mismo.
+
+00:01:36.736 --> 00:01:37.826 align:middle
+En VolumeUpButton,
+
+00:01:38.116 --> 00:01:42.296 align:middle
+sustituye #[AutowireServiceClosure]
+por #[AutowireCallable].
+
+00:01:42.886 --> 00:01:48.036 align:middle
+Mantén ParentalControls::class como
+primer argumento, pero anteponle service:
+
+00:01:48.876 --> 00:01:51.236 align:middle
+#[AutowireCallable] también inyecta un cierre.
+
+00:01:51.646 --> 00:01:55.756 align:middle
+Pero en lugar de devolver el objeto de
+servicio completo, instanciará el servicio,
+
+00:01:55.956 --> 00:01:58.876 align:middle
+llamará a un único método
+y devolverá el resultado.
+
+00:01:59.496 --> 00:02:01.566 align:middle
+Hazlo multilínea para tener más espacio.
+
+00:02:02.136 --> 00:02:08.286 align:middle
+Añade un segundo argumento: method:
+'volumeTooHigh': Cuando Symfony instancie un servicio
+
+00:02:08.286 --> 00:02:12.986 align:middle
+que utilice #[AutowireCallable], por
+defecto, instanciará su servicio.
+
+00:02:13.296 --> 00:02:14.306 align:middle
+¡Es un castor ansioso!
+
+00:02:14.796 --> 00:02:19.796 align:middle
+Para evitarlo, añade un tercer
+argumento: lazy: true: Ahora,
+
+00:02:19.866 --> 00:02:23.766 align:middle
+ParentalControls sólo se instanciará
+cuando se invoque el cierre.
+
+00:02:24.366 --> 00:02:29.756 align:middle
+En el docblock anterior, cambia el tipo de retorno del
+cierre a void para que coincida con el tipo de retorno
+
+00:02:29.756 --> 00:02:34.856 align:middle
+de volumeTooHigh(): Abajo, en press(),
+elimina la llamada a ->volumeTooHigh():
+
+00:02:35.386 --> 00:02:37.606 align:middle
+Ahora el cierre lo llama cuando se invoca.
+
+00:02:38.296 --> 00:02:43.436 align:middle
+Vuelve a la aplicación, actualízala, pulsa el
+botón "subir volumen" y salta al perfilador.
+
+00:02:44.486 --> 00:02:48.156 align:middle
+Se sigue llamando al método
+ParentalControls::volumeTooHigh().
+
+00:02:48.506 --> 00:02:53.246 align:middle
+Perfecto! #[AutowireCallable] es ciertamente
+genial, pero para la mayoría de los casos,
+
+00:02:53.476 --> 00:02:57.736 align:middle
+prefiero utilizar #[AutowireServiceClosure]
+porque: Es perezoso por defecto.
+
+00:02:58.066 --> 00:03:01.086 align:middle
+Es más flexible porque devuelve
+el objeto de servicio completo.
+
+00:03:01.326 --> 00:03:03.616 align:middle
+Y, con los docblocks adecuados, obtenemos
+
+00:03:03.776 --> 00:03:09.626 align:middle
+autocompletado, navegación por métodos, soporte de
+refactorización y un mejor análisis estático con herramientas
+
+00:03:09.626 --> 00:03:13.686 align:middle
+como PhpStan. Bien equipo,
+¡eso es todo por este curso!
+
+00:03:14.026 --> 00:03:17.706 align:middle
+Pon un atributo #[TimeForVacation]
+en tu código y ¡relájate!
+
+00:03:18.226 --> 00:03:20.796 align:middle
+La configuración de servicios
+YAML no va a desaparecer del todo,
+
+00:03:21.106 --> 00:03:24.966 align:middle
+pero estos atributos mejoran tu experiencia
+como desarrollador al mantener juntos tu código
+
+00:03:24.966 --> 00:03:26.866 align:middle
+y la configuración de servicios.
+
+00:03:27.376 --> 00:03:30.796 align:middle
+Casi en cada nueva versión de
+Symfony se añaden más atributos.
+
+00:03:31.256 --> 00:03:33.536 align:middle
+¡Sigue el blog de Symfony para estar al día!
+
+00:03:34.196 --> 00:03:38.666 align:middle
+Mira esto, en Symfony 7.2, ¡hay
+un nuevo atributo #[WhenNot]!
+
+00:03:39.156 --> 00:03:42.266 align:middle
+Es básicamente lo contrario del
+atributo #[When] del que hablamos antes.
+
+00:03:42.626 --> 00:03:48.406 align:middle
+¡Genial! Consulta la sección " Inyección de dependencia"
+del documento Descripción general de los atributos de Symfony
+
+00:03:48.406 --> 00:03:51.316 align:middle
+para ver una lista de todos los
+atributos de inyección de dependencia
+
+00:03:51.316 --> 00:03:53.616 align:middle
+disponibles actualmente y cómo funcionan.
+
+00:03:54.246 --> 00:03:54.996 align:middle
+¡Hasta la próxima!
+
+00:03:55.156 --> 00:03:55.966 align:middle
+¡Feliz programación!

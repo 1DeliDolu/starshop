@@ -1,0 +1,70 @@
+diff --git a/src/Remote/Button/ChannelDownButton.php b/src/Remote/Button/ChannelDownButton.php
+index 1efbab6..5ea79de 100644
+--- a/src/Remote/Button/ChannelDownButton.php
++++ b/src/Remote/Button/ChannelDownButton.php
+@@ -2,6 +2,9 @@
+ 
+ namespace App\Remote\Button;
+ 
++use Symfony\Component\DependencyInjection\Attribute\AsTaggedItem;
++
++#[AsTaggedItem('channel-down')]
+ final class ChannelDownButton implements ButtonInterface
+ {
+     public function press(): void
+diff --git a/src/Remote/Button/ChannelUpButton.php b/src/Remote/Button/ChannelUpButton.php
+index 856c7b2..b692498 100644
+--- a/src/Remote/Button/ChannelUpButton.php
++++ b/src/Remote/Button/ChannelUpButton.php
+@@ -2,6 +2,9 @@
+ 
+ namespace App\Remote\Button;
+ 
++use Symfony\Component\DependencyInjection\Attribute\AsTaggedItem;
++
++#[AsTaggedItem('channel-up')]
+ final class ChannelUpButton implements ButtonInterface
+ {
+     public function press(): void
+diff --git a/src/Remote/Button/PowerButton.php b/src/Remote/Button/PowerButton.php
+index acbcf5d..984d3ad 100644
+--- a/src/Remote/Button/PowerButton.php
++++ b/src/Remote/Button/PowerButton.php
+@@ -2,6 +2,9 @@
+ 
+ namespace App\Remote\Button;
+ 
++use Symfony\Component\DependencyInjection\Attribute\AsTaggedItem;
++
++#[AsTaggedItem('power')]
+ final class PowerButton implements ButtonInterface
+ {
+     public function press(): void
+diff --git a/src/Remote/Button/VolumeDownButton.php b/src/Remote/Button/VolumeDownButton.php
+index 182446f..7500398 100644
+--- a/src/Remote/Button/VolumeDownButton.php
++++ b/src/Remote/Button/VolumeDownButton.php
+@@ -2,6 +2,9 @@
+ 
+ namespace App\Remote\Button;
+ 
++use Symfony\Component\DependencyInjection\Attribute\AsTaggedItem;
++
++#[AsTaggedItem('volume-down')]
+ final class VolumeDownButton implements ButtonInterface
+ {
+     public function press(): void
+diff --git a/src/Remote/Button/VolumeUpButton.php b/src/Remote/Button/VolumeUpButton.php
+index a2a7d5f..645fd72 100644
+--- a/src/Remote/Button/VolumeUpButton.php
++++ b/src/Remote/Button/VolumeUpButton.php
+@@ -2,6 +2,9 @@
+ 
+ namespace App\Remote\Button;
+ 
++use Symfony\Component\DependencyInjection\Attribute\AsTaggedItem;
++
++#[AsTaggedItem('volume-up')]
+ final class VolumeUpButton implements ButtonInterface
+ {
+     public function press(): void

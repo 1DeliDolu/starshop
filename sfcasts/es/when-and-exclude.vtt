@@ -1,0 +1,158 @@
+WEBVTT
+
+00:00:01.096 --> 00:00:04.716 align:middle
+¿No sería genial que tuviéramos un botón secreto especial
+en nuestro mando a distancia que pudiéramos utilizar
+
+00:00:04.716 --> 00:00:06.236 align:middle
+para asegurarnos de que funciona correctamente?
+
+00:00:06.616 --> 00:00:07.536 align:middle
+¡Claro que sí!
+
+00:00:07.936 --> 00:00:13.076 align:middle
+Vamos a añadir un nuevo y sigiloso botón "Diagnóstico"
+que sólo estará disponible en el entorno dev.
+
+00:00:13.736 --> 00:00:18.196 align:middle
+En App\Remote\Button, crea una
+nueva clase: DiagnosticsButton.
+
+00:00:19.226 --> 00:00:21.046 align:middle
+Haz que implemente ButtonInterface...
+
+00:00:22.186 --> 00:00:24.946 align:middle
+y mantén pulsadas las teclas "control" +
+"intro" para añadir el método press().
+
+00:00:26.266 --> 00:00:31.736 align:middle
+Dentro, vamos a dump('Pressed
+diagnostics button.')...
+
+00:00:31.736 --> 00:00:38.496 align:middle
+y, al igual que antes, añade #[AsTaggedItem]
+con diagnostics como índice: Por último
+
+00:00:38.666 --> 00:00:44.486 align:middle
+, copia el archivo diagnostics.svg del
+directorio tutorial/ en assets/icons/.
+
+00:00:45.896 --> 00:00:47.556 align:middle
+Gira sobre nuestra aplicación y actualiza...
+
+00:00:48.206 --> 00:00:48.866 align:middle
+¡nuevo botón!
+
+00:00:49.306 --> 00:00:50.206 align:middle
+Y si lo pulsamos...
+
+00:00:50.476 --> 00:00:51.736 align:middle
+¡hasta parece que funciona!
+
+00:00:52.106 --> 00:00:54.296 align:middle
+¡Somos unos desarrolladores de
+mandos a distancia impresionantes!
+
+00:00:54.876 --> 00:00:57.976 align:middle
+Nuestro nuevo botón se registra
+automáticamente en el contenedor de servicios,
+
+00:00:58.266 --> 00:01:00.476 align:middle
+pero sólo lo queremos en el entorno dev.
+
+00:01:00.916 --> 00:01:03.036 align:middle
+El atributo #[When] es perfecto para esto.
+
+00:01:03.486 --> 00:01:10.776 align:middle
+De vuelta en DiagnosticsButton, añade
+#[When] con dev como argumento: Gracias a
+
+00:01:10.866 --> 00:01:12.576 align:middle
+esto, la clase será completamente ignorada
+
+00:01:12.576 --> 00:01:15.696 align:middle
+por el contenedor de servicios a
+menos que estemos en el entorno dev.
+
+00:01:16.226 --> 00:01:17.386 align:middle
+Vuelve y actualiza.
+
+00:01:18.126 --> 00:01:18.896 align:middle
+Sigue ahí.
+
+00:01:19.336 --> 00:01:21.766 align:middle
+Tiene sentido: estamos en el entorno dev.
+
+00:01:22.186 --> 00:01:23.376 align:middle
+Así que vamos a amañar esto un poco.
+
+00:01:23.816 --> 00:01:29.776 align:middle
+Cambia el argumento #[When] de dev a prod, para
+que veamos que funciona: Actualiza de nuevo y...
+
+00:01:30.156 --> 00:01:32.106 align:middle
+¡boom! ¡El botón ha desaparecido!
+
+00:01:32.386 --> 00:01:37.576 align:middle
+¡Fantástico! Ahora que esto funciona,
+hablemos del primo de #[When]: #[Exclude].
+
+00:01:38.306 --> 00:01:43.496 align:middle
+Esto es como una gran señal de advertencia que le dice
+a Symfony que nunca jamás registre una clase específica
+
+00:01:43.496 --> 00:01:45.406 align:middle
+como servicio en el contenedor de servicios.
+
+00:01:46.056 --> 00:01:50.976 align:middle
+Ahora mismo, en config/services.yaml,
+esta sección App/: le dice a Symfony
+
+00:01:50.976 --> 00:01:53.806 align:middle
+que autoaliste cada clase
+en el directorio src/.
+
+00:01:54.776 --> 00:01:57.216 align:middle
+Dentro de App/:, tenemos esta clave exclude.
+
+00:01:57.726 --> 00:02:02.306 align:middle
+Que contiene una lista de rutas que Symfony
+debe ignorar y es la forma tradicional
+
+00:02:02.306 --> 00:02:05.296 align:middle
+de excluir clases de ser
+registradas como servicios.
+
+00:02:05.756 --> 00:02:07.766 align:middle
+Está bien, pero me parece un poco torpe.
+
+00:02:08.296 --> 00:02:09.896 align:middle
+Aquí es donde entra #[Exclude].
+
+00:02:10.376 --> 00:02:13.446 align:middle
+En MuteButton, aquí
+arriba, añade #[Exclude]...
+
+00:02:14.436 --> 00:02:16.326 align:middle
+luego vuelve a nuestra
+aplicación y actualízala.
+
+00:02:16.886 --> 00:02:18.066 align:middle
+¡El botón "Silenciar" ha desaparecido!
+
+00:02:18.296 --> 00:02:18.906 align:middle
+Ha funcionado.
+
+00:02:19.666 --> 00:02:22.506 align:middle
+No será un atributo muy común
+en tu aplicación, pero ¡eh!
+
+00:02:22.786 --> 00:02:24.866 align:middle
+¡Este es el tutorial del atributo DI!
+
+00:02:24.866 --> 00:02:26.906 align:middle
+¡Así que puedes ver todas las cosas buenas!
+
+00:02:27.556 --> 00:02:30.106 align:middle
+A continuación: Hablemos
+de los servicios perezosos.

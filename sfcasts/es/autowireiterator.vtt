@@ -1,0 +1,258 @@
+WEBVTT
+
+00:00:01.126 --> 00:00:04.966 align:middle
+Hemos refactorizado nuestra app para que utilice
+el patrón Comando para ejecutar cada botón.
+
+00:00:05.336 --> 00:00:10.786 align:middle
+¡Estupendo! Nuevo objetivo: hacer que los botones sean más
+dinámicos: a medida que añadamos nuevas clases de botones,
+
+00:00:10.976 --> 00:00:12.936 align:middle
+me gustaría no tener que
+editar nuestra plantilla.
+
+00:00:12.936 --> 00:00:14.946 align:middle
+Empieza dentro de ButtonRemote.
+
+00:00:15.266 --> 00:00:19.776 align:middle
+Necesitamos una forma de obtener una lista de todos los
+nombres de los botones: los índices de nuestro contenedor.
+
+00:00:20.266 --> 00:00:24.466 align:middle
+Para ello, crea aquí un método public
+llamado buttons(), que devolverá un array.
+
+00:00:24.986 --> 00:00:27.626 align:middle
+Será una matriz de cadenas:
+¡los nombres de nuestros botones!
+
+00:00:28.166 --> 00:00:31.416 align:middle
+El minicontenedor es estupendo para
+obtener servicios individuales.
+
+00:00:31.616 --> 00:00:34.596 align:middle
+Pero no puedes hacer un bucle sobre todos
+los servicios de botones que hay dentro.
+
+00:00:35.256 --> 00:00:39.406 align:middle
+Para solucionarlo, cambia
+#[AutowireLocator] por #[AutowireIterator].
+
+00:00:39.876 --> 00:00:42.876 align:middle
+Esto le dice a Symfony que inyecte
+un iterable de nuestros servicios,
+
+00:00:42.876 --> 00:00:45.566 align:middle
+por lo que ya no será un ContainerInterface.
+
+00:00:45.966 --> 00:00:49.766 align:middle
+En su lugar, utiliza iterable y
+renombra $container a $buttons aquí...
+
+00:00:50.356 --> 00:00:52.706 align:middle
+y aquí. ¡Qué bien!
+
+00:00:53.286 --> 00:01:01.796 align:middle
+Ahora, abajo, haz un bucle sobre los botones:
+foreach ($this->buttons as $name => $button).
+
+00:01:01.796 --> 00:01:05.866 align:middle
+$button es el servicio real, pero
+vamos a ignorarlo por completo
+
+00:01:05.956 --> 00:01:08.676 align:middle
+y sólo cogeremos el $name, y lo
+añadiremos a esta matriz $buttons.
+
+00:01:08.676 --> 00:01:11.346 align:middle
+En la parte inferior, return $buttons.
+
+00:01:12.286 --> 00:01:16.086 align:middle
+De vuelta en el controlador, ya
+estamos inyectando ButtonRemote,
+
+00:01:16.086 --> 00:01:20.946 align:middle
+así que abajo donde renderizamos la
+plantilla, pasa una nueva variable buttons
+
+00:01:20.946 --> 00:01:29.496 align:middle
+con 'buttons' => $remote->buttons():
+Añade un dd() para ver qué devuelve: Vale,
+
+00:01:29.696 --> 00:01:32.046 align:middle
+de vuelta al navegador,
+actualiza la página y...
+
+00:01:32.516 --> 00:01:34.586 align:middle
+hm... no es exactamente lo que queremos.
+
+00:01:34.586 --> 00:01:38.326 align:middle
+En lugar de una lista de números,
+queremos una lista de nombres de botones.
+
+00:01:38.776 --> 00:01:43.146 align:middle
+Para solucionarlo, vuelve a
+ButtonRemote, busca #[AutowireIterator].
+
+00:01:43.676 --> 00:01:49.076 align:middle
+#[AutowireLocator]el atributo que teníamos antes,
+utiliza automáticamente la propiedad $index
+
+00:01:49.076 --> 00:01:51.516 align:middle
+de #[AsTaggedItem] para las claves de servicio.
+
+00:01:51.916 --> 00:01:53.676 align:middle
+#[AutowireIterator] ¡no lo hace!
+
+00:01:53.896 --> 00:01:56.906 align:middle
+Sólo nos da un iterable con claves enteras.
+
+00:01:57.406 --> 00:02:02.926 align:middle
+Para decirle que clave el iterable utilizando
+#[AsTaggedItem]'s $index, añade indexAttribute
+
+00:02:02.926 --> 00:02:08.396 align:middle
+set a key: Ahora, cuando hagamos un bucle
+sobre $this->buttons, $name será $index
+
+00:02:08.396 --> 00:02:10.156 align:middle
+que, en nuestro caso, es el nombre del botón.
+
+00:02:10.746 --> 00:02:15.846 align:middle
+En nuestro controlador, seguimos teniendo este dd() así
+que, de vuelta en nuestra aplicación, actualiza y...
+
+00:02:16.276 --> 00:02:16.866 align:middle
+¡ya está!
+
+00:02:17.136 --> 00:02:18.366 align:middle
+¡Ya tenemos los nombres de los botones!
+
+00:02:18.616 --> 00:02:19.166 align:middle
+¡Genial!
+
+00:02:19.766 --> 00:02:23.206 align:middle
+Elimina el dd(), luego abre index.html.twig.
+
+00:02:23.796 --> 00:02:26.356 align:middle
+Aquí tenemos una lista de botones codificada.
+
+00:02:26.356 --> 00:02:32.946 align:middle
+Añade algo de espacio, y luego for button in buttons:
+En la interfaz de usuario, probablemente hayas notado
+
+00:02:32.946 --> 00:02:37.576 align:middle
+que el primer botón -el botón "Encendido"-
+tiene un aspecto diferente: es rojo y más grande.
+
+00:02:38.056 --> 00:02:45.096 align:middle
+Para mantener ese estilo especial, añade un
+if loop.first aquí, y un else para el resto
+
+00:02:45.096 --> 00:02:50.026 align:middle
+de los botones: Copia el código
+del primer botón y pégalo aquí.
+
+00:02:50.026 --> 00:02:54.966 align:middle
+En lugar de codificar "power" como valor
+del botón, utiliza la variable button.
+
+00:02:54.966 --> 00:03:02.216 align:middle
+Lo mismo para el nombre del icono Twig: para el resto
+de botones, copia el código del segundo botón,
+
+00:03:03.676 --> 00:03:10.106 align:middle
+pégalo y sustituye el atributo value del botón y
+el nombre del icono por la variable button: Bien.
+
+00:03:10.196 --> 00:03:13.056 align:middle
+Celébralo borrando el resto
+de botones codificados.
+
+00:03:13.056 --> 00:03:16.146 align:middle
+¡Vamos a probarlo!
+
+00:03:16.146 --> 00:03:18.526 align:middle
+Vuelve a nuestra aplicación y actualiza...
+
+00:03:19.156 --> 00:03:22.806 align:middle
+hm... Se están mostrando los botones,
+pero no están en el orden correcto.
+
+00:03:23.156 --> 00:03:24.436 align:middle
+Queremos éste arriba.
+
+00:03:24.436 --> 00:03:26.276 align:middle
+Entonces... ¿qué hacemos?
+
+00:03:26.806 --> 00:03:29.706 align:middle
+Tenemos que imponer el orden de
+nuestros botones en el iterador.
+
+00:03:30.186 --> 00:03:31.946 align:middle
+Para ello, abre PowerButton.
+
+00:03:31.946 --> 00:03:35.966 align:middle
+#[AsTaggedItem] tiene un
+segundo argumento: priority.
+
+00:03:36.656 --> 00:03:40.286 align:middle
+Antes, con #[AutowireLocator],
+esto no era importante
+
+00:03:40.286 --> 00:03:42.766 align:middle
+porque sólo buscábamos
+servicios por su nombre.
+
+00:03:43.196 --> 00:03:48.556 align:middle
+Pero ahora que sí nos importa el orden,
+añade priority y ponlo en, qué tal, 50:
+
+00:03:49.256 --> 00:03:55.136 align:middle
+Ahora vamos al botón "Canal Arriba" y añadimos
+una prioridad de 40: Al botón "Bajar canal"
+
+00:03:55.656 --> 00:04:02.666 align:middle
+, una prioridad de 30: "Subir Volumen" una prioridad
+de 20: y "Bajar Volumen", una prioridad de 10:
+
+00:04:03.466 --> 00:04:07.276 align:middle
+Cualquier botón sin prioridad asignada
+tiene una prioridad por defecto de 0.
+
+00:04:08.016 --> 00:04:09.766 align:middle
+Vuelve a nuestra aplicación y actualízala...
+
+00:04:10.706 --> 00:04:11.246 align:middle
+¡Muy bien!
+
+00:04:11.396 --> 00:04:12.406 align:middle
+¡Ya estamos de vuelta!
+
+00:04:12.666 --> 00:04:15.636 align:middle
+Todos los botones se han añadido
+automáticamente y en el orden correcto.
+
+00:04:16.186 --> 00:04:18.666 align:middle
+Pero te habrás dado cuenta de
+que tenemos un gran problema.
+
+00:04:19.196 --> 00:04:20.506 align:middle
+Pulsa cualquier botón y...
+
+00:04:20.896 --> 00:04:25.636 align:middle
+¡Error! Se ha intentado llamar a un método
+"get" no definido de la clase RewindableGenerator.
+
+00:04:26.216 --> 00:04:32.176 align:middle
+¿Eh? Este RewindableGenerator es el objeto iterable
+que Symfony inyecta con #[AutowireIterator].
+
+00:04:32.606 --> 00:04:35.536 align:middle
+Podemos hacer un bucle sobre él,
+pero no tiene un método get().
+
+00:04:36.056 --> 00:04:43.036 align:middle
+¡Buf! A continuación, vamos a solucionarlo inyectando un
+objeto que sea a la vez un iterador de servicio y un localizador.

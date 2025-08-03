@@ -1,0 +1,246 @@
+WEBVTT
+
+00:00:01.066 --> 00:00:03.056 align:middle
+En el último capítulo,
+¡añadimos el registro!
+
+00:00:03.566 --> 00:00:05.366 align:middle
+Echa un vistazo al panel de perfil "Registros".
+
+00:00:05.916 --> 00:00:07.496 align:middle
+¿Notas esta pequeña etiqueta "app"?
+
+00:00:07.916 --> 00:00:11.836 align:middle
+El registrador de Symfony, Monolog,
+tiene el concepto de canales de registro,
+
+00:00:12.136 --> 00:00:14.456 align:middle
+que son como categorías para
+tus mensajes de registro.
+
+00:00:15.046 --> 00:00:17.846 align:middle
+El canal por defecto es "app",
+pero puedes crear otros.
+
+00:00:18.506 --> 00:00:20.826 align:middle
+Veamos si podemos añadir un
+nuevo canal llamado "botón".
+
+00:00:21.466 --> 00:00:24.526 align:middle
+Abre config/packages/monolog.yaml.
+
+00:00:24.996 --> 00:00:28.776 align:middle
+En channels, añade uno nuevo
+llamado button: ¡Perfecto!
+
+00:00:28.996 --> 00:00:29.836 align:middle
+Cierra este archivo.
+
+00:00:30.836 --> 00:00:33.196 align:middle
+Queremos que LoggerRemote
+utilice este nuevo canal...
+
+00:00:33.426 --> 00:00:34.826 align:middle
+pero... ¿cómo lo hacemos?
+
+00:00:35.446 --> 00:00:37.866 align:middle
+Estamos autocableando el
+servicio LoggerInterface.
+
+00:00:38.276 --> 00:00:41.996 align:middle
+Eso nos da el registrador principal:
+el que registra en el canal "app".
+
+00:00:42.506 --> 00:00:46.416 align:middle
+Para registrar el nuevo canal, tenemos que
+autoconectar otro servicio de registro.
+
+00:00:46.886 --> 00:00:53.286 align:middle
+Ve a tu terminal y ejecuta: bin/console
+debug:autowiring logger El argumento logger
+
+00:00:53.356 --> 00:00:56.426 align:middle
+filtra los resultados hasta los
+servicios con "logger" en el nombre.
+
+00:00:57.036 --> 00:01:00.466 align:middle
+El primero es LoggerInterface:
+es el servicio que obtendrás
+
+00:01:00.466 --> 00:01:03.556 align:middle
+si utilizas la autoconexión
+estándar, como hacemos actualmente.
+
+00:01:04.066 --> 00:01:06.046 align:middle
+Pero hay varios servicios de logger.
+
+00:01:06.466 --> 00:01:10.396 align:middle
+Todos los demás tienen un argumento,
+incluido uno nuevo llamado buttonLogger.
+
+00:01:10.916 --> 00:01:12.196 align:middle
+¡Éste es el servicio que queremos!
+
+00:01:12.736 --> 00:01:16.266 align:middle
+Para coger este servicio, tenemos
+que utilizar autocableado con nombre.
+
+00:01:16.956 --> 00:01:22.866 align:middle
+En LoggerRemote, cambia el nombre del argumento a
+$buttonLogger: Ahora, vuelve a nuestra aplicación...
+
+00:01:23.156 --> 00:01:24.576 align:middle
+actualiza la página, y...
+
+00:01:24.576 --> 00:01:25.796 align:middle
+pulsa el botón "Subir canal".
+
+00:01:26.236 --> 00:01:28.226 align:middle
+Ya hemos visto suficiente Bob Esponja por hoy.
+
+00:01:28.806 --> 00:01:32.496 align:middle
+Entra en el perfil de la última petición
+y comprueba el panel "Registros".
+
+00:01:33.256 --> 00:01:35.836 align:middle
+¡Qué bien! ¡Ahora estamos
+entrando en el canal button!
+
+00:01:36.646 --> 00:01:39.946 align:middle
+Esto funciona como se supone que debe funcionar,
+pero me gustaría hablar de un problema
+
+00:01:39.946 --> 00:01:42.166 align:middle
+que puede ocurrir cuando se
+utiliza el autocableado con nombre.
+
+00:01:43.016 --> 00:01:47.776 align:middle
+Imagina que, dentro de un año, renombramos esta
+variable a algo más sencillo, como simplemente $logger:
+
+00:01:48.786 --> 00:01:51.896 align:middle
+Volvemos a nuestra aplicación, actualizamos
+la página y pulsamos un botón.
+
+00:01:52.576 --> 00:01:56.166 align:middle
+Parece que sigue funcionando, pero
+comprueba el panel de perfil "Registros".
+
+00:01:57.636 --> 00:02:01.166 align:middle
+El mensaje está ahí, pero ha vuelto
+a cambiar sigilosamente el canal "app".
+
+00:02:01.556 --> 00:02:02.366 align:middle
+¡Cómo se atreve!
+
+00:02:03.026 --> 00:02:06.196 align:middle
+Cuando cambiamos el nombre del argumento,
+rompimos la autoconexión con nombre
+
+00:02:06.196 --> 00:02:08.296 align:middle
+y volvimos a la autoconexión estándar.
+
+00:02:08.916 --> 00:02:13.226 align:middle
+Puede que esto no sea muy problemático para el
+registro, pero imagina que algo como una base de datos
+
+00:02:13.226 --> 00:02:15.456 align:middle
+o un servicio de caché se
+autocable de esta forma.
+
+00:02:15.866 --> 00:02:16.796 align:middle
+Eso podría dar problemas...
+
+00:02:17.096 --> 00:02:18.666 align:middle
+y en general estoy en contra de los problemas.
+
+00:02:19.256 --> 00:02:21.626 align:middle
+Necesitamos una forma de imponer
+el autocableado con nombre.
+
+00:02:22.176 --> 00:02:24.136 align:middle
+¡Saluda al atributo #[Target]!
+
+00:02:24.736 --> 00:02:29.396 align:middle
+En LoggerRemote, añade #[Target] sobre
+el argumento LoggerInterface $logger.
+
+00:02:29.866 --> 00:02:35.476 align:middle
+Dentro, establece el valor en buttonLogger -
+el nombre del argumento (sin el $) que vimos
+
+00:02:35.476 --> 00:02:38.186 align:middle
+en el comando debug:autowiring: Ahora bien,
+
+00:02:38.246 --> 00:02:40.446 align:middle
+el nombre del argumento puede ser
+cualquier cosa, ¡así que sé creativo!
+
+00:02:41.146 --> 00:02:46.236 align:middle
+Vuelve a la aplicación, actualízala, pulsa "Subir
+volumen" y comprueba el panel del perfil "Registros".
+
+00:02:47.586 --> 00:02:48.936 align:middle
+¡Hemos vuelto al canal button!
+
+00:02:49.196 --> 00:02:53.476 align:middle
+¡Qué bien! Para ver a qué me refiero con
+lo de forzar el autocableado con nombre,
+
+00:02:53.966 --> 00:03:00.146 align:middle
+vuelve a config/packages/monolog.yaml,
+cambia el nombre del canal a buttons (con una
+
+00:03:00.146 --> 00:03:03.026 align:middle
+"s"): De vuelta en la
+aplicación, actualiza, y...
+
+00:03:03.566 --> 00:03:04.466 align:middle
+¡vemos un error!
+
+00:03:04.826 --> 00:03:10.126 align:middle
+No se puede autocablear el servicio "LoggerRemote": el
+argumento "$logger" del método "__construct()" tiene
+
+00:03:10.156 --> 00:03:13.866 align:middle
+"#[Target('buttonLogger')]"
+pero no existe tal target.
+
+00:03:14.136 --> 00:03:17.896 align:middle
+¡Sí! Normalmente no celebramos
+los errores, ¡pero éste es bueno!
+
+00:03:18.276 --> 00:03:22.486 align:middle
+Ahora tenemos un error duro cuando no se puede
+encontrar el servicio de autocableado nombrado.
+
+00:03:23.016 --> 00:03:23.976 align:middle
+¡Esto es lo que queremos!
+
+00:03:24.706 --> 00:03:29.976 align:middle
+Arréglalo volviendo a LoggerRemote y
+actualizando el #[Target] a buttonsLogger (con
+
+00:03:29.976 --> 00:03:34.936 align:middle
+"s"): Actualiza la aplicación
+y ¡ya estamos de vuelta!
+
+00:03:35.616 --> 00:03:38.276 align:middle
+Pulsa "Silenciar" y entra en
+el panel de perfil "Registros".
+
+00:03:40.336 --> 00:03:42.936 align:middle
+Sí, ¡estamos registrándonos en
+nuestro canal renombrado buttons!
+
+00:03:43.696 --> 00:03:48.596 align:middle
+Me encanta el autocableado con nombre, pero también me
+encanta que podamos imponerlo con el atributo #[Target].
+
+00:03:49.386 --> 00:03:53.536 align:middle
+A continuación: Vamos a añadir un nuevo
+botón, pero esta vez lo haremos condicional,
+
+00:03:53.666 --> 00:03:55.846 align:middle
+para que sólo aparezca
+en determinados entornos.

@@ -1,0 +1,258 @@
+WEBVTT
+
+00:00:01.086 --> 00:00:02.516 align:middle
+¡Es hora de añadir una nueva función!
+
+00:00:02.956 --> 00:00:07.606 align:middle
+Quiero añadir un registro de las pulsaciones de botón
+para que podamos controlar lo que hacen nuestros esbirros
+
+00:00:08.306 --> 00:00:13.056 align:middle
+En ButtonRemote, podríamos inyectar el servicio logger
+y registrar las pulsaciones de botón aquí mismo.
+
+00:00:13.376 --> 00:00:14.166 align:middle
+Pero técnicamente...
+
+00:00:14.396 --> 00:00:17.906 align:middle
+esto viola algo llamado "principio
+de responsabilidad única".
+
+00:00:18.416 --> 00:00:21.936 align:middle
+Es una forma elegante de decir que
+una clase sólo debe hacer una cosa.
+
+00:00:22.526 --> 00:00:25.086 align:middle
+Ahora mismo, esta clase se
+encarga de pulsar botones.
+
+00:00:25.596 --> 00:00:28.136 align:middle
+Añadiendo aquí el registro, haría dos cosas.
+
+00:00:28.396 --> 00:00:31.236 align:middle
+Y eso probablemente esté bien, ¡pero
+desafiémonos a nosotros mismos!
+
+00:00:31.636 --> 00:00:36.176 align:middle
+En su lugar, utilizaremos un patrón de diseño
+llamado "Decoración" creando una nueva clase
+
+00:00:36.176 --> 00:00:38.876 align:middle
+que envuelva, o "decore", ButtonRemote.
+
+00:00:39.516 --> 00:00:43.286 align:middle
+En src/Remote/, crea una nueva
+clase PHP llamada LoggerRemote.
+
+00:00:43.286 --> 00:00:48.356 align:middle
+Este es nuestro "decorador" y necesita los
+mismos métodos que la clase a la que decora.
+
+00:00:48.896 --> 00:00:54.636 align:middle
+Copia los dos métodos de ButtonRemote,
+pégalos aquí y quítales las tripas.
+
+00:00:54.636 --> 00:01:01.886 align:middle
+Añade un constructor, e
+inyecta el servicio logger
+
+00:01:02.026 --> 00:01:07.236 align:middle
+con private LoggerInterface
+(el de Psr\Log ) $logger.
+
+00:01:07.976 --> 00:01:12.536 align:middle
+Ahora, inyecta el objeto que estamos
+decorando: private ButtonRemote $inner.
+
+00:01:13.166 --> 00:01:16.406 align:middle
+Me gusta utilizar $inner como nombre
+del parámetro al crear decoradores.
+
+00:01:17.056 --> 00:01:20.216 align:middle
+En cada método, primero,
+remite al objeto interno.
+
+00:01:20.636 --> 00:01:27.226 align:middle
+En press(), escribe
+$this->inner->press($name); y en buttons(),
+
+00:01:27.756 --> 00:01:33.596 align:middle
+return $this->inner->buttons():
+Ahora vamos a añadir el registro.
+
+00:01:34.026 --> 00:01:42.476 align:middle
+Antes de la prensa interna, añade
+$this->logger->info('Pressing button {name}')
+
+00:01:42.476 --> 00:01:47.886 align:middle
+y añade una matriz de contexto
+con 'name' => $name.
+
+00:01:48.656 --> 00:01:53.506 align:middle
+Esto de las llaves es un minisistema de plantillas
+utilizado por Monolog, el logger de Symfony.
+
+00:01:54.136 --> 00:02:00.596 align:middle
+Copia esto, pégalo debajo de la prensa interna y
+cambia "Pressing" por "Pressed": ¡Decorador listo!
+
+00:02:01.156 --> 00:02:04.396 align:middle
+Para utilizar realmente este
+decorador, en RemoteController , en
+
+00:02:04.856 --> 00:02:10.086 align:middle
+lugar de inyectar ButtonRemote,
+inyecta LoggerRemote: ¡Probémoslo!
+
+00:02:10.556 --> 00:02:15.306 align:middle
+De vuelta a nuestra aplicación, pulsa el botón de
+encendido y salta al perfilador de la última petición.
+
+00:02:15.746 --> 00:02:18.976 align:middle
+Podemos ver que se sigue llamando
+a la lógica de ButtonRemote.
+
+00:02:19.446 --> 00:02:22.846 align:middle
+Y si consultamos el panel
+"Registros", ¡veremos los mensajes!
+
+00:02:24.386 --> 00:02:26.806 align:middle
+Las dos clases remotas
+tienen los mismos métodos,
+
+00:02:27.186 --> 00:02:29.916 align:middle
+esto es señal de que podríamos
+utilizar una interfaz común.
+
+00:02:31.066 --> 00:02:35.616 align:middle
+Crea una nueva clase en src/Remote/
+llamada RemoteInterface.
+
+00:02:36.726 --> 00:02:40.886 align:middle
+Copia el stub del método press()
+de LoggerRemote y pégalo aquí.
+
+00:02:43.586 --> 00:02:53.896 align:middle
+Haz lo mismo para buttons(): A continuación, haz
+que ambas clases remotas implementen esta interfaz.
+
+00:02:54.356 --> 00:02:57.656 align:middle
+En ButtonRemote, añade
+implements RemoteInterface: ...
+
+00:02:58.086 --> 00:03:06.176 align:middle
+y haz lo mismo en LoggerRemote: En el
+constructor de LoggerRemote, cambia ButtonRemote
+
+00:03:06.346 --> 00:03:11.646 align:middle
+por RemoteInterface: No tenemos que hacer
+esto, pero ahora que tenemos una interfaz,
+
+00:03:11.796 --> 00:03:13.776 align:middle
+es realmente lo mejor para tipar.
+
+00:03:14.356 --> 00:03:16.476 align:middle
+De vuelta en la aplicación, actualiza y...
+
+00:03:16.756 --> 00:03:19.976 align:middle
+¡Error! No se puede autoconectar
+el servicio LoggerRemote:
+
+00:03:20.266 --> 00:03:25.246 align:middle
+el argumento $inner del método __construct()
+hace referencia a la interfaz RemoteInterface
+
+00:03:25.466 --> 00:03:27.826 align:middle
+pero no existe tal servicio.
+
+00:03:27.826 --> 00:03:30.816 align:middle
+Esto ocurre cuando Symfony
+intenta autoconectar una interfaz
+
+00:03:31.026 --> 00:03:33.156 align:middle
+pero existen múltiples implementaciones.
+
+00:03:33.556 --> 00:03:36.866 align:middle
+Tenemos que decirle a Symfony cuál de
+nuestros dos servicios debe utilizar
+
+00:03:36.866 --> 00:03:38.776 align:middle
+cuando escribimos RemoteInterface.
+
+00:03:39.106 --> 00:03:40.806 align:middle
+¡Y el error incluso nos da una pista!
+
+00:03:41.326 --> 00:03:43.906 align:middle
+Quizá deberías ponerle un
+alias a esta interfaz con uno
+
+00:03:43.906 --> 00:03:47.276 align:middle
+de estos servicios existentes:
+"ButtonRemote", "LoggerRemote".
+
+00:03:47.786 --> 00:03:50.366 align:middle
+Ah, tenemos que "aliasear" nuestra interfaz.
+
+00:03:50.836 --> 00:03:56.346 align:middle
+Técnicamente, esto creará un nuevo servicio
+cuyo id es App\Remote\RemoteInterface,
+
+00:03:56.586 --> 00:04:01.306 align:middle
+pero en realidad es sólo un alias -o un puntero-
+a uno de nuestros servicios remotos reales.
+
+00:04:01.796 --> 00:04:06.366 align:middle
+Hazlo con, lo has adivinado,
+otro atributo: #[AsAlias].
+
+00:04:06.886 --> 00:04:13.416 align:middle
+En ButtonRemote, nuestra clase más interna,
+añade #[AsAlias]: Esto le dice a Symfony: ¡Eh!
+
+00:04:13.736 --> 00:04:17.476 align:middle
+Cuando necesites autocablear un
+RemoteInterface, utiliza ButtonRemote.
+
+00:04:18.056 --> 00:04:20.016 align:middle
+De vuelta en nuestra
+aplicación, actualiza y...
+
+00:04:20.386 --> 00:04:21.466 align:middle
+¡el error ha desaparecido!
+
+00:04:21.966 --> 00:04:23.856 align:middle
+Pulsa "channel up" y comprueba el perfilador.
+
+00:04:25.366 --> 00:04:30.486 align:middle
+Se sigue llamando a la lógica del botón y si comprobamos
+el panel "Registros", ahí están nuestros mensajes.
+
+00:04:33.036 --> 00:04:37.966 align:middle
+Abre RemoteController: seguimos inyectando
+una instancia concreta de nuestro servicio.
+
+00:04:38.466 --> 00:04:44.366 align:middle
+Eso está bien, pero ahora podemos ser más elegantes y
+utilizar RemoteInterface: De vuelta en la aplicación,
+
+00:04:44.516 --> 00:04:46.956 align:middle
+pulsa "canal abajo" y comprueba el perfilador.
+
+00:04:48.526 --> 00:04:52.036 align:middle
+La lógica del botón funciona, ¡pero
+nuestros registros han desaparecido!
+
+00:04:52.686 --> 00:04:55.536 align:middle
+Como hemos puesto el alias
+RemoteInterface en ButtonRemote,
+
+00:04:55.726 --> 00:04:57.866 align:middle
+¡Symfony no conoce nuestra decoración!
+
+00:04:58.426 --> 00:05:03.506 align:middle
+Cuando ve la sugerencia de tipo RemoteInterface,
+inyecta ButtonRemote, no LoggerRemote.
+
+00:05:04.186 --> 00:05:09.386 align:middle
+Siguiente paso: Arreglemos esto utilizando la decoración
+del servicio y, por supuesto, ¡otro atributo!

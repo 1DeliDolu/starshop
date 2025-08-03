@@ -1,0 +1,15 @@
+diff --git a/src/Remote/Button/MuteButton.php b/src/Remote/Button/MuteButton.php
+index 93e881c..1626114 100644
+--- a/src/Remote/Button/MuteButton.php
++++ b/src/Remote/Button/MuteButton.php
+@@ -3,8 +3,10 @@
+ namespace App\Remote\Button;
+ 
+ use Symfony\Component\DependencyInjection\Attribute\AsTaggedItem;
++use Symfony\Component\DependencyInjection\Attribute\Exclude;
+ 
+ #[AsTaggedItem('mute')]
++#[Exclude]
+ final class MuteButton implements ButtonInterface
+ {
+     public function press(): void

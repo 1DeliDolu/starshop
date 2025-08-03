@@ -1,0 +1,12 @@
+chapters:
+  - introduction
+  - command-pattern-with-autowirelocator
+  - simplify-with-autoconfiguretag
+  - autowireiterator
+  - locator-and-iterator
+  - asalias
+  - asdecorator
+  - target
+  - when-and-exclude
+  - lazy
+  - more-laziness-attributes

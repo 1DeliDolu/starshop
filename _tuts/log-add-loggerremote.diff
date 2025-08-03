@@ -1,0 +1,41 @@
+diff --git a/src/Remote/LoggerRemote.php b/src/Remote/LoggerRemote.php
+new file mode 100644
+index 0000000..dc8240c
+--- /dev/null
++++ b/src/Remote/LoggerRemote.php
+@@ -0,0 +1,35 @@
++<?php
++
++namespace App\Remote;
++
++use Psr\Log\LoggerInterface;
++
++final class LoggerRemote
++{
++    public function __construct(
++        private LoggerInterface $logger,
++        private ButtonRemote $inner,
++    ) {
++    }
++
++    public function press(string $name): void
++    {
++        $this->logger->info('Pressing button {name}', [
++            'name' => $name
++        ]);
++
++        $this->inner->press($name);
++
++        $this->logger->info('Pressed button {name}', [
++            'name' => $name
++        ]);
++    }
++
++    /**
++     * @return string[]
++     */
++    public function buttons(): iterable
++    {
++        return $this->inner->buttons();
++    }
++}

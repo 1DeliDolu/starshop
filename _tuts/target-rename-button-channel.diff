@@ -1,0 +1,13 @@
+diff --git a/config/packages/monolog.yaml b/config/packages/monolog.yaml
+index 7acea8c..1af1c33 100644
+--- a/config/packages/monolog.yaml
++++ b/config/packages/monolog.yaml
+@@ -1,7 +1,7 @@
+ monolog:
+     channels:
+         - deprecation # Deprecations are logged in the dedicated "deprecation" channel when it exists
+-        - button
++        - buttons
+ 
+ when@dev:
+     monolog:

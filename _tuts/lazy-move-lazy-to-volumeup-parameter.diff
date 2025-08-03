@@ -1,0 +1,33 @@
+diff --git a/src/Remote/Button/VolumeUpButton.php b/src/Remote/Button/VolumeUpButton.php
+index d4a1e83..080d1d2 100644
+--- a/src/Remote/Button/VolumeUpButton.php
++++ b/src/Remote/Button/VolumeUpButton.php
+@@ -4,11 +4,13 @@ namespace App\Remote\Button;
+ 
+ use App\Remote\ParentalControls;
+ use Symfony\Component\DependencyInjection\Attribute\AsTaggedItem;
++use Symfony\Component\DependencyInjection\Attribute\Lazy;
+ 
+ #[AsTaggedItem('volume-up', priority: 20)]
+ final class VolumeUpButton implements ButtonInterface
+ {
+     public function __construct(
++        #[Lazy]
+         private ParentalControls $parentalControls,
+     ) {
+     }
+diff --git a/src/Remote/ParentalControls.php b/src/Remote/ParentalControls.php
+index d80547a..5ccae14 100644
+--- a/src/Remote/ParentalControls.php
++++ b/src/Remote/ParentalControls.php
+@@ -2,10 +2,8 @@
+ 
+ namespace App\Remote;
+ 
+-use Symfony\Component\DependencyInjection\Attribute\Lazy;
+ use Symfony\Component\Mailer\MailerInterface;
+ 
+-#[Lazy]
+ class ParentalControls
+ {
+     public function __construct(

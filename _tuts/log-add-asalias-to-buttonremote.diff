@@ -1,0 +1,16 @@
+diff --git a/src/Remote/ButtonRemote.php b/src/Remote/ButtonRemote.php
+index 5d6c336..a2a14ee 100644
+--- a/src/Remote/ButtonRemote.php
++++ b/src/Remote/ButtonRemote.php
+@@ -3,9 +3,11 @@
+ namespace App\Remote;
+ 
+ use App\Remote\Button\ButtonInterface;
++use Symfony\Component\DependencyInjection\Attribute\AsAlias;
+ use Symfony\Component\DependencyInjection\Attribute\AutowireLocator;
+ use Symfony\Contracts\Service\ServiceCollectionInterface;
+ 
++#[AsAlias]
+ final class ButtonRemote implements RemoteInterface
+ {
+     public function __construct(

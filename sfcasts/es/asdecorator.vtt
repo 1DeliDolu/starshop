@@ -1,0 +1,106 @@
+WEBVTT
+
+00:00:01.086 --> 00:00:07.696 align:middle
+En el último capítulo, utilizamos #[AsAlias] para poner
+un alias de RemoteInterface a ButtonRemote, de modo que
+
+00:00:07.696 --> 00:00:11.686 align:middle
+cuando tecleamos RemoteInterface,
+nos da el servicio ButtonRemote.
+
+00:00:12.266 --> 00:00:13.466 align:middle
+Pero, ¡esto rompió nuestro registro!
+
+00:00:13.786 --> 00:00:16.776 align:middle
+Tenemos que decirle a Symfony que
+nos dé LoggerRemote en su lugar,
+
+00:00:17.116 --> 00:00:20.476 align:middle
+pero que pase el servicio
+ButtonRemote a LoggerRemote.
+
+00:00:20.836 --> 00:00:25.836 align:middle
+Básicamente, tenemos que decirle a Symfony que
+ButtonRemote está siendo decorado por LoggerRemote.
+
+00:00:26.306 --> 00:00:32.426 align:middle
+Para ello, en LoggerRemote, utiliza
+otro atributo: #[AsDecorator]
+
+00:00:32.426 --> 00:00:37.866 align:middle
+pasando el servicio que decora:
+ButtonRemote::class: Esto le dice a Symfony Oye,
+
+00:00:38.186 --> 00:00:42.746 align:middle
+si algo te pide el servicio ButtonRemote,
+dale LoggerRemote en su lugar.
+
+00:00:43.456 --> 00:00:45.596 align:middle
+En esencia, Symfony intercambia los servicios
+
+00:00:45.596 --> 00:00:49.166 align:middle
+y convierte ButtonRemote en el
+servicio "interno" de LoggerRemote.
+
+00:00:49.726 --> 00:00:53.136 align:middle
+Esto solidifica la necesidad del
+RemoteInterface que creamos antes.
+
+00:00:53.616 --> 00:00:57.616 align:middle
+Si intentáramos inyectar ButtonRemote
+directamente, obtendríamos un error de tipo
+
+00:00:57.616 --> 00:01:00.576 align:middle
+porque Symfony estaría
+intentando inyectar LoggerRemote.
+
+00:01:01.206 --> 00:01:04.496 align:middle
+Así que sígueme:
+autoconectamos RemoteInterface.
+
+00:01:04.756 --> 00:01:08.256 align:middle
+Eso está aliaseado a ButtonRemote,
+así que Symfony intenta darnos eso.
+
+00:01:08.706 --> 00:01:13.226 align:middle
+Pero entonces, gracias a #[AsDecorator],
+lo cambia por LoggerRemote...
+
+00:01:13.436 --> 00:01:16.166 align:middle
+pero pasa ButtonRemote a LoggerRemote.
+
+00:01:16.736 --> 00:01:21.296 align:middle
+En resumen, AsDecorator nos permite
+decorar un servicio existente con otro.
+
+00:01:22.076 --> 00:01:24.606 align:middle
+Vuelve a la aplicación, actualízala y...
+
+00:01:24.606 --> 00:01:25.436 align:middle
+pulsa "subir volumen".
+
+00:01:26.426 --> 00:01:28.346 align:middle
+Comprueba el panel del
+perfilador "Registros" y...
+
+00:01:30.066 --> 00:01:31.026 align:middle
+¡estamos registrando de nuevo!
+
+00:01:31.706 --> 00:01:35.496 align:middle
+Utilizar #[AsDecorator] hace que sea
+superfácil añadir varios decoradores.
+
+00:01:35.906 --> 00:01:40.236 align:middle
+Quizá queramos añadir un decorador de limitación de
+velocidad para evitar que los niños machaquen botones.
+
+00:01:40.656 --> 00:01:45.506 align:middle
+Sólo tendríamos que crear una clase
+RateLimitingRemote que implemente RemoteInterface
+
+00:01:45.656 --> 00:01:48.466 align:middle
+y añadir #[AsDecorator(ButtonRemote::class)].
+
+00:01:49.206 --> 00:01:53.366 align:middle
+A continuación: Añadiremos un canal de registro
+personalizado y exploraremos el "autocableado con nombre"

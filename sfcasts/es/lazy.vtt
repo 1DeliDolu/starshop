@@ -1,0 +1,211 @@
+WEBVTT
+
+00:00:01.066 --> 00:00:05.496 align:middle
+Es hora de hablar de una de mis características
+favoritas de Symfony: los servicios perezosos.
+
+00:00:06.026 --> 00:00:10.456 align:middle
+Muchas veces, inyectas un servicio, pero
+sólo se utiliza en determinadas condiciones.
+
+00:00:10.856 --> 00:00:16.166 align:middle
+Aquí tienes un ejemplo: En este caso, la mayor
+parte del tiempo, el ExpensiveService no se utiliza.
+
+00:00:16.426 --> 00:00:19.676 align:middle
+Pero, como está inyectado,
+siempre se instancia.
+
+00:00:20.166 --> 00:00:24.736 align:middle
+Un "servicio perezoso" se relaja en el sofá, comiendo
+patatas fritas, hasta que realmente se necesita.
+
+00:00:25.316 --> 00:00:26.036 align:middle
+¡Hagamos uno!
+
+00:00:26.466 --> 00:00:30.616 align:middle
+Crea una nueva clase PHP en
+src/Remote/ llamada ParentalControls.
+
+00:00:31.336 --> 00:00:35.366 align:middle
+Esto nos enviará alertas cuando los niños estén
+haciendo algo que saben perfectamente que no deben hacer.
+
+00:00:35.616 --> 00:00:36.666 align:middle
+Los pequeños granujas.
+
+00:00:37.256 --> 00:00:44.396 align:middle
+Marca la clase como final y añade un
+constructor con: private MailerInterface $mailer
+
+00:00:44.626 --> 00:00:46.636 align:middle
+para que podamos enviar las
+alertas por correo electrónico:
+
+00:00:47.396 --> 00:00:52.536 align:middle
+Añade un nuevo método público llamado
+volumeTooHigh() con un tipo de retorno void.
+
+00:00:53.206 --> 00:01:01.136 align:middle
+Dentro, para representar el envío del correo electrónico, sólo
+tienes que escribir dump('send volume alert email'): A continuación,
+
+00:01:01.256 --> 00:01:07.226 align:middle
+abre VolumeUpButton,
+añade un constructor aquí
+
+00:01:08.206 --> 00:01:14.056 align:middle
+e inyecta private ParentalControls
+$parentalControls: En el método press(),
+
+00:01:14.266 --> 00:01:16.696 align:middle
+imagina que estamos detectando
+cuando el volumen es demasiado alto.
+
+00:01:17.196 --> 00:01:21.456 align:middle
+Añade una declaración if (true) (con un
+comentario para recordarnos lo que representa),
+
+00:01:22.026 --> 00:01:29.576 align:middle
+y luego $this->parentalControls->volumeTooHigh():
+Gira a nuestra aplicación, actualiza,
+
+00:01:29.816 --> 00:01:32.196 align:middle
+pulsa el botón "subir volumen"
+y comprueba el perfilador.
+
+00:01:33.566 --> 00:01:37.136 align:middle
+Podemos ver que nuestro servicio ParentalControls
+se está utilizando y ¡funciona!
+
+00:01:38.286 --> 00:01:43.426 align:middle
+De vuelta en VolumeUpButton, cambia true por false
+para fingir que no detectamos un volumen alto.
+
+00:01:44.156 --> 00:01:50.226 align:middle
+Debajo de la sentencia if, escribe
+dump($this->parentalControls): Vuelve atrás,
+
+00:01:50.606 --> 00:01:53.866 align:middle
+actualiza, pulsa "subir volumen"
+y comprueba el perfilador.
+
+00:01:55.196 --> 00:01:59.396 align:middle
+Aunque no utilizamos ParentalControls,
+¡seguía instanciado!
+
+00:01:59.886 --> 00:02:04.326 align:middle
+También lo estaba el servicio mailer del
+que depende, el transporte mailer, etc.
+
+00:02:04.806 --> 00:02:08.516 align:middle
+Se trata de una larga cadena de
+dependencias instanciadas pero no utilizadas
+
+00:02:09.146 --> 00:02:12.596 align:middle
+¿La solución? Haz de
+ParentalControls un servicio perezoso.
+
+00:02:13.156 --> 00:02:18.836 align:middle
+Abre esa clase y añade el atributo #[Lazy]:
+Volvemos a nuestra aplicación, la actualizamos y...
+
+00:02:19.206 --> 00:02:24.106 align:middle
+¡un error! No se puede generar un proxy
+perezoso para el servicio ParentalControls.
+
+00:02:24.776 --> 00:02:29.436 align:middle
+Comprueba la excepción anterior para ver
+por qué: La clase ParentalControls es final.
+
+00:02:30.086 --> 00:02:34.866 align:middle
+Éste es un pequeño inconveniente del uso de
+servicios perezosos: la clase no puede ser final.
+
+00:02:35.306 --> 00:02:36.476 align:middle
+Veremos por qué en un segundo.
+
+00:02:37.116 --> 00:02:39.666 align:middle
+Abre ParentalControls, elimina final...
+
+00:02:40.486 --> 00:02:41.466 align:middle
+y actualiza la aplicación.
+
+00:02:42.336 --> 00:02:42.766 align:middle
+¡Ya está!
+
+00:02:43.236 --> 00:02:45.746 align:middle
+Pulsa "subir volumen" y
+comprueba el perfilador.
+
+00:02:46.466 --> 00:02:47.846 align:middle
+¡Vaya! ¿Qué es esto?
+
+00:02:48.166 --> 00:02:51.276 align:middle
+ParentalControlsGhost ¿Con
+una cadena aleatoria detrás?
+
+00:02:51.976 --> 00:02:55.336 align:middle
+Se llama "proxy fantasma" y lo genera Symfony.
+
+00:02:55.816 --> 00:03:00.466 align:middle
+Extiende nuestra clase ParentalControls
+(por eso no puede ser final) y,
+
+00:03:00.536 --> 00:03:04.886 align:middle
+hasta que no se utiliza realmente, no está
+completamente instanciado: ¡es un fantasma!
+
+00:03:05.186 --> 00:03:08.726 align:middle
+¡Espeluznante! Pero, ¿y si no fuéramos
+"propietarios" de ParentalControls?
+
+00:03:09.126 --> 00:03:11.166 align:middle
+¿Y si formara parte de un paquete de terceros?
+
+00:03:11.486 --> 00:03:12.726 align:middle
+¿Cómo podríamos hacerlo perezoso?
+
+00:03:13.256 --> 00:03:17.976 align:middle
+No podemos editar el código del proveedor, pero
+se puede añadir el atributo #[Lazy] a un argumento
+
+00:03:18.046 --> 00:03:20.676 align:middle
+para hacerlo perezoso en función de cada uso.
+
+00:03:21.336 --> 00:03:26.326 align:middle
+En ParentalControls, elimina
+#[Lazy]: y en VolumeUpButton,
+
+00:03:26.646 --> 00:03:32.626 align:middle
+añade #[Lazy] sobre el argumento $parentalControls:
+En nuestra aplicación, actualiza,
+
+00:03:32.906 --> 00:03:35.166 align:middle
+pulsa "subir volumen" y
+comprueba el perfilador.
+
+00:03:36.356 --> 00:03:37.456 align:middle
+¡Sigue siendo perezoso!
+
+00:03:38.086 --> 00:03:42.726 align:middle
+Cuando añades el atributo #[Lazy] a una clase,
+todas las instancias de ese servicio son perezosas.
+
+00:03:43.236 --> 00:03:47.586 align:middle
+Cuando lo añades a un argumento, sólo es
+perezoso cuando se utiliza en ese contexto.
+
+00:03:48.286 --> 00:03:51.666 align:middle
+¿Y si existiera en un paquete
+de terceros y fuera final?
+
+00:03:52.026 --> 00:03:52.796 align:middle
+¿Nos quedamos sin suerte?
+
+00:03:53.366 --> 00:03:57.796 align:middle
+No Symfony tiene otros trucos -y
+atributos- en la manga para ayudarnos.
+
+00:03:58.166 --> 00:03:59.516 align:middle
+Veámoslos a continuación

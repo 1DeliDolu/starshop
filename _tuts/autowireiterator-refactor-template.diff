@@ -1,0 +1,51 @@
+diff --git a/templates/index.html.twig b/templates/index.html.twig
+index 3c30f8d..776a957 100644
+--- a/templates/index.html.twig
++++ b/templates/index.html.twig
+@@ -19,31 +19,21 @@
+             <form method="post">
+                 <div class="flex justify-center">
+                     <ul class="grid grid-cols-2 row-span-3 gap-8">
+-                        <li class="col-span-2 flex justify-center -mb-4">
+-                            <button name="button" value="power" class="flex rounded-full border border-[#3F4241] hover:border-[#C33E21] w-[100px] h-[100px] justify-center items-center focus:bg-[#C33E21] group">
+-                                <twig:ux:icon name="power" width="184" height="184" class="fill-[#C33E21] group-focus:fill-[#ffffff]" />
+-                            </button>
+-                        </li>
+-                        <li>
+-                            <button name="button" value="channel-up" class="flex rounded-full border border-[#3F4241] hover:border-white w-[80px] h-[80px] justify-center items-center focus:bg-[#ffffff] group">
+-                                <twig:ux:icon name="channel-up" width="36" height="36" class="fill-white group-focus:fill-[#0E0E0E]" />
+-                            </button>
+-                        </li>
+-                        <li>
+-                            <button name="button" value="channel-down" class="flex rounded-full border border-[#3F4241] hover:border-white w-[80px] h-[80px] justify-center items-center focus:bg-[#ffffff] group">
+-                                <twig:ux:icon name="channel-down" width="36" height="36" class="fill-white group-focus:fill-[#0E0E0E]" />
+-                            </button>
+-                        </li>
+-                        <li>
+-                            <button name="button" value="volume-up" class="flex rounded-full border border-[#3F4241] hover:border-white w-[80px] h-[80px] justify-center items-center focus:bg-[#ffffff] group">
+-                                <twig:ux:icon name="volume-up" width="36" height="36" class="fill-white group-focus:fill-[#0E0E0E]" />
+-                            </button>
+-                        </li>
+-                        <li>
+-                            <button name="button" value="volume-down" class="flex rounded-full border border-[#3F4241] hover:border-white w-[80px] h-[80px] justify-center items-center focus:bg-[#ffffff] group">
+-                                <twig:ux:icon name="volume-down" width="36" height="36" class="fill-white group-focus:fill-[#0E0E0E]" />
+-                            </button>
+-                        </li>
++                        {% for button in buttons %}
++                            {% if loop.first %}
++                                <li class="col-span-2 flex justify-center -mb-4">
++                                    <button name="button" value="{{ button }}" class="flex rounded-full border border-[#3F4241] hover:border-[#C33E21] w-[100px] h-[100px] justify-center items-center focus:bg-[#C33E21] group">
++                                        <twig:ux:icon name="{{ button }}" width="184" height="184" class="fill-[#C33E21] group-focus:fill-[#ffffff]" />
++                                    </button>
++                                </li>
++                            {% else %}
++                                <li>
++                                    <button name="button" value="{{ button }}" class="flex rounded-full border border-[#3F4241] hover:border-white w-[80px] h-[80px] justify-center items-center focus:bg-[#ffffff] group">
++                                        <twig:ux:icon name="{{ button }}" width="36" height="36" class="fill-white group-focus:fill-[#0E0E0E]" />
++                                    </button>
++                                </li>
++                            {% endif %}
++                        {% endfor %}
+                     </ul>
+                 </div>
+             </form>

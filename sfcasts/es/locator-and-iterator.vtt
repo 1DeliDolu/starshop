@@ -1,0 +1,223 @@
+WEBVTT
+
+00:00:01.066 --> 00:00:04.806 align:middle
+En el último capítulo, hicimos que estos
+botones se listaran mediante programación.
+
+00:00:05.326 --> 00:00:09.166 align:middle
+Pero cuando hicimos eso, ¡rompimos la
+funcionalidad real de pulsar botones!
+
+00:00:09.456 --> 00:00:12.736 align:middle
+¡Uy! Los niños se están poniendo
+inquietos: tenemos que arreglar esto.
+
+00:00:13.356 --> 00:00:16.376 align:middle
+En ButtonRemote, hay un par
+de formas de solucionarlo.
+
+00:00:16.826 --> 00:00:21.046 align:middle
+El primer enfoque, que probablemente sea el más
+sencillo, consiste en inyectar dos argumentos:
+
+00:00:21.296 --> 00:00:25.226 align:middle
+uno que sea un iterador de los servicios
+del botón y otro que sea un localizador,
+
+00:00:25.426 --> 00:00:28.956 align:middle
+es decir, un minicontenedor con un
+método get() para obtener cada servicio.
+
+00:00:29.456 --> 00:00:31.586 align:middle
+Eso funcionaría y es perfectamente válido.
+
+00:00:31.586 --> 00:00:32.736 align:middle
+¡Pero podemos hacerlo mejor!
+
+00:00:33.216 --> 00:00:39.196 align:middle
+Podemos inyectar un objeto que sea a la vez un
+iterador y un localizador: ServiceCollectionInterface.
+
+00:00:39.716 --> 00:00:40.796 align:middle
+Echémosle un vistazo.
+
+00:00:41.376 --> 00:00:44.696 align:middle
+Esto es un ServiceProviderInterface
+(que es el localizador)
+
+00:00:45.046 --> 00:00:48.196 align:middle
+y un IteratorAggregate (que es el iterador).
+
+00:00:48.196 --> 00:00:50.726 align:middle
+Por si fuera poco, también es Countable.
+
+00:00:51.146 --> 00:00:56.356 align:middle
+De vuelta a ButtonRemote, tenemos que cambiar
+AutowireIterator de nuevo a AutowireLocator
+
+00:00:56.356 --> 00:00:59.306 align:middle
+para que Symfony inyecte el
+ServiceCollectionInterface:
+
+00:00:59.516 --> 00:01:02.446 align:middle
+Limpiaré aquí algunas
+importaciones no utilizadas, y...
+
+00:01:02.726 --> 00:01:06.216 align:middle
+bien. De vuelta en nuestra app, refrescar y...
+
+00:01:08.356 --> 00:01:11.596 align:middle
+Vale, seguimos listando los
+botones, así que es buena señal.
+
+00:01:12.006 --> 00:01:13.796 align:middle
+Ahora, si hacemos clic en un botón...
+
+00:01:14.196 --> 00:01:15.696 align:middle
+¡parece que vuelve a funcionar!
+
+00:01:16.386 --> 00:01:19.526 align:middle
+Entra en el perfilador para
+comprobar la petición POST y ver
+
+00:01:19.526 --> 00:01:22.446 align:middle
+que se sigue llamando a la
+lógica adecuada del botón.
+
+00:01:22.826 --> 00:01:27.936 align:middle
+¡Genial! Una de las grandes ventajas de un
+localizador de servicios es que es perezoso.
+
+00:01:27.936 --> 00:01:33.236 align:middle
+Los servicios no se instancian hasta
+que llamamos a get() para obtenerlos.
+
+00:01:33.616 --> 00:01:38.186 align:middle
+E incluso entonces, sólo se crea un único servicio,
+aunque nos volvamos locos y llamemos a get()
+
+00:01:38.186 --> 00:01:40.066 align:middle
+para el mismo servicio un montón de veces.
+
+00:01:40.596 --> 00:01:43.036 align:middle
+Me encanta ser perezoso,
+pero tenemos un problema.
+
+00:01:43.496 --> 00:01:47.406 align:middle
+Aquí abajo, en buttons(), estamos
+iterando sobre todos los botones.
+
+00:01:47.786 --> 00:01:52.946 align:middle
+Esto está forzando la instanciación de todos los
+servicios de botones sólo para obtener sus $name's.
+
+00:01:52.946 --> 00:01:56.176 align:middle
+Como sólo nos interesan los
+nombres, ¡esto es un desperdicio!
+
+00:01:56.176 --> 00:01:59.076 align:middle
+ServiceCollectionInterface ¡al rescate!
+
+00:01:59.076 --> 00:02:04.286 align:middle
+Los localizadores de servicios Symfony tienen un
+método especial llamado getProvidedServices().
+
+00:02:04.786 --> 00:02:11.366 align:middle
+Elimina todo este código y
+dd($this->buttons->getProvidedServices())
+
+00:02:11.586 --> 00:02:15.106 align:middle
+para ver qué devuelve: Vuelve
+a nuestra app y actualízala.
+
+00:02:15.696 --> 00:02:19.576 align:middle
+Esto parece casi idéntico al mapeo
+manual que utilizamos anteriormente
+
+00:02:19.576 --> 00:02:20.796 align:middle
+con #[AutowireLocator].
+
+00:02:21.356 --> 00:02:22.756 align:middle
+Queremos las claves de esta matriz.
+
+00:02:23.526 --> 00:02:25.686 align:middle
+De vuelta aquí, devuelve array_keys()
+
+00:02:25.686 --> 00:02:31.176 align:middle
+de $this->buttons->getProvidedServices():
+Vuelve a la app y...
+
+00:02:31.176 --> 00:02:35.106 align:middle
+actualiza. Todo sigue
+funcionando y, entre bastidores,
+
+00:02:35.106 --> 00:02:38.076 align:middle
+ya no estamos instanciando
+todos los servicios de botones.
+
+00:02:38.396 --> 00:02:39.666 align:middle
+¡Rendimiento ganado!
+
+00:02:40.226 --> 00:02:42.876 align:middle
+Para celebrarlo, ¡añadamos un nuevo
+botón a nuestro control remoto!
+
+00:02:43.516 --> 00:02:49.646 align:middle
+Crea una nueva clase PHP llamada MuteButton
+y haz que implemente ButtonInterface.
+
+00:02:50.226 --> 00:02:52.756 align:middle
+Pulsa Ctrl+Enter para
+generar el método press().
+
+00:02:53.216 --> 00:02:55.956 align:middle
+Dentro, escribe dump('Pressed mute button').
+
+00:02:55.956 --> 00:03:00.676 align:middle
+Ahora, añade #[AsTaggedItem]
+con un $index de mute.
+
+00:03:01.326 --> 00:03:03.466 align:middle
+Deja la prioridad por defecto, 0.
+
+00:03:03.846 --> 00:03:08.456 align:middle
+Esto colocará este botón por debajo de los
+demás: Sólo tenemos que hacer otra cosa.
+
+00:03:08.986 --> 00:03:14.336 align:middle
+Cada botón tiene un icono SVG en assets/icons
+con el mismo nombre que el botón.
+
+00:03:14.856 --> 00:03:18.876 align:middle
+Copia el archivo mute.svg de
+tutorial/ y pégalo aquí.
+
+00:03:20.786 --> 00:03:21.926 align:middle
+¡Momento de la verdad!
+
+00:03:22.386 --> 00:03:25.076 align:middle
+Vuelve a nuestra aplicación, actualiza y...
+
+00:03:25.456 --> 00:03:26.206 align:middle
+¡ahí está!
+
+00:03:26.676 --> 00:03:28.256 align:middle
+Haz clic en él y comprueba el perfilador.
+
+00:03:30.146 --> 00:03:30.866 align:middle
+¡Funciona!
+
+00:03:31.326 --> 00:03:33.936 align:middle
+Ahora podemos silenciar la TV cuando
+los niños estén viendo Barney.
+
+00:03:34.266 --> 00:03:37.096 align:middle
+¡Perfecto! ¡Eso es todo
+para esta refactorización!
+
+00:03:37.326 --> 00:03:39.856 align:middle
+Añadir botones es sencillo y eficaz.
+
+00:03:40.456 --> 00:03:45.796 align:middle
+A continuación, vamos a añadir el registro a nuestro mando a
+distancia y a conocer nuestro siguiente atributo: #[AsAlias].

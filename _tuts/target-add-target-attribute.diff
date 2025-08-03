@@ -1,0 +1,35 @@
+diff --git a/src/Remote/LoggerRemote.php b/src/Remote/LoggerRemote.php
+index 0cb516b..ebbf1ed 100644
+--- a/src/Remote/LoggerRemote.php
++++ b/src/Remote/LoggerRemote.php
+@@ -4,25 +4,27 @@ namespace App\Remote;
+ 
+ use Psr\Log\LoggerInterface;
+ use Symfony\Component\DependencyInjection\Attribute\AsDecorator;
++use Symfony\Component\DependencyInjection\Attribute\Target;
+ 
+ #[AsDecorator(ButtonRemote::class)]
+ final class LoggerRemote implements RemoteInterface
+ {
+     public function __construct(
+-        private LoggerInterface $buttonLogger,
++        #[Target('buttonLogger')]
++        private LoggerInterface $logger,
+         private RemoteInterface $inner,
+     ) {
+     }
+ 
+     public function press(string $name): void
+     {
+-        $this->buttonLogger->info('Pressing button {name}', [
++        $this->logger->info('Pressing button {name}', [
+             'name' => $name
+         ]);
+ 
+         $this->inner->press($name);
+ 
+-        $this->buttonLogger->info('Pressed button {name}', [
++        $this->logger->info('Pressed button {name}', [
+             'name' => $name
+         ]);
+     }

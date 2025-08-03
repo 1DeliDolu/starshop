@@ -1,0 +1,13 @@
+diff --git a/src/Remote/LoggerRemote.php b/src/Remote/LoggerRemote.php
+index ebbf1ed..c85030d 100644
+--- a/src/Remote/LoggerRemote.php
++++ b/src/Remote/LoggerRemote.php
+@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\Attribute\Target;
+ final class LoggerRemote implements RemoteInterface
+ {
+     public function __construct(
+-        #[Target('buttonLogger')]
++        #[Target('buttonsLogger')]
+         private LoggerInterface $logger,
+         private RemoteInterface $inner,
+     ) {

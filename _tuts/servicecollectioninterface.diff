@@ -1,0 +1,22 @@
+diff --git a/src/Remote/ButtonRemote.php b/src/Remote/ButtonRemote.php
+index b298f60..77c0045 100644
+--- a/src/Remote/ButtonRemote.php
++++ b/src/Remote/ButtonRemote.php
+@@ -3,13 +3,14 @@
+ namespace App\Remote;
+ 
+ use App\Remote\Button\ButtonInterface;
+-use Symfony\Component\DependencyInjection\Attribute\AutowireIterator;
++use Symfony\Component\DependencyInjection\Attribute\AutowireLocator;
++use Symfony\Contracts\Service\ServiceCollectionInterface;
+ 
+ final class ButtonRemote
+ {
+     public function __construct(
+-        #[AutowireIterator(ButtonInterface::class, indexAttribute: 'key')]
+-        private iterable $buttons,
++        #[AutowireLocator(ButtonInterface::class, indexAttribute: 'key')]
++        private ServiceCollectionInterface $buttons,
+     ) {
+     }
+ 

@@ -1,0 +1,19 @@
+diff --git a/src/Remote/RemoteInterface.php b/src/Remote/RemoteInterface.php
+new file mode 100644
+index 0000000..5670de2
+--- /dev/null
++++ b/src/Remote/RemoteInterface.php
+@@ -0,0 +1,13 @@
++<?php
++
++namespace App\Remote;
++
++interface RemoteInterface
++{
++    public function press(string $name): void;
++
++    /**
++     * @return string[]
++     */
++    public function buttons(): iterable;
++}

@@ -1,0 +1,13 @@
+diff --git a/src/Controller/RemoteController.php b/src/Controller/RemoteController.php
+index 4e28b3d..18d15db 100644
+--- a/src/Controller/RemoteController.php
++++ b/src/Controller/RemoteController.php
+@@ -15,6 +15,8 @@ final class RemoteController extends AbstractController
+     #[Route('/', name: 'home', methods: ['GET', 'POST'])]
+     public function index(Request $request, RemoteInterface $remote): Response
+     {
++        dd($remote);
++
+         if ('POST' === $request->getMethod()) {
+             try {
+                 $remote->press($button = $request->request->getString('button'));

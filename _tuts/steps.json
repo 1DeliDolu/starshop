@@ -1,0 +1,240 @@
+{
+    "steps": [
+        {
+            "id": "start",
+            "name": "start",
+            "description": null
+        },
+        {
+            "id": "autowirelocator-buttoninterface",
+            "name": "AutowireLocator: ButtonInterface",
+            "description": null
+        },
+        {
+            "id": "autowirelocator-buttonremote",
+            "name": "AutowireLocator: ButtonRemote",
+            "description": null
+        },
+        {
+            "id": "autowirelocator-refactor-controller",
+            "name": "AutowireLocator: refactor controller",
+            "description": null
+        },
+        {
+            "id": "autoconfiguretag",
+            "name": "AutoconfigureTag",
+            "description": null
+        },
+        {
+            "id": "refactor-autowirelocator",
+            "name": "Refactor AutowireLocator",
+            "description": null
+        },
+        {
+            "id": "astaggeditem",
+            "name": "AsTaggedItem",
+            "description": null
+        },
+        {
+            "id": "autowireiterator-add-buttons",
+            "name": "AutowireIterator: add buttons()",
+            "description": null
+        },
+        {
+            "id": "autowireiterator-pass-buttons-to-template",
+            "name": "AutowireIterator: pass buttons to template",
+            "description": null
+        },
+        {
+            "id": "autowireiterator-add-dd",
+            "name": "AutowireIterator: add dd",
+            "description": null
+        },
+        {
+            "id": "autowireiterator-remove-dd",
+            "name": "AutowireIterator: remove dd",
+            "description": null
+        },
+        {
+            "id": "autowireiterator-refactor-template",
+            "name": "AutowireIterator: refactor template",
+            "description": null
+        },
+        {
+            "id": "autowireiterator-indexattribute",
+            "name": "AutowireIterator: indexAttribute",
+            "description": null
+        },
+        {
+            "id": "autowireiterator-priority",
+            "name": "AutowireIterator: priority",
+            "description": null
+        },
+        {
+            "id": "servicecollectioninterface",
+            "name": "ServiceCollectionInterface",
+            "description": null
+        },
+        {
+            "id": "servicecollectioninterface-getprovidedservices-dd",
+            "name": "ServiceCollectionInterface: getProvidedServices() dd",
+            "description": null
+        },
+        {
+            "id": "servicecollectioninterface-getprovidedservices-remove-dd",
+            "name": "ServiceCollectionInterface: getProvidedServices() remove dd",
+            "description": null
+        },
+        {
+            "id": "servicecollectioninterface-getprovidedservices-keys",
+            "name": "ServiceCollectionInterface: getProvidedServices() keys",
+            "description": null
+        },
+        {
+            "id": "add-mutebutton",
+            "name": "Add MuteButton",
+            "description": null
+        },
+        {
+            "id": "log-add-loggerremote",
+            "name": "Log: Add LoggerRemote",
+            "description": null
+        },
+        {
+            "id": "log-use-loggerremote",
+            "name": "Log: use LoggerRemote",
+            "description": null
+        },
+        {
+            "id": "log-add-remoteinterface",
+            "name": "Log: add RemoteInterface",
+            "description": null
+        },
+        {
+            "id": "log-implement-and-use-remoteinterface",
+            "name": "Log: implement and use RemoteInterface",
+            "description": null
+        },
+        {
+            "id": "log-add-asalias-to-buttonremote",
+            "name": "Log: add AsAlias to ButtonRemote",
+            "description": null
+        },
+        {
+            "id": "log-inject-remoteinterface-into-remotecontroller",
+            "name": "Log: Inject RemoteInterface into RemoteController",
+            "description": null
+        },
+        {
+            "id": "log-asdecorator-to-loggerremote",
+            "name": "Log: AsDecorator to LoggerRemote",
+            "description": null
+        },
+        {
+            "id": "log-autowiredecorated",
+            "name": "Log: AutowireDecorated",
+            "description": null
+        },
+        {
+            "id": "log-remove-autowiredecorated",
+            "name": "Log: remove AutowireDecorated",
+            "description": null
+        },
+        {
+            "id": "logging-dd-remote-in-controller",
+            "name": "Logging: dd $remote in controller",
+            "description": null
+        },
+        {
+            "id": "logging-remove-dd-remote-in-controller",
+            "name": "Logging: remove dd $remote in controller",
+            "description": null
+        },
+        {
+            "id": "target-add-custom-logging-channel",
+            "name": "Target: add custom logging channel",
+            "description": null
+        },
+        {
+            "id": "target-rename-buttonlogger",
+            "name": "Target: rename $buttonLogger",
+            "description": null
+        },
+        {
+            "id": "target-add-target-attribute",
+            "name": "Target: add Target attribute",
+            "description": null
+        },
+        {
+            "id": "target-rename-button-channel",
+            "name": "Target: rename button channel",
+            "description": null
+        },
+        {
+            "id": "target-rename-target-attribute-name",
+            "name": "Target: rename Target attribute name",
+            "description": null
+        },
+        {
+            "id": "when-add-diagnosticsbutton",
+            "name": "When: add DiagnosticsButton",
+            "description": null
+        },
+        {
+            "id": "when-add-when-attribute",
+            "name": "When: add When attribute",
+            "description": null
+        },
+        {
+            "id": "when-change-to-prod",
+            "name": "When: change to prod",
+            "description": null
+        },
+        {
+            "id": "exclude-add",
+            "name": "Exclude: add",
+            "description": null
+        },
+        {
+            "id": "lazy-add-parentalcontrols",
+            "name": "Lazy: add ParentalControls",
+            "description": null
+        },
+        {
+            "id": "lazy-use-parentalcontrols-in-volumeupbutton",
+            "name": "Lazy: use ParentalControls in VolumeUpButton",
+            "description": null
+        },
+        {
+            "id": "lazy-switch-to-false-and-dump-parentalcontrols",
+            "name": "Lazy: switch to false and dump parentalControls",
+            "description": null
+        },
+        {
+            "id": "lazy-add-lazy-to-parentalcontrols",
+            "name": "Lazy: Add Lazy to ParentalControls",
+            "description": null
+        },
+        {
+            "id": "lazy-remove-final",
+            "name": "Lazy: Remove final",
+            "description": null
+        },
+        {
+            "id": "lazy-move-lazy-to-volumeup-parameter",
+            "name": "Lazy: move Lazy to VolumeUp parameter",
+            "description": null
+        },
+        {
+            "id": "more-lazy-use-autowireserviceclosure",
+            "name": "More Lazy: use AutowireServiceClosure",
+            "description": null
+        },
+        {
+            "id": "more-lazy-switch-to-autowirecallable",
+            "name": "More Lazy: switch to AutowireCallable",
+            "description": null
+        }
+    ],
+    "sha": "e874983c25d7ba6eb9fd47f0fe481638d68430cf"
+}

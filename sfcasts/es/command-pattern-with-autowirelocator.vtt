@@ -1,0 +1,366 @@
+WEBVTT
+
+00:00:00.976 --> 00:00:01.846 align:middle
+¡Vamos a hacerlo!
+
+00:00:01.846 --> 00:00:05.566 align:middle
+Si echamos un vistazo a nuestra aplicación, ésta es
+la interfaz de usuario de nuestro mando a distancia.
+
+00:00:05.846 --> 00:00:08.796 align:middle
+Básicamente es un formulario, y
+cada botón envía el formulario.
+
+00:00:09.896 --> 00:00:12.116 align:middle
+El atributo name de cada botón es único,
+
+00:00:12.226 --> 00:00:15.976 align:middle
+y eso ayuda a nuestro controlador a determinar
+qué lógica del botón debe ejecutar.
+
+00:00:16.756 --> 00:00:20.796 align:middle
+Cuando pulsamos el botón "Encendido", por
+ejemplo, vemos este mensaje flash (añadido
+
+00:00:20.796 --> 00:00:23.176 align:middle
+por el controlador) que
+nos dice lo que ha pasado.
+
+00:00:24.086 --> 00:00:29.406 align:middle
+Si pulsamos "Canal Arriba", "Canal Abajo", etc.,
+vemos los mismos mensajes correspondientes.
+
+00:00:29.516 --> 00:00:31.156 align:middle
+Así que esto es super sencillo.
+
+00:00:31.286 --> 00:00:35.006 align:middle
+El formulario se limita a publicar en la
+misma página, gestionar la lógica del botón
+
+00:00:35.206 --> 00:00:37.596 align:middle
+y luego redirigirnos de
+vuelta con el mensaje flash.
+
+00:00:38.046 --> 00:00:43.736 align:middle
+En nuestro código, abre src/Controller,
+busca RemoteController y...
+
+00:00:43.736 --> 00:00:44.426 align:middle
+¡allá vamos!
+
+00:00:44.936 --> 00:00:49.686 align:middle
+Estamos comprobando si la petición es un POST,
+y como cada botón se envía con un nombre,
+
+00:00:49.756 --> 00:00:52.216 align:middle
+esta sentencia switch()
+lo toma de la petición.
+
+00:00:52.666 --> 00:00:57.426 align:middle
+Cada botón está envuelto en un case, y cada
+dump() representa la lógica individual del botón.
+
+00:00:57.476 --> 00:01:02.066 align:middle
+Si no se encuentra un
+botón, esto lanzará un 404.
+
+00:01:02.066 --> 00:01:05.236 align:middle
+A continuación, añadimos el mensaje
+flash, manipulamos un poco la cadena
+
+00:01:05.236 --> 00:01:08.936 align:middle
+para que el nombre del botón tenga un aspecto más
+agradable y redirigimos de nuevo a la misma ruta.
+
+00:01:09.056 --> 00:01:15.546 align:middle
+Por último, en la parte inferior, si la petición
+no es un POST, simplemente mostramos index.html.twig.
+
+00:01:15.996 --> 00:01:17.106 align:middle
+Esa es nuestra plantilla remota.
+
+00:01:17.836 --> 00:01:21.896 align:middle
+Cuando tienes una gran sentencia switch-case
+como ésta, suele ser una buena oportunidad
+
+00:01:21.896 --> 00:01:25.256 align:middle
+para refactorizar, especialmente a medida
+que añadimos más botones y lógica.
+
+00:01:25.956 --> 00:01:28.556 align:middle
+Una forma estupenda de hacerlo
+es con el patrón Comando.
+
+00:01:28.556 --> 00:01:33.846 align:middle
+Si quieres profundizar más en este patrón,
+¡consulta nuestro curso "Patrones de diseño"!
+
+00:01:35.196 --> 00:01:38.746 align:middle
+Bien, lo primero que vamos a
+hacer es crear algunos comandos,
+
+00:01:38.896 --> 00:01:41.736 align:middle
+que representarán los botones
+y albergarán toda su lógica.
+
+00:01:42.546 --> 00:01:46.166 align:middle
+En src/, vamos a crear un nuevo directorio
+para organizar mejor nuestro código.
+
+00:01:46.956 --> 00:01:52.196 align:middle
+Lo llamaremos Remote y, dentro,
+crearemos otra carpeta llamada Button.
+
+00:01:53.456 --> 00:01:58.596 align:middle
+Perfecto A continuación, necesitamos
+crear una nueva clase PHP para cada botón.
+
+00:01:59.256 --> 00:02:02.396 align:middle
+Empezaremos creando una interfaz
+que implementará cada botón
+
+00:02:02.496 --> 00:02:04.986 align:middle
+para que nuestro gestor de comandos
+pueda manejarlos de forma predecible.
+
+00:02:05.616 --> 00:02:07.246 align:middle
+La llamaremos ButtonInterface.
+
+00:02:09.746 --> 00:02:15.146 align:middle
+Dentro, escribiremos public function press(),
+que no tendrá argumentos y devolverá void.
+
+00:02:15.146 --> 00:02:18.086 align:middle
+En el directorio tutorial/...
+
+00:02:18.686 --> 00:02:19.626 align:middle
+¡mira esto!
+
+00:02:19.626 --> 00:02:22.496 align:middle
+¡Todas las implementaciones de los botones
+están aquí y listas para funcionar!
+
+00:02:22.876 --> 00:02:27.256 align:middle
+Sólo tenemos que copiar todos los archivos
+PHP y añadirlos al directorio Button.
+
+00:02:27.406 --> 00:02:28.276 align:middle
+¡Muy fácil!
+
+00:02:31.986 --> 00:02:36.966 align:middle
+Si miramos ChannelDownButton.php, podemos
+ver que tiene implementado el método press()
+
+00:02:36.966 --> 00:02:40.236 align:middle
+y el mismo dump() que vimos en nuestro
+controlador, junto con el mensaje del botón.
+
+00:02:40.236 --> 00:02:41.796 align:middle
+Muy bien, ¡ya tenemos nuestros comandos!
+
+00:02:41.926 --> 00:02:47.126 align:middle
+Ahora necesitamos un manejador de comandos que tome el
+nombre del botón y ejecute el comando correspondiente.
+
+00:02:47.126 --> 00:02:51.326 align:middle
+Para ello, crearemos un objeto que actuará
+como nuestro manejador de comandos.
+
+00:02:51.966 --> 00:02:55.646 align:middle
+En el directorio Remote, crea una
+nueva clase llamada ButtonRemote.
+
+00:02:58.686 --> 00:03:03.666 align:middle
+Yo prefiero marcar las clases como final por
+defecto, y quitarlo sólo si es necesario ampliarlas.
+
+00:03:04.256 --> 00:03:07.776 align:middle
+Esto no es necesario, así que
+siéntete libre de dejarlo desactivado.
+
+00:03:07.916 --> 00:03:10.606 align:middle
+En nuestra nueva clase, crea
+un método público - press().
+
+00:03:10.606 --> 00:03:15.366 align:middle
+Este tomará un argumento string, $name,
+que representa el nombre del botón.
+
+00:03:16.146 --> 00:03:19.636 align:middle
+Este método no devuelve nada, así
+que utiliza void como tipo de retorno.
+
+00:03:21.356 --> 00:03:26.966 align:middle
+Ahora podemos crear un constructor
+para este objeto, y dentro,
+
+00:03:26.966 --> 00:03:29.546 align:middle
+añadir private ContainerInterface $container.
+
+00:03:30.146 --> 00:03:32.526 align:middle
+Asegúrate de coger el de PSR\Container.
+
+00:03:33.576 --> 00:03:39.426 align:middle
+Este contenedor almacenará nuestros objetos botón como
+claves-valores - siendo la clave el nombre del botón
+
+00:03:39.566 --> 00:03:41.476 align:middle
+y el valor el objeto botón.
+
+00:03:42.546 --> 00:03:46.806 align:middle
+En el método press(), utilizaremos
+$this->container->get($name)
+
+00:03:46.806 --> 00:03:50.036 align:middle
+para recuperar la instancia
+ButtonInterface y llamaremos a press().
+
+00:03:51.236 --> 00:03:53.826 align:middle
+Ahora mismo, llamar al método
+press() nos dará un error
+
+00:03:53.826 --> 00:03:56.486 align:middle
+porque Symfony no sabe cómo
+cablear este contenedor.
+
+00:03:57.086 --> 00:04:01.826 align:middle
+Para ayudar, utilizaremos el atributo de
+inyección de dependencia #[AutowireLocator()].
+
+00:04:02.356 --> 00:04:08.156 align:middle
+En versiones anteriores de Symfony, se llamaba
+TaggedLocator, pero cambió de nombre en Symfony 7.1
+
+00:04:08.156 --> 00:04:10.546 align:middle
+para ser más coherente con otros atributos.
+
+00:04:11.386 --> 00:04:15.816 align:middle
+El primer argumento del atributo será una
+matriz con los nombres de los botones como claves
+
+00:04:15.816 --> 00:04:18.676 align:middle
+y sus correspondientes
+nombres de clase como valores.
+
+00:04:18.706 --> 00:04:23.806 align:middle
+Symfony los convertirá en las instancias reales
+de los botones cuando construya el contenedor.
+
+00:04:23.806 --> 00:04:25.796 align:middle
+Bien, vamos a añadir todos
+nuestros botones a este contenedor.
+
+00:04:25.796 --> 00:04:29.686 align:middle
+El resto de nuestros botones tendrán un aspecto muy
+similar: 'channel-down' => ChannelDownButton::class,
+
+00:04:29.686 --> 00:04:35.246 align:middle
+'volume-up' => VolumeUpButton::class, y
+'volume-down' => VolumeDownButton::class.
+
+00:04:35.686 --> 00:04:37.626 align:middle
+¡Listo! ¡Nuestro controlador
+de comandos está listo!
+
+00:04:38.126 --> 00:04:42.716 align:middle
+Ahora tenemos que sustituir la gran sentencia
+switch-case de nuestro controlador por esto.
+
+00:04:43.276 --> 00:04:49.486 align:middle
+De vuelta en RemoteController.php, después
+de inyectar Request, inyectemos ButtonRemote.
+
+00:04:51.576 --> 00:04:55.416 align:middle
+Como el controlador está autocableado,
+Symfony lo inyectará automáticamente.
+
+00:04:56.406 --> 00:05:00.406 align:middle
+Aquí abajo, copia esta línea para obtener
+el nombre del botón y pégala arriba.
+
+00:05:01.626 --> 00:05:07.296 align:middle
+Debajo, escribe $remote->press($button).
+
+00:05:07.386 --> 00:05:09.666 align:middle
+Ahora podemos eliminar toda
+esta declaración switch,
+
+00:05:09.756 --> 00:05:12.796 align:middle
+pero aún necesitamos resolver los casos
+en los que no se encuentra un botón.
+
+00:05:13.446 --> 00:05:18.066 align:middle
+Copia esta línea de aquí, elimina
+por completo la sentencia switch
+
+00:05:19.266 --> 00:05:22.046 align:middle
+y envuelve este método
+press() en un bloque try-catch.
+
+00:05:23.006 --> 00:05:26.806 align:middle
+Mueve $remote->press($button)
+dentro de try, y debajo,
+
+00:05:26.976 --> 00:05:30.116 align:middle
+esto hará catch (NotFoundExceptionInterface).
+
+00:05:31.786 --> 00:05:33.486 align:middle
+Pega nuestro código dentro y...
+
+00:05:33.486 --> 00:05:38.476 align:middle
+¡listo! Así, si ContainerInterface::get()
+no encuentra un comando
+
+00:05:38.506 --> 00:05:40.986 align:middle
+para el nombre del botón,
+lanzará esta excepción.
+
+00:05:41.066 --> 00:05:46.966 align:middle
+Por último, podemos añadir la excepción
+previous al 404 para una mejor depuración.
+
+00:05:46.966 --> 00:05:51.696 align:middle
+Nuestro controlador es ahora mucho más pequeño,
+así que vamos a probarlo en nuestra aplicación.
+
+00:05:51.696 --> 00:05:54.006 align:middle
+Si pulsamos el botón "Encendido"...
+
+00:05:54.426 --> 00:05:55.196 align:middle
+¡"Encendido pulsado"!
+
+00:05:55.696 --> 00:05:57.446 align:middle
+Si pulsamos el botón "Canal arriba"...
+
+00:05:57.446 --> 00:05:58.506 align:middle
+"Canal arriba pulsado
+
+00:05:59.176 --> 00:06:00.436 align:middle
+Todo parece funcionar.
+
+00:06:00.436 --> 00:06:05.226 align:middle
+Si comprobamos el perfilador, podemos
+ver que el mensaje dump() sigue ahí,
+
+00:06:05.336 --> 00:06:08.376 align:middle
+y ahora procede de la
+implementación correcta del botón.
+
+00:06:08.646 --> 00:06:13.456 align:middle
+¡Genial! Vale, esto tiene muy buena pinta,
+pero hay otra mejora que podemos hacer.
+
+00:06:14.126 --> 00:06:16.266 align:middle
+Ahora mismo, cada vez que
+añadimos un nuevo botón,
+
+00:06:16.476 --> 00:06:20.036 align:middle
+tenemos que actualizar el atributo
+AutowireLocator en nuestro ButtonRemote.
+
+00:06:20.806 --> 00:06:22.626 align:middle
+Esto está bien, pero es un poco engorroso.
+
+00:06:23.316 --> 00:06:26.866 align:middle
+A continuación: Vamos a explorar una
+refactorización para eliminar este requisito.

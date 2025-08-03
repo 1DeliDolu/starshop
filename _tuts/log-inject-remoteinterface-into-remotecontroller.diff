@@ -1,0 +1,22 @@
+diff --git a/src/Controller/RemoteController.php b/src/Controller/RemoteController.php
+index 3fba040..4e28b3d 100644
+--- a/src/Controller/RemoteController.php
++++ b/src/Controller/RemoteController.php
+@@ -2,7 +2,7 @@
+ 
+ namespace App\Controller;
+ 
+-use App\Remote\LoggerRemote;
++use App\Remote\RemoteInterface;
+ use Psr\Container\NotFoundExceptionInterface;
+ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\Request;
+@@ -13,7 +13,7 @@ use function Symfony\Component\String\u;
+ final class RemoteController extends AbstractController
+ {
+     #[Route('/', name: 'home', methods: ['GET', 'POST'])]
+-    public function index(Request $request, LoggerRemote $remote): Response
++    public function index(Request $request, RemoteInterface $remote): Response
+     {
+         if ('POST' === $request->getMethod()) {
+             try {

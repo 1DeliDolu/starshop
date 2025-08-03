@@ -1,7 +1,7 @@
-# Mailer and Webhook with Mailtrap
+# Dependency Injection Attributes
 
 Well hi there! This repository holds the code and script for the
-[Mailer and Webhook with Mailtrap](https://symfonycasts.com/screencast/mailtrap)
+[Dependency Injection Attributes](https://symfonycasts.com/screencast/dependency-injection-attributes)
 course on SymfonyCasts.
 
 ## Setup
@@ -22,30 +22,6 @@ composer install
 You may alternatively need to run `php composer.phar install`, depending
 on how you installed Composer.
 
-**Setup the Database (MySQL)**
-
-Your project is configured to use MySQL. Make sure your MySQL server is running and the credentials in your `.env` file are correct.
-
-Create the database, run migrations, and load the fixtures:
-
-```
-symfony console doctrine:database:create
-symfony console doctrine:migrations:migrate
-symfony console doctrine:fixtures:load
-```
-
-If you see an error about access denied or unknown database, check your MySQL username, password, and database name in `.env`:
-
-```
-DATABASE_URL="mysql://root@127.0.0.1:3306/starship?serverVersion=8.0.32&charset=utf8mb4"
-```
-
-**Build Tailwind CSS**
-
-```
-symfony console tailwind:build
-```
-
 **Start the Symfony web server**
 
 You can use Nginx or Apache, but Symfony's local web server
@@ -60,7 +36,7 @@ Then, to start the web server, open a terminal, move into the
 project, and run:
 
 ```
-symfony serve -d
+symfony serve
 ```
 
 (If this is your first time using this command, you may see an

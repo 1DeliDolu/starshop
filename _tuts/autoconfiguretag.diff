@@ -1,0 +1,14 @@
+diff --git a/src/Remote/Button/ButtonInterface.php b/src/Remote/Button/ButtonInterface.php
+index 7b31249..af97822 100644
+--- a/src/Remote/Button/ButtonInterface.php
++++ b/src/Remote/Button/ButtonInterface.php
+@@ -2,6 +2,9 @@
+ 
+ namespace App\Remote\Button;
+ 
++use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
++
++#[AutoconfigureTag]
+ interface ButtonInterface
+ {
+     public function press(): void;
