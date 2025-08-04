@@ -16,7 +16,7 @@ Her zamanki gibi, en yüksek faydayı almak için benimle birlikte kod yazmanız
 
 Adım 1: Symfony `Mailer`'ı kuralım! Terminali açıp şunu çalıştırın:
 
-src/
+
 
 ```bash
 composer require mailer
