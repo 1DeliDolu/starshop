@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Dto\BookingDto;
-use App\Email\BookingEmailFactory;
 use App\Entity\Booking;
 use App\Entity\Trip;
 use App\Form\BookingType;
@@ -14,11 +13,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Email;
-use Symfony\Component\Mime\Header\Headers;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Symfony\Component\Mailer\Header\TagHeader;
+use Symfony\Component\Mailer\Header\MetadataHeader;
 
 final class TripController extends AbstractController
 {
@@ -37,7 +37,8 @@ final class TripController extends AbstractController
         CustomerRepository $customers,
         EntityManagerInterface $em,
         MailerInterface $mailer,
-        BookingEmailFactory $emailFactory,
+        #[Autowire('%kernel.project_dir%/assets/terms-of-service.pdf')]
+        string $termsPath,
     ): Response {
         $form = $this->createForm(BookingType::class)->handleRequest($request);
 
@@ -51,19 +52,23 @@ final class TripController extends AbstractController
             $em->persist($booking);
             $em->flush();
 
-            $booking = new Booking($customer, $trip, new \DateTimeImmutable());
-            $em->persist($booking);
-            $em->flush();
+            // Send confirmation email - Course Chapter: Attachments & Images
+            $email = (new TemplatedEmail())
+                ->to($customer->getEmail())
+                ->subject('Booking Confirmation')
+                ->htmlTemplate('email/booking_confirmation.html.twig')
+                ->attachFromPath($termsPath, 'Terms of Service.pdf')
+                ->context([
+                    'customer' => $customer,
+                    'booking' => $booking,
+                    'trip' => $trip,
+                ])
+            ;
 
-            $email = $emailFactory->createBookingConfirmation($booking);
-            $mailer->send($email);
-
-            // Tag for categorization (Mailtrap category)
-            $email->getHeaders()->addTextHeader('X-Tag', 'booking');
-
-            // Metadata for tracking (Mailtrap custom variables)
-            $email->getHeaders()->addTextHeader('X-Metadata-booking-uid', $booking->getUid());
-            $email->getHeaders()->addTextHeader('X-Metadata-customer-uid', $customer->getUid());
+            // Add email tracking with tags and metadata
+            $email->getHeaders()->add(new TagHeader('booking'));
+            $email->getHeaders()->add(new MetadataHeader('booking_uid', $booking->getUid()));
+            $email->getHeaders()->add(new MetadataHeader('customer_uid', $customer->getUid()));
 
             $mailer->send($email);
 

@@ -1,3 +1,7 @@
+.text-red {
+  color: red;
+}
+
 .trip-name {
   font-size: 32px;
 }
@@ -8,4 +12,7 @@
 
 .trip-image {
   border-radius: 12px;
+  max-width: 300px;
+  display: block;
+  margin: 20px auto;
 }

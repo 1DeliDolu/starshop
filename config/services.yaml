@@ -4,6 +4,8 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+  # For production, use a verified domain email address
+  # Example: global_from_email: 'Your Name <yourname@yourdomain.com>'
   global_from_email: "Universal Travel <info@universal-travel.com>"
 
 services:

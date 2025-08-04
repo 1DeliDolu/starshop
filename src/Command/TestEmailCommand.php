@@ -10,6 +10,8 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\Mailer\Header\TagHeader;
+use Symfony\Component\Mailer\Header\MetadataHeader;
 
 #[AsCommand(
     name: 'app:test-email',
@@ -30,11 +32,13 @@ class TestEmailCommand extends Command
         try {
             $email = (new TemplatedEmail())
                 ->to('test@example.com')
-                ->subject('Test Email with CSS Inlining')
-                ->htmlTemplate('email/booking_confirmation.html.twig')
-                ->textTemplate('email/booking_confirmation.txt.twig')
+                ->subject('Test Email with Tags and Metadata')
+                ->htmlTemplate('email/test_simple.html.twig')
                 ->context([
-                    'trip' => (object) ['name' => 'Test Trip to Paris'],
+                    'trip' => (object) [
+                        'name' => 'Test Trip to Arrakis',
+                        'slug' => 'arrakis'
+                    ],
                     'booking' => (object) [
                         'name' => 'Test Customer',
                         'date' => new \DateTime(),
@@ -45,6 +49,11 @@ class TestEmailCommand extends Command
                         'uid' => 'test-customer-456'
                     ]
                 ]);
+
+            // Add email tracking with tags and metadata
+            $email->getHeaders()->add(new TagHeader('test'));
+            $email->getHeaders()->add(new MetadataHeader('test_type', 'command'));
+            $email->getHeaders()->add(new MetadataHeader('timestamp', date('Y-m-d H:i:s')));
 
             $this->mailer->send($email);
 

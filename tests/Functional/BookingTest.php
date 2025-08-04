@@ -6,14 +6,14 @@ use App\Factory\BookingFactory;
 use App\Factory\CustomerFactory;
 use App\Factory\TripFactory;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\Bundle\FrameworkBundle\Test\MailerAssertionsTrait;
 use Zenstruck\Browser\Test\HasBrowser;
 use Zenstruck\Foundry\Test\Factories;
 use Zenstruck\Foundry\Test\ResetDatabase;
+use Zenstruck\Mailer\Test\InteractsWithMailer;
 
 class BookingTest extends KernelTestCase
 {
-    use ResetDatabase, Factories, HasBrowser, MailerAssertionsTrait;
+    use ResetDatabase, Factories, HasBrowser, InteractsWithMailer;
 
     /**
      * @test
@@ -21,9 +21,9 @@ class BookingTest extends KernelTestCase
     public function testCreateBooking(): void
     {
         $trip = TripFactory::createOne([
-            'name' => 'Visit Mars',
+            'name' => 'Visit ISS',
             'slug' => 'iss',
-            'tagLine' => 'The red planet',
+            'tagLine' => 'The International Space Station',
         ]);
 
         BookingFactory::assert()->empty();
@@ -39,8 +39,8 @@ class BookingTest extends KernelTestCase
             ->clickAndIntercept('Book Trip')
             ->assertRedirectedTo('/booking/' . BookingFactory::first()->getUid())
             ->assertSuccessful()
-            ->assertSeeIn('h1', 'Visit Mars')
-            ->assertSee('The red planet')
+            ->assertSeeIn('h1', 'Visit ISS')
+            ->assertSee('The International Space Station')
         ;
 
         CustomerFactory::assert()
@@ -52,13 +52,17 @@ class BookingTest extends KernelTestCase
             ->exists(['trip' => $trip, 'customer' => CustomerFactory::first()])
         ;
 
-        // Test email functionality with Symfony's built-in email testing
-        $this->assertEmailCount(1);
-        $email = $this->getMailerMessage();
-        $this->assertEmailHeaderSame($email, 'to', 'bruce@wayne-enterprises.com');
-        $this->assertEmailHeaderSame($email, 'subject', 'Booking Confirmation for Visit Mars');
-        $this->assertEmailTextBodyContains($email, 'Visit Mars');
-        $this->assertEmailHtmlBodyContains($email, 'Visit Mars');
-        $this->assertEmailHtmlBodyContains($email, '/booking/' . BookingFactory::first()->getUid());
+        // Test email functionality with zenstruck/mailer-test
+        $this->mailer()
+            ->assertSentEmailCount(1)
+            ->assertEmailSentTo('bruce@wayne-enterprises.com', function ($email) {
+                $email
+                    ->assertSubject('Booking Confirmation for Visit ISS')
+                    ->assertContains('Visit ISS')
+                    ->assertContains('/booking/' . BookingFactory::first()->getUid())
+                    ->assertHasFile('Terms of Service.pdf')
+                ;
+            })
+        ;
     }
 }

@@ -1,11 +1,40 @@
-{% extends 'email/email_layout.html.twig' %}
-
-{% block content %}
-    <h2>Coming soon!</h2>
-    <h1>{{ trip.name }}</h1>
-    <p>Departure: {{ booking.date|date('Y-m-d') }}</p>
-    <p><a href="{{ url('booking_show', {uid: booking.uid}) }}">Manage Booking</a></p>
-    <p><a href="{{ url('bookings', {uid: customer.uid}) }}">My Account</a></p>
-    <p>We can't wait to see you there,</p>
-    <p>Your friends at Universal Travel</p>
-{% endblock %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Reminder</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f5f5f5; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; }
+        .accent-title { color: #007bff; font-weight: bold; margin: 10px 0; }
+        .trip-name { color: #333; margin: 20px 0; }
+        .trip-image { max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0; }
+        .button { display: inline-block; padding: 12px 25px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; margin: 10px 10px 10px 0; }
+        .button.secondary { background: #6c757d; }
+        .text-center { text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="accent-title">Coming soon!</p>
+        <h1 class="trip-name">{{ trip.name }}</h1>
+        <img class="trip-image" 
+             src="{{ email.image('@images/%s.png'|format(trip.slug)) }}" 
+             alt="{{ trip.name }}">
+        
+        <p class="accent-title">Departure: {{ booking.date|date('Y-m-d') }}</p>
+        
+        <div class="text-center">
+            <a href="{{ url('booking_show', {uid: booking.uid}) }}" class="button">
+                Manage Booking
+            </a>
+            <a href="{{ url('bookings', {uid: customer.uid}) }}" class="button secondary">
+                My Account
+            </a>
+        </div>
+        
+        <p>We can't wait to see you there!</p>
+        <p>Your friends at StarShop Travel</p>
+    </div>
+</body>
+</html>

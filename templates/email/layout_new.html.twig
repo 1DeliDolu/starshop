@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Basic email styles */
+        body { margin: 0; padding: 0; background-color: #f4f4f4; font-family: Arial, sans-serif; }
+        .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 40px; }
+        .accent-title { color: #6B73FF; font-size: 18px; font-weight: bold; margin: 20px 0; text-align: center; }
+        .trip-name { font-size: 32px; font-weight: bold; margin: 20px 0; text-align: center; color: #333; }
+        .trip-image { max-width: 100%; height: auto; display: block; margin: 20px auto; }
+        .button { display: inline-block; padding: 12px 24px; background-color: #6B73FF; color: white; text-decoration: none; border-radius: 4px; margin: 10px 5px; }
+        .button.secondary { background-color: #666; }
+        .spacer { height: 40px; }
+        .text-center { text-align: center; }
+        .small { font-size: 12px; color: #666; margin-top: 40px; text-align: center; }
+        p { line-height: 1.6; color: #333; }
+        .departure { font-size: 16px; margin: 20px 0; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% block content %}{% endblock %}
+        
+        <p>We can't wait to see you there,</p>
+        <p>Your friends at Universal Travel</p>
+    </div>
+</body>
+</html>

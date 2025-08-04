@@ -2,17 +2,7 @@
 
 namespace App\Tests\Functional\Command;
 
-use Ap        // Assert email was sent
-        $this->assertEmailCount(1);
-        $email = $this->getMailerMessage();
-        $this->assertEmailHeaderSame($email, 'to', 'steve@minecraft.com');
-        $this->assertEmailHeaderSame($email, 'subject', 'Booking Reminder for Visit Mars');
-        $this->assertEmailHtmlBodyContains($email, 'Visit Mars');
-        $this->assertEmailHtmlBodyContains($email, '/booking/');
-
-        // Refresh booking entity from database
-        $booking->_real()->refresh();
-        $this->assertNotNull($booking->getReminderSentAt());\BookingFactory;
+use App\Factory\BookingFactory;
 use App\Factory\CustomerFactory;
 use App\Factory\TripFactory;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
