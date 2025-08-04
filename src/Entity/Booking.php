@@ -29,7 +29,7 @@ class Booking
     #[ORM\JoinColumn(nullable: false)]
     private Trip $trip;
 
-    #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
+    #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $reminderSentAt = null;
 
     public function __construct(Customer $customer, Trip $trip, \DateTimeImmutable $date, ?string $uid = null)

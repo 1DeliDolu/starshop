@@ -1,20 +1,30 @@
 {% extends 'email/layout.html.twig' %}
 
+{% block title %}Trip Rezervasyon Onayı{% endblock %}
+
 {% block content %}
-        <p class="accent-title">Get Ready for your trip to</p>
+    <div style="text-align: center; margin-bottom: 30px;">
+        <p class="accent-title">Harika! Seyahatiniz için hazırlanın</p>
         <h1 class="trip-name">{{ trip.name }}</h1>
-        <img class="trip-image" 
-             src="{{ email.image('@images/%s.png'|format(trip.slug)) }}" 
-             alt="{{ trip.name }}">
-        
-        <p class="departure accent-title">Departure: {{ booking.date|date('Y-m-d') }}</p>
-        
-        <div class="text-center">
-            <a href="{{ url('booking_show', {uid: booking.uid}) }}" class="button">
-                Manage Booking
-            </a>
-            <a href="{{ url('bookings', {uid: customer.uid}) }}" class="button secondary">
-                My Account
-            </a>
-        </div>
+        {# <img class="trip-image" src="{{ email.image('@images/%s.png'|format(trip.slug)) }}" alt="{{ trip.name }}"> #}
+    </div>
+    
+    <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+        <h3 style="color: #007bff; margin-top: 0;">📅 Seyahat Detayları</h3>
+        <p><strong>Destinasyon:</strong> {{ trip.name }}</p>
+        <p><strong>Kalkış Tarihi:</strong> {{ booking.date|date('d F Y') }}</p>
+        <p><strong>Rezervasyon No:</strong> {{ booking.uid }}</p>
+        <p><strong>Yolcu:</strong> {{ customer.name }}</p>
+        <p><strong>E-posta:</strong> {{ customer.email }}</p>
+    </div>
+    
+    <p>Merhaba {{ customer.name }},</p>
+    <p><strong>{{ trip.name }}</strong> destinasyonuna yapacağınız seyahat için rezervasyonunuz başarıyla alınmıştır!</p>
+    
+    <div class="button-container">
+        <a href="{{ url('booking_show', {uid: booking.uid}) }}" class="btn">Rezervasyonumu Görüntüle</a>
+        <a href="{{ url('bookings', {uid: customer.uid}) }}" class="btn secondary">Hesabım</a>
+    </div>
+    
+    <p>Herhangi bir sorunuz olursa lütfen bizimle iletişime geçmekten çekinmeyin.</p>
 {% endblock %}
