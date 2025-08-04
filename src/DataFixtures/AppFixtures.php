@@ -2,9 +2,8 @@
 
 namespace App\DataFixtures;
 
-use App\Factory\BookingFactory;
-use App\Factory\CustomerFactory;
-use App\Factory\TripFactory;
+use App\Factory\ProductFactory;
+use App\Factory\UserFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -12,83 +11,49 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        CustomerFactory::createMany(5);
-
-        $krypton = TripFactory::createOne([
-            'name' => 'Visit Krypton',
-            'slug' => 'krypton',
-            'tagLine' => "Explore this advanced culture's science and technology museums and bring home some crystalline souvenirs!",
-        ]);
-        $pleiades = TripFactory::createOne([
-            'name' => 'See the Pleiades',
-            'slug' => 'pleiades',
-            'tagLine' => 'Get an up-close look at the more than 1,000 starts that make up the Pleiades.',
-        ]);
-        $iss = TripFactory::createOne([
-            'name' => 'Culinary Tour on the ISS',
-            'slug' => 'iss',
-            'tagLine' => 'Try freeze-dried, thermo-stabilized, and irradiated foods on this unique culinary adventure!',
-        ]);
-        $arrakis = TripFactory::createOne([
-            'name' => 'Arrakis at sunset',
-            'slug' => 'arrakis',
-            'tagLine' => 'Rolling over the sands, you can see spice in the air!',
-        ]);
-        $miller = TripFactory::createOne([
-            'name' => 'Swim Planet Miller',
-            'slug' => 'miller',
-            'tagLine' => 'This trip is recommended for expert level swimmers!',
-        ]);
-        $cybertron = TripFactory::createOne([
-            'name' => 'Robotics Camp on Cybertron',
-            'slug' => 'cybertron',
-            'tagLine' => 'Try your hand at creating your own vehicle transformers!',
+        UserFactory::new()->create([
+            'email' => 'lemon@example.com',
+            'plainPassword' => 'lemonpass',
+            'firstName' => 'Lemon',
         ]);
 
-        BookingFactory::createMany(10, function() {
-            return [
-                'customer' => CustomerFactory::random(),
-                'trip' => TripFactory::random(),
-            ];
-        });
-
-        $clark = CustomerFactory::createOne([
-            'name' => 'Clark Kent',
-            'email' => 'clark@krypton.com',
-            'uid' => 'clark',
+        ProductFactory::new()->create([
+            'name' => 'Classic Lemonade',
+            'price' => 99,
+            'description' => 'A timeless, thirst-quenching beverage that blends the bright, zesty flavor of lemons with just the right amount of sweetness. Simple yet satisfying.',
+            'slug' => 'classic-lemonade',
+        ]);
+        ProductFactory::new()->create([
+            'name' => 'Watermelon Lemonade',
+            'price' => 199,
+            'description' => 'A vibrant, thirst-quenching blend of sweet, juicy watermelon and zesty lemon. This refreshing drink captures the essence of summer in every sip',
+            'slug' => 'watermelon-lemonade',
+        ]);
+        ProductFactory::new()->create([
+            'name' => 'Apple Lemonade',
+            'price' => 199,
+            'description' => 'A unique twist where the bright tartness of lemons meets the smooth, slightly sweet flavor of fresh apples.',
+            'slug' => 'apple-lemonade',
+        ]);
+        ProductFactory::new()->create([
+            'name' => 'Strawberry Lemonade',
+            'price' => 299,
+            'description' => 'A refreshing, sweet-tart drink combining the juicy, fruity flavor of ripe strawberries with the zesty, tangy kick of lemons.',
+            'slug' => 'strawberry-lemonade',
+        ]);
+        ProductFactory::new()->create([
+            'name' => 'Orange Lemonade',
+            'price' => 99,
+            'description' => 'A sunny, citrusy refreshment that blends the bright, tangy zing of lemons with the sweet, juicy flavor of ripe oranges',
+            'slug' => 'orange-lemonade',
+        ]);
+        ProductFactory::new()->create([
+            'name' => 'Cherry Lemonade',
+            'price' => 299,
+            'description' => 'A bright, fruity fusion of sweet cherries and tart lemons. It has a perfect balance of tangy and sweet, with a burst of cherry goodness that adds a bit of whimsy to every sip',
+            'slug' => 'cherry-lemonade',
         ]);
 
-        CustomerFactory::createOne([
-            'name' => 'Bruce Wayne',
-            'email' => 'bruce@wayneenterprises.com',
-            'uid' => 'bruce',
-        ]);
-
-        BookingFactory::createOne([
-            'customer' => $clark,
-            'trip' => $krypton,
-            'date' => new \DateTimeImmutable('+1 month'),
-        ]);
-        BookingFactory::createOne([
-            'customer' => $clark,
-            'trip' => $pleiades,
-            'date' => new \DateTimeImmutable('+2 weeks'),
-        ]);
-        BookingFactory::createOne([
-            'customer' => $clark,
-            'trip' => $miller,
-            'date' => new \DateTimeImmutable('-1 month'),
-        ]);
-        BookingFactory::createOne([
-            'customer' => $clark,
-            'trip' => $cybertron,
-            'date' => new \DateTimeImmutable('-2 weeks'),
-        ]);
-
-        BookingFactory::createOne([
-            'trip' => $arrakis,
-            'customer' => $clark,
-            'date' => new \DateTimeImmutable('+6 days'),
-        ]);
+        $manager->flush();
     }
 }

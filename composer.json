@@ -1,68 +1,48 @@
 {
     "type": "project",
     "license": "proprietary",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
     "require": {
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/dbal": "^3",
         "doctrine/doctrine-bundle": "^2.13",
-        "doctrine/doctrine-fixtures-bundle": "^3.6",
+        "doctrine/doctrine-migrations-bundle": "^3.4",
         "doctrine/orm": "^3.3",
-        "dragonmantank/cron-expression": "^3.3",
-        "knplabs/knp-time-bundle": "^2.0",
-        "lorisleiva/cron-translator": "^0.4",
         "symfony/asset": "7.2.*",
         "symfony/asset-mapper": "7.2.*",
         "symfony/console": "7.2.*",
-        "symfony/doctrine-messenger": "7.2.*",
         "symfony/dotenv": "7.2.*",
         "symfony/flex": "^2",
         "symfony/form": "7.2.*",
         "symfony/framework-bundle": "7.2.*",
-        "symfony/mailer": "7.2.*",
-        "symfony/mailtrap-mailer": "7.2.*",
-        "symfony/messenger": "7.2.*",
-        "symfony/monolog-bundle": "^3.10",
-        "symfony/remote-event": "7.2.*",
         "symfony/runtime": "7.2.*",
-        "symfony/scheduler": "7.2.*",
-        "symfony/security-csrf": "7.2.*",
-        "symfony/stimulus-bundle": "^2.21",
-        "symfony/translation": "7.2.*",
+        "symfony/security-bundle": "7.2.*",
+        "symfony/stimulus-bundle": "^2.22",
         "symfony/twig-bundle": "7.2.*",
         "symfony/validator": "7.2.*",
-        "symfony/webhook": "7.2.*",
         "symfony/yaml": "7.2.*",
         "symfonycasts/tailwind-bundle": "^0.7.1",
-        "twig/cssinliner-extra": "^3.21",
-        "twig/extra-bundle": "^3.0",
-        "twig/inky-extra": "^3.21",
-        "twig/twig": "^3.0",
-        "zenstruck/messenger-monitor-bundle": "1.x-dev"
+        "twig/extra-bundle": "^2.12|^3.0",
+        "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.5",
-        "symfony/browser-kit": "7.2.*",
-        "symfony/css-selector": "7.2.*",
-        "symfony/debug-bundle": "7.2.*",
-        "symfony/maker-bundle": "^1.61",
-        "symfony/phpunit-bridge": "^7.1",
+        "doctrine/doctrine-fixtures-bundle": "^4.0",
+        "symfony/maker-bundle": "^1.62",
         "symfony/stopwatch": "7.2.*",
         "symfony/web-profiler-bundle": "7.2.*",
-        "zenstruck/browser": "^1.9",
-        "zenstruck/console-test": "^1.7",
-        "zenstruck/foundry": "^2.2",
-        "zenstruck/mailer-test": "^1.4"
+        "zenstruck/foundry": "*"
     },
     "config": {
+        "platform": {
+            "php": "8.2"
+        },
         "allow-plugins": {
             "php-http/discovery": true,
             "symfony/flex": true,
             "symfony/runtime": true
-        },
-        "platform": {
-            "php": "8.2"
         },
         "sort-packages": true
     },
@@ -100,8 +80,7 @@
         ]
     },
     "conflict": {
-        "symfony/symfony": "*",
-        "zenstruck/foundry": "2.3.1"
+        "symfony/symfony": "*"
     },
     "extra": {
         "symfony": {
