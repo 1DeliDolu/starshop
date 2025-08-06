@@ -1,0 +1,10 @@
+#config/packages/http_client.yaml
+framework:
+    http_client:
+        scoped_clients:
+            lemon_squeezy.client:
+                base_uri: 'https://api.lemonsqueezy.com/v1/'
+                autobearer: '%env(LEMON_SQUEEZY_API_KEY)%'
+                headers:
+                    Accept: 'application/vnd.api+json'
+                    Content-Type: 'application/vnd.api+json'
